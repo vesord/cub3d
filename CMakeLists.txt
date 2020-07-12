@@ -32,4 +32,4 @@ add_executable(cub3d
         ${SRC_FILES}
         )
 
-target_link_libraries(cub3d ${MY_LIB_FILES} X11 Xext)
+target_link_libraries(cub3d ${MY_LIB_FILES} m X11 Xext)
