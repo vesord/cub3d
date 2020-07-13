@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 project(cub3d C)
 
 set(CMAKE_C_STANDARD 11)
-
-set(MYCOMPILE_FLAGS "-Wall -Werror -Wextra")
+#-Wall -Werror -Wextra
+set(MYCOMPILE_FLAGS "")
 add_definitions(${MYCOMPILE_FLAGS})
 
 include_directories(libs/libft)
