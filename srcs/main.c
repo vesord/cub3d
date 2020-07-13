@@ -12,24 +12,28 @@
 
 #include "mlx.h"
 #include "libft.h"
-#include <stdlib.h>
 #include <math.h>
-
-#include <X11/keysymdef.h>
+#include <stdio.h>
 
 char **map_init();
 
-const char map[7][7] = {
-	{'1', '1', '1', '1', '1', '1', '1'},
-	{'1', '0', '0', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '1'},
-	{'1', '0', '0', '0', '0', '0', '1'},
-	{'1', '1', '1', '1', '1', '1', '1'}
+const char map[14][14] = {
+	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'},
+	{'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+	{'1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1'},
+	{'1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1'},
+	{'1', '0', '1', '0', '0', '1', '0', '0', '1', '1', '0', '1', '0', '1'},
+	{'1', '0', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', '0', '1'},
+	{'1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', '1'},
+	{'1', '0', '1', '0', '1', '1', '0', '0', '1', '1', '0', '1', '0', '1'},
+	{'1', '0', '1', '0', '0', '1', '0', '0', '1', '1', '0', '1', '0', '1'},
+	{'1', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '1'},
+	{'1', '0', '1', '1', '1', '1', '0', '1', '1', '1', '1', '1', '0', '1'},
+	{'1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1'},
+	{'1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1'}
 };
-const int map_max_x = 6;
-const int map_max_y = 6;
+const int map_max_x = 14;
+const int map_max_y = 13;
 
 int blk_x = 256;
 int blk_y = 256;
@@ -44,47 +48,89 @@ double cam_direction_yaw = (4.0 * M_PI) + M_PI_4;
 double cam_angle_pitch = M_PI / 3.0;
 double cam_direction_pitch = 0.0;
 
+void *img_ptr;
+char *img_data;
+void *mlx_ptr;
+void *win_ptr;
 
-
-int win_x = 640;
-int win_y = 480;
+int win_x = 1024;
+int win_y = 760;
 unsigned int color_wall = 0xcaa472;
 unsigned int color_ceil = 0x87ceeb;
 unsigned int color_flor = 0x7cfc00;
 
 int bits_per_pixel = 0, size_line = 0, endian = 0;
 
-void make_frame(char *img_data);
+void make_frame();
 double throw_ray(double angle);
 int is_xy_empty(double x, double y);
-void frame_col_set(void *img_data, int frame_x, double len_to_wall);
+void frame_col_set(int frame_x, double len_to_wall);
+unsigned int add_shade(unsigned int color, double len_to_wall);
+
+int key_press(int keycode)
+{
+	ft_putnbr_fd(keycode, 1);
+	ft_putendl_fd("", 1);
+	if (keycode == 'w')
+	{
+		cam_x += ((double)blk_x / 3) * cos(cam_direction_yaw);
+		cam_y += ((double)blk_x / 3) * sin(cam_direction_yaw);
+	}
+	if (keycode == 's')
+	{
+		cam_x -= ((double)blk_x / 3) * cos(cam_direction_yaw);
+		cam_y -= ((double)blk_x / 3) * sin(cam_direction_yaw);
+	}
+	if (keycode == 'a')
+	{
+		cam_x += ((double)blk_x / 3) * cos(cam_direction_yaw + M_PI_2);
+		cam_y += ((double)blk_x / 3) * sin(cam_direction_yaw + M_PI_2);
+	}
+	if (keycode == 'd')
+	{
+		cam_x += ((double)blk_x / 3) * cos(cam_direction_yaw - M_PI_2);
+		cam_y += ((double)blk_x / 3) * sin(cam_direction_yaw - M_PI_2);
+	}
+	if (keycode == 65361)
+		cam_direction_yaw += M_PI / 72;
+	if (keycode == 65363)
+		cam_direction_yaw -= M_PI / 72;
+	ft_putendl_fd("Im leaving key_press()!", 1);
+	return (0);
+}
+
+int expose()
+{
+	ft_putendl_fd("Im in expose()!", 1);
+	return (0);
+}
+
+int img_update()
+{
+	make_frame();
+	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
+	return (0);
+}
 
 int main()
 {
-	void *mlx_ptr;
-	void *win_ptr;
-
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, win_x, win_y, "Just vindow");
-
-	void *img_ptr;
-	char *img_data;
-
 	img_ptr = mlx_new_image(mlx_ptr, win_x, win_y);
 	img_data = mlx_get_data_addr(img_ptr, &bits_per_pixel, &size_line, &endian);
 
-	mlx_key_hook(win_ptr, , NULL);
-	while (1)
-	{
-		make_frame(img_data);
-		mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
-	}
+	mlx_do_key_autorepeaton(mlx_ptr);
+	mlx_hook(win_ptr, 2, 1L<<0, key_press, NULL);
+//	mlx_key_hook(win_ptr, key_press, NULL);
+	mlx_loop_hook(mlx_ptr, img_update, NULL);
+	mlx_loop(mlx_ptr);
+
 	return (0);
 }
 
 int is_edge = 0;
 
-void make_frame(char *img_data)
+void make_frame()
 {
 	int frame_x;
 	double angle = cam_direction_yaw + cam_angle_yaw / 2;
@@ -92,7 +138,7 @@ void make_frame(char *img_data)
 	frame_x = 0;
 	while (frame_x < win_x)
 	{
-		frame_col_set(img_data, frame_x, throw_ray(angle));
+		frame_col_set(frame_x, throw_ray(angle));
 		angle -= d_angle;
 		frame_x++;
 	}
@@ -135,7 +181,7 @@ int is_xy_empty(double x, double y)
 		return (1);
 }
 
-void frame_col_set(void *img_data, int frame_x, double len_to_wall)
+void frame_col_set(int frame_x, double len_to_wall)
 {
 	double angle = cam_direction_pitch + cam_angle_pitch / 2;
 	double d_angle = cam_angle_pitch / win_y;
@@ -150,7 +196,7 @@ void frame_col_set(void *img_data, int frame_x, double len_to_wall)
 		else if (angle > flor_angle)
 		{
 			if (!is_edge)
-				((unsigned int *) img_data)[y_p * win_x + frame_x] = color_wall;
+				((unsigned int *) img_data)[y_p * win_x + frame_x] = add_shade(color_wall, len_to_wall);
 			else
 				((unsigned int *) img_data)[y_p * win_x + frame_x] = 0;
 		}
@@ -159,4 +205,17 @@ void frame_col_set(void *img_data, int frame_x, double len_to_wall)
 		y_p++;
 		angle -= d_angle;
 	}
+}
+
+unsigned int add_shade(unsigned int color, double len_to_wall)
+{
+	double shade_coef = -len_to_wall / blk_x / 6 + 1;
+	unsigned int new_color = 0;
+
+	if (shade_coef < 0.6)
+		shade_coef = 0.6;
+	new_color |= (unsigned int)((double)((color >> 16) & 0xff) * shade_coef) << 16;
+	new_color |= (unsigned int)((double)((color >> 8) & 0xff) * shade_coef) << 8;
+	new_color |= (unsigned int)((double)((color >> 0) & 0xff) * shade_coef) << 0;
+	return (new_color);
 }
