@@ -13,7 +13,6 @@
 #include "mlx.h"
 #include "libft.h"
 #include <math.h>
-#include <stdio.h>
 
 char **map_init();
 
@@ -43,7 +42,7 @@ double cam_x = 256.0 + 128.0;
 double cam_y = 256.0 + 128.0;
 double cam_z = 160.0;
 double cam_depth = 640.0;
-double cam_angle_yaw = M_PI / 3.0;
+double cam_angle_yaw = 2 * (M_PI + M_PI);
 double cam_direction_yaw = (4.0 * M_PI) + M_PI_4;
 double cam_angle_pitch = M_PI / 3.0;
 double cam_direction_pitch = 0.0;

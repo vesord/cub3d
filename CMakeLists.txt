@@ -19,17 +19,18 @@ set(HEADER_FILES
         )
 
 set(SRC_FILES
-        srcs/main.c
+        #srcs/main.c
+        srcs/cub3d.c
         )
 
 set(MY_LIB_FILES
         ${CMAKE_SOURCE_DIR}/libs/libft/libft.a
         ${CMAKE_SOURCE_DIR}/libs/minilibx/libmlx.a)
 
-add_executable(cub3d
+add_executable(cub3D
         ${HEADER_FILES}
         ${LIBS_SRC}
         ${SRC_FILES}
         )
 
-target_link_libraries(cub3d ${MY_LIB_FILES} m X11 Xext)
+target_link_libraries(cub3D ${MY_LIB_FILES} m X11 Xext)
