@@ -23,6 +23,19 @@ int main(int argc, char **argv)
 	return (0);
 }
 
+void	cube_start()
+{
+	t_cub *cub;
+
+	if(!(cub = (t_cub*)malloc(sizeof(t_cub))))
+		ft_exit(ERR_NO_MEMORY);
+	cub_init(cub);
+	window_init(cub);
+	config_parse(cub);
+	open_textures(cub);
+	hook_initialize(cub);
+}
+
 void	ft_exit(char *msg)
 {
 	ft_putendl_fd("Error.", 2);

@@ -20,9 +20,9 @@
 
 typedef struct	s_cam
 {
-	double cam_x;
-	double cam_y;
-	double cam_z;
+	double x;
+	double y;
+	double z;
 	double cam_angle_yaw;
 	double cam_direction_yaw;
 	double cam_angle_pitch;
@@ -74,13 +74,30 @@ typedef struct	s_cub
 	t_cam		*cam;
 	t_textures	*tex;
 	t_win 		*win;
-	t_ray		ray;
+	t_ray		*ray;
 }				t_cub;
 
 void	cube_start();
 
 void	ft_exit(char *msg);
 void	save_frame();
+
+//	DESTROY FUNCTION	//
+
+void	cub_destroy(t_cub *cub, char *msg);
+void	cub_map_destroy(t_map *map);
+void	cub_textures_destroy(t_textures *tex, void *mlx_ptr);
+void	cub_win_destroy(t_win *win);
+
+//	CUB INITIALIZATION FUNCTIONS	//
+
+void	cub_init(t_cub *cub);
+void	cub_set_null(t_cub *cub);
+void	cub_init_cam(t_cub *cub);
+void	cub_init_map(t_cub *cub);
+void	cub_init_ray(t_cub *cub);
+void	cub_init_win(t_cub *cub);
+void	cub_init_textures(t_cub *cub);
 
 
 #endif

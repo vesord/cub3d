@@ -24,6 +24,9 @@ set(SRC_FILES
         #srcs/main.c
         srcs/cub3d.c
         srcs/cub_init/cube_start.c
+        srcs/cub_init/cub_init.c
+        srcs/cub_init/cub_init_struct.c
+        srcs/cub_init/cub_destroy.c
         )
 
 set(MY_LIB_FILES
