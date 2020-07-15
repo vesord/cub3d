@@ -15,8 +15,10 @@
 
 #include "mlx.h"
 #include "libft.h"
+#include "get_next_line.h"
 #include "errors.h"
 #include <math.h>
+#include <fcntl.h>
 
 typedef struct	s_cam
 {
@@ -75,16 +77,18 @@ typedef struct	s_cub
 	t_textures	*tex;
 	t_win 		*win;
 	t_ray		*ray;
+	int			confing_fd;
 }				t_cub;
 
-void	cube_start();
+//	MAIN FUNCTIONS	//
 
+void	cube_start(char *path_to_conf);
 void	ft_exit(char *msg);
 void	save_frame();
 
 //	DESTROY FUNCTION	//
 
-void	cub_destroy(t_cub *cub, char *msg);
+void	cub_destroy(t_cub *cub, char *err_msg);
 void	cub_map_destroy(t_map *map);
 void	cub_textures_destroy(t_textures *tex, void *mlx_ptr);
 void	cub_win_destroy(t_win *win);
@@ -98,6 +102,10 @@ void	cub_init_map(t_cub *cub);
 void	cub_init_ray(t_cub *cub);
 void	cub_init_win(t_cub *cub);
 void	cub_init_textures(t_cub *cub);
+
+//	CONFIG PARSE FUNCTIONS	//
+
+#define
 
 
 #endif

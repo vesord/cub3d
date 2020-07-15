@@ -15,5 +15,7 @@
 
 # define ERR_WRONG_ARGUMENTS "Wrong argumets."
 # define ERR_NO_MEMORY "No enough memory to play:("
+# define ERR_READ_CONFIG "Error occur while reading config file."
+# define ERR_PARSE "Some argument in config file missed or written wrong."
 
 #endif

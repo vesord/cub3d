@@ -8,14 +8,15 @@ add_definitions(${MYCOMPILE_FLAGS})
 
 include_directories(libs/libft)
 include_directories(libs/minilibx)
+include_directories(libs/get_next_line)
 include_directories(srcs)
 include_directories(includes)
 
 set(HEADER_FILES
-#        libs/get_next_line/get_next_line.h
         libs/libft/libft.h
         libs/minilibx/mlx.h
         libs/minilibx/mlx_int.h
+        libs/get_next_line/get_next_line.h
         srcs/errors.h
         srcs/cub3d.h
         )
@@ -23,10 +24,12 @@ set(HEADER_FILES
 set(SRC_FILES
         #srcs/main.c
         srcs/cub3d.c
-        srcs/cub_init/cube_start.c
         srcs/cub_init/cub_init.c
         srcs/cub_init/cub_init_struct.c
         srcs/cub_init/cub_destroy.c
+        srcs/config_parse/config_parse.c
+        libs/get_next_line/get_next_line.c
+        libs/get_next_line/get_next_line_utils.c
         )
 
 set(MY_LIB_FILES

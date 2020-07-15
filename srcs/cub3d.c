@@ -15,23 +15,25 @@
 int main(int argc, char **argv)
 {
 	if (argc == 1)
-		cube_start();
-	else if (argc == 2 && ft_strncmp(argv[1], "--save", 7))
-		save_frame();
+		cube_start(argv[1]);
+	else if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
+		save_frame(argv[1]);
 	else
 		ft_exit(ERR_WRONG_ARGUMENTS);
 	return (0);
 }
 
-void	cube_start()
+void	cube_start(char *path_to_conf)
 {
 	t_cub *cub;
 
 	if(!(cub = (t_cub*)malloc(sizeof(t_cub))))
 		ft_exit(ERR_NO_MEMORY);
 	cub_init(cub);
-	window_init(cub);
-	config_parse(cub);
+	if (!(cub->win->mlx_ptr = mlx_init()))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	config_parse(path_to_conf, cub);
+	window_setup(cub);
 	open_textures(cub);
 	hook_initialize(cub);
 }

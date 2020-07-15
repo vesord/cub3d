@@ -44,4 +44,5 @@ void	cub_set_null(t_cub *cub)
 	cub->cam = NULL;
 	cub->tex = NULL;
 	cub->ray = NULL;
+	cub->confing_fd = -1;
 }

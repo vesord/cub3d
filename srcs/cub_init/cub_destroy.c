@@ -14,6 +14,8 @@
 
 void	cub_destroy(t_cub *cub, char *msg)
 {
+	if (cub->confing_fd >= 0)
+		close(cub->confing_fd);
 	if (cub->cam)
 		free(cub->cam);
 	if (cub->map)
