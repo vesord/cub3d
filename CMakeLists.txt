@@ -8,7 +8,7 @@ add_definitions(${MYCOMPILE_FLAGS})
 
 include_directories(libs/libft)
 include_directories(libs/minilibx)
-include_directories(classes/includes)
+include_directories(srcs)
 include_directories(includes)
 
 set(HEADER_FILES
@@ -16,11 +16,14 @@ set(HEADER_FILES
         libs/libft/libft.h
         libs/minilibx/mlx.h
         libs/minilibx/mlx_int.h
+        srcs/errors.h
+        srcs/cub3d.h
         )
 
 set(SRC_FILES
         #srcs/main.c
         srcs/cub3d.c
+        srcs/cub_init/cube_start.c
         )
 
 set(MY_LIB_FILES

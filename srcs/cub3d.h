@@ -15,6 +15,7 @@
 
 #include "mlx.h"
 #include "libft.h"
+#include "errors.h"
 #include <math.h>
 
 typedef struct	s_cam
@@ -75,5 +76,11 @@ typedef struct	s_cub
 	t_win 		*win;
 	t_ray		ray;
 }				t_cub;
+
+void	cube_start();
+
+void	ft_exit(char *msg);
+void	save_frame();
+
 
 #endif

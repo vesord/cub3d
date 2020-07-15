@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   cube_start.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/14 14:45:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/14 14:45:26 by matrus           ###   ########.fr       */
+/*   Created: 2020/07/15 13:52:01 by matrus            #+#    #+#             */
+/*   Updated: 2020/07/15 13:52:03 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d.h" //???
 
-int main(int argc, char **argv)
+void	cube_start()
 {
-	if (argc == 1)
-		cube_start();
-	else if (argc == 2 && ft_strncmp(argv[1], "--save", 7))
-		save_frame();
-	else
-		ft_exit(ERR_WRONG_ARGUMENTS);
-	return (0);
-}
+	t_cub *cub;
 
-void	ft_exit(char *msg)
-{
-	ft_putendl_fd("Error.", 2);
-	ft_putendl_fd(msg, 2);
-	exit(0);
-}
+	if(!(cub = (t_cub*)malloc(sizeof(t_cub))))
+		ft_exit(ERR_NO_MEMORY);
+	config_parse(cub);
+	open_textures(cub);
+	hook_initialize(cub);
 
-void	save_frame()
-{
-	;
 }

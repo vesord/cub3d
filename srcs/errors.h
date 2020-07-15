@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/14 14:45:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/14 14:45:26 by matrus           ###   ########.fr       */
+/*   Created: 2020/07/15 14:22:04 by matrus            #+#    #+#             */
+/*   Updated: 2020/07/15 14:22:06 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef CUB3D_ERRORS_H
+# define CUB3D_ERRORS_H
 
-int main(int argc, char **argv)
-{
-	if (argc == 1)
-		cube_start();
-	else if (argc == 2 && ft_strncmp(argv[1], "--save", 7))
-		save_frame();
-	else
-		ft_exit(ERR_WRONG_ARGUMENTS);
-	return (0);
-}
+# define ERR_WRONG_ARGUMENTS "Wrong argumets."
+# define ERR_NO_MEMORY "No enough memory to play:("
 
-void	ft_exit(char *msg)
-{
-	ft_putendl_fd("Error.", 2);
-	ft_putendl_fd(msg, 2);
-	exit(0);
-}
-
-void	save_frame()
-{
-	;
-}
+#endif
