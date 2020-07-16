@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+//
+#include <stdio.h>
 
 void	add_line_to_map(char *line, t_cub *cub)
 {
@@ -27,6 +29,17 @@ void	add_line_to_map(char *line, t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	}
 	(cub->map->field)[i + 1] = NULL;
+//	//
+//	int a = 0;
+//	printf("field on %i iter is %p\n", i, (cub->map->field));
+//	while ((cub->map->field)[a])
+//	{
+//		printf("map[%i]: p: %p\tc: %s\n", a, (cub->map->field)[a], (cub->map->field)[a]);
+//		a++;
+//	}
+//	printf("map[%i]: p: %p\tc: %s\n", a, (cub->map->field)[a], (cub->map->field)[a]);
+//	printf("void* %lu\tchar* %lu\tint* %lu\n\n", sizeof(void*), sizeof(char*), sizeof(int*));
+//	//
 }
 
 int		check_map(t_cub *cub)
@@ -44,15 +57,22 @@ void	**ft_realloc_tab(void **tab, int prev_size, int need_size)	// TODO: add thi
 		return (NULL);
 	while (need_size > prev_size)
 	{
+		//
+		//printf("%p setted to NULL\n", new_ptr[need_size - 1]);
+		//
 		new_ptr[need_size - 1] = NULL;
 		need_size--;
 	}
 	while (prev_size > 0)
 	{
+		//
+		//printf("%p setted to %p\n", new_ptr[need_size - 1], tab[prev_size - 1]);
+		//
 		new_ptr[prev_size - 1] = tab[prev_size - 1];
 		prev_size--;
 	}
-	free_tab(tab);
+	free(tab);
+	//free_tab(tab);
 	return (new_ptr);
 }
 
@@ -64,7 +84,13 @@ void	free_tab(void **tab)	// TODO: test this function // TODO: add this to libft
 	while (*ptr)
 	{
 		free(*ptr);
-		ptr += sizeof(void*);
+		//
+		//printf("%p was freed\n", *ptr);
+		//
+		ptr ++;
 	}
 	free(tab);
+	//
+	//printf("tab %p was freed\n", tab);
+	//
 }

@@ -46,7 +46,7 @@ void	config_parse(char *path, t_cub *cub)		// TODO: add check to filetype .cub
 		is_parse_ok |= parse_line(line, cub);
 	free(line);
 	is_parse_ok |= check_map(cub);
-	if ((is_line_ok & PARSE_OK) != PARSE_OK)
+	if ((is_parse_ok & PARSE_OK) != PARSE_OK)
 		cub_destroy(cub, ERR_PARSE);
 }
 

@@ -58,8 +58,8 @@ void	cub_img_destroy(t_img *img, void *mlx_ptr)
 {
 	if (img->ptr)
 		mlx_destroy_image(mlx_ptr, img->ptr);
-	if (img->data)
-		free(img->data);
+//	if (img->data)
+//		free(img->data);
 	free(img);
 }
 
