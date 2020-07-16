@@ -41,27 +41,26 @@ void	cub_win_destroy(t_win *win)
 
 void	cub_textures_destroy(t_textures *tex, void *mlx_ptr)
 {
-	if (tex->no_data)
-		mlx_destroy_image(mlx_ptr, tex->no_ptr);
-	if (tex->no_data)
-		free(tex->no_data);
-	if (tex->ea_ptr)
-		mlx_destroy_image(mlx_ptr, tex->ea_ptr);
-	if (tex->ea_data)
-		free(tex->ea_data);
-	if (tex->we_ptr)
-		mlx_destroy_image(mlx_ptr, tex->we_ptr);
-	if (tex->we_data)
-		free(tex->we_data);
-	if (tex->so_ptr)
-		mlx_destroy_image(mlx_ptr, tex->so_ptr);
-	if (tex->so_data)
-		free(tex->so_data);
-	if (tex->s0_ptr)
-		mlx_destroy_image(mlx_ptr, tex->s0_ptr);
-	if (tex->s0_data)
-		free(tex->s0_data);
+	if (tex->no)
+		cub_img_destroy(tex->no, mlx_ptr);
+	if (tex->ea)
+		cub_img_destroy(tex->ea, mlx_ptr);
+	if (tex->we)
+		cub_img_destroy(tex->we, mlx_ptr);
+	if (tex->so)
+		cub_img_destroy(tex->so, mlx_ptr);
+	if (tex->s0)
+		cub_img_destroy(tex->s0, mlx_ptr);
 	free(tex);
+}
+
+void	cub_img_destroy(t_img *img, void *mlx_ptr)
+{
+	if (img->ptr)
+		mlx_destroy_image(mlx_ptr, img->ptr);
+	if (img->data)
+		free(img->data);
+	free(img);
 }
 
 void	cub_map_destroy(t_map *map)

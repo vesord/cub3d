@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 project(cub3d C)
 
 set(CMAKE_C_STANDARD 11)
-#-Wall -Werror -Wextra
-set(MYCOMPILE_FLAGS "")
+#
+set(MYCOMPILE_FLAGS "-Wall -Werror -Wextra")
 add_definitions(${MYCOMPILE_FLAGS})
 
 include_directories(libs/libft)
@@ -28,6 +28,8 @@ set(SRC_FILES
         srcs/cub_init/cub_init_struct.c
         srcs/cub_init/cub_destroy.c
         srcs/config_parse/config_parse.c
+        srcs/config_parse/parse_map.c
+        srcs/config_parse/parse_utils.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
         )

@@ -29,16 +29,49 @@ void	cub_init_ray(t_cub *cub)
 
 void	cub_init_textures(t_cub *cub)
 {
-	cub->tex->ea_data = NULL;
-	cub->tex->ea_ptr = NULL;
-	cub->tex->no_data = NULL;
-	cub->tex->no_ptr = NULL;
-	cub->tex->we_data = NULL;
-	cub->tex->we_ptr = NULL;
-	cub->tex->so_data = NULL;
-	cub->tex->so_ptr = NULL;
-	cub->tex->s0_data = NULL;
-	cub->tex->s0_ptr = NULL;
+	cub_init_textures_null(cub->tex);
+	if (!(cub->tex->ea = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->tex->ea);
+	if (!(cub->tex->we = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->tex->we);
+	if (!(cub->tex->no = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->tex->no);
+	if (!(cub->tex->so = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->tex->so);
+	if (!(cub->tex->s0 = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->tex->s0);
+}
+
+void	cub_init_textures_null(t_textures *tex)
+{
+	tex->ea = NULL;
+	tex->no = NULL;
+	tex->we = NULL;
+	tex->so = NULL;
+	tex->s0 = NULL;
+	tex->ceil = 0;
+	tex->flor = 0;
+}
+
+void	cub_init_img(t_img *img)
+{
+	img->width = 0;
+	img->height = 0;
+	img->btp = 0;
+	img->sz_ln = 0;
+	img->endian = 0;
+	img->ptr =NULL;
+	img->data = NULL;
 }
 
 void	cub_init_map(t_cub *cub)
@@ -46,9 +79,12 @@ void	cub_init_map(t_cub *cub)
 	cub->map->blk_y = 0;
 	cub->map->blk_x = 0;
 	cub->map->blk_z = 0;
-	cub->map->field = NULL;
 	cub->map->max_x = 0;
 	cub->map->max_y = 0;
+	if (!(cub->map->field = (char**)malloc(sizeof(char*))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		*(cub->map->field) = NULL;
 }
 
 void	cub_init_cam(t_cub *cub)

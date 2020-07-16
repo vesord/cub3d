@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-	if (argc == 1)
+	if (argc == 2)
 		cube_start(argv[1]);
 	else if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
 		save_frame(argv[1]);
@@ -33,15 +33,16 @@ void	cube_start(char *path_to_conf)
 	if (!(cub->win->mlx_ptr = mlx_init()))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	config_parse(path_to_conf, cub);
-	window_setup(cub);
-	open_textures(cub);
-	hook_initialize(cub);
+//	window_setup(cub);
+//	open_textures(cub);
+//	hook_initialize(cub);
 }
 
 void	ft_exit(char *msg)
 {
 	ft_putendl_fd("Error.", 2);
-	ft_putendl_fd(msg, 2);
+	if (msg)
+		ft_putendl_fd(msg, 2);
 	exit(0);
 }
 
