@@ -73,9 +73,12 @@ typedef struct	s_win
 
 typedef struct	s_ray
 {
-	double x;
-	double y;
-	double angle;
+	double	x;
+	double	y;
+	double	angle;
+	double	sin;
+	double	cos;
+	int		dir;
 }				t_ray;
 
 typedef struct	s_key
@@ -177,5 +180,26 @@ int		key_press(int keycode, t_cub *cub);
 int		key_release(int keycode, t_cub *cub);
 int		esc_press(t_cub *cub);
 
+//	PROCESSING FUNCTIONS	//
+
+#define STEP_FORWARD 1
+#define STEP_BACK 2
+#define STEP_RIGHT 3
+#define STEP_LEFT 4
+
+#define DIR_TOP 1
+#define DIR_BOT 2
+#define DIR_LEFT 3
+#define DIR_RIGHT 4
+
+int		process_game(t_cub *cub);
+t_img	*frame_init(void* mlx_ptr, int x, int y);
+void	process_key(t_cub *cub);
+void	process_step(t_cub *cub, int dir);
+void	make_frame(t_cub *cub);
+double	throw_ray(t_cub *cub, double angle);
+int		is_next_cell_free(t_cub *cub);
+void	find_next_cross(double off_x, double off_y, t_cub *cub);
+void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub);
 
 #endif

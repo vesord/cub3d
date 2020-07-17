@@ -23,8 +23,11 @@ void	cub_init_win(t_cub *cub)
 void	cub_init_ray(t_cub *cub)
 {
 	cub->ray->angle = 0;
+	cub->ray->cos = 0;
+	cub->ray->sin = 0;
 	cub->ray->x = 0;
 	cub->ray->y = 0;
+	cub->ray->dir = 0;
 }
 
 void	cub_init_textures(t_cub *cub)
