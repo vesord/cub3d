@@ -78,6 +78,17 @@ typedef struct	s_ray
 	double angle;
 }				t_ray;
 
+typedef struct	s_key
+{
+	int	w;
+	int a;
+	int s;
+	int d;
+	int l_arrow;
+	int r_arrow;
+	int	esc;
+}				t_key;
+
 typedef struct	s_cub
 {
 	t_map		*map;
@@ -85,6 +96,8 @@ typedef struct	s_cub
 	t_textures	*tex;
 	t_win 		*win;
 	t_ray		*ray;
+	t_key		*key;
+	t_img		*frm;
 	int			confing_fd;
 }				t_cub;
 
@@ -110,9 +123,14 @@ void	cub_init_cam(t_cub *cub);
 void	cub_init_map(t_cub *cub);
 void	cub_init_ray(t_cub *cub);
 void	cub_init_win(t_cub *cub);
+void	cub_init_key(t_cub *cub);
 void	cub_init_textures(t_cub *cub);
 void	cub_init_textures_null(t_textures *tex);
 void	cub_init_img(t_img *img);
+
+void	cam_init(t_cub *cub);
+void	map_set_scales(t_cub *cub);
+void	player_init(t_cub *cub);
 
 //	CONFIG PARSE FUNCTIONS	//
 
@@ -143,5 +161,21 @@ int		str_to_color(char *line, int *color);
 
 void	free_tab(void **tab);
 void	**ft_realloc_tab(void **tab, int prev_size, int need_size);
+
+//	WINDOW FUNCTIONS	//
+
+void	window_setup(t_cub *cub);
+void	hook_initialize(t_cub *cub);
+
+//	KEY FUNCTIONS	//
+
+#define XK_MISCELLANY
+#define XK_LATIN1
+#include <X11/keysymdef.h>
+
+int		key_press(int keycode, t_cub *cub);
+int		key_release(int keycode, t_cub *cub);
+int		esc_press(t_cub *cub);
+
 
 #endif

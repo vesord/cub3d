@@ -27,9 +27,13 @@ set(SRC_FILES
         srcs/cub_init/cub_init.c
         srcs/cub_init/cub_init_struct.c
         srcs/cub_init/cub_destroy.c
+        srcs/cub_init/player_init.c
         srcs/config_parse/config_parse.c
         srcs/config_parse/parse_map.c
         srcs/config_parse/parse_utils.c
+        srcs/window_work/window_setup.c
+        srcs/game/image_form.c
+        srcs/game/key_process.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
         )

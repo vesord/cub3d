@@ -22,6 +22,10 @@ void	cub_destroy(t_cub *cub, char *msg)
 		cub_map_destroy(cub->map);
 	if (cub->ray)
 		free(cub->ray);
+	if (cub->key)
+		free(cub->key);
+	if (cub->frm)
+		cub_img_destroy(cub->frm, cub->win->mlx_ptr);
 	if (cub->tex)
 		cub_textures_destroy(cub->tex, cub->win->mlx_ptr);
 	if (cub->win)

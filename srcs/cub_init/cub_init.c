@@ -31,6 +31,10 @@ void	cub_init(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_cam(cub);
+	if (!(cub->key = (t_key*)malloc(sizeof(t_key))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_key(cub);
 	if (!(cub->tex = (t_textures*)malloc(sizeof(t_textures))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
@@ -44,5 +48,7 @@ void	cub_set_null(t_cub *cub)
 	cub->cam = NULL;
 	cub->tex = NULL;
 	cub->ray = NULL;
+	cub->key = NULL;
+	cub->frm = NULL;
 	cub->confing_fd = -1;
 }

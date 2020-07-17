@@ -97,3 +97,14 @@ void	cub_init_cam(t_cub *cub)
 	cub->cam->y = 0;
 	cub->cam->z = 0;
 }
+
+void	cub_init_key(t_cub *cub)
+{
+	cub->key->w = 0;
+	cub->key->a = 0;
+	cub->key->s = 0;
+	cub->key->d = 0;
+	cub->key->l_arrow = 0;
+	cub->key->r_arrow = 0;
+	cub->key->esc = 0;
+}
