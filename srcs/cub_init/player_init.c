@@ -36,8 +36,8 @@ void	cam_init(t_cub *cub)
 	cub->cam->cam_angle_yaw = M_PI / 3;
 	cub->cam->cam_angle_pitch = M_PI / 3;
 
-	cub->cam->x = player_x * cub->map->blk_x + 0.5 * cub->map->blk_x;
-	cub->cam->y = player_y * cub->map->blk_y + 0.5 * cub->map->blk_y;
+	cub->cam->x = player_x * cub->map->blk_x * 1 + 0.5 * cub->map->blk_x;
+	cub->cam->y = player_y * cub->map->blk_y * 1 + 0.5 * cub->map->blk_y;
 	cub->cam->z = cub->map->blk_z * 2 / 3;
 
 	cub->cam->cam_direction_pitch = 0.;
