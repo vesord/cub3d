@@ -26,13 +26,18 @@ double get_x_texture(t_cub *cub)
 		return (1. - modf(cub->ray->x / (double)cub->map->blk_x, &not_used));
 }
 
-unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub)
+
+
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub, int is_sp)
 {
 	t_img *no;
 	t_img *so;
 	t_img *ea;
 	t_img *we;
 
+	if (is_sp)
+		return ((int *)cub->tex->s0->data)[(int)((double)cub->tex->s0->height * off_y) * cub->tex->s0->width +
+								(int)((double)cub->tex->s0->width * off_x)];
 	no = cub->tex->no;
 	so = cub->tex->so;
 	ea = cub->tex->ea;

@@ -79,6 +79,8 @@ typedef struct	s_ray
 	double	sin;
 	double	cos;
 	int		dir;
+	double	len_to_sp;
+	double	sp_x;
 }				t_ray;
 
 typedef struct	s_key
@@ -215,7 +217,7 @@ void	find_next_cross(double off_x, double off_y, t_cub *cub);
 //		TEXTURES FUNCTIONS
 
 double get_x_texture(t_cub *cub);
-unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub);
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub, int spr);
 
 
 #endif

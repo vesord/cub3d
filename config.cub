@@ -1,18 +1,18 @@
 R 640 480
 
-NO ./srcs/imgs/Johny2.xpm
-WE ./srcs/imgs/Johny2.xpm
-SO ./srcs/imgs/Johny2.xpm
-EA ./srcs/imgs/Johny2.xpm
-S  ./srcs/imgs/Johny2.xpm
+NO ./srcs/imgs/NO.xpm
+WE ./srcs/imgs/WE.xpm
+SO ./srcs/imgs/SO.xpm
+EA ./srcs/imgs/EA.xpm
+S  ./srcs/imgs/SPRITE.xpm
 
 C  250,0,0
 F  0,250,0
 
 1111111111
 1000000001
-1010101001
-1001000101
-1010101001
+1000000001
+1000000001
+1000002001
 1000000001
 1111111111

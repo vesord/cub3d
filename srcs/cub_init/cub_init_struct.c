@@ -28,6 +28,8 @@ void	cub_init_ray(t_cub *cub)
 	cub->ray->x = 0;
 	cub->ray->y = 0;
 	cub->ray->dir = 0;
+	cub->ray->sp_x = 0.;
+	cub->ray->len_to_sp = 0.;
 }
 
 void	cub_init_textures(t_cub *cub)
