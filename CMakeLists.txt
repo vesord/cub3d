@@ -33,7 +33,10 @@ set(SRC_FILES
         srcs/config_parse/parse_utils.c
         srcs/window_work/window_setup.c
         srcs/game/image_form.c
-        srcs/game/key_process.c
+        srcs/game/key_process_loop.c
+        srcs/game/key_process_game.c
+        srcs/game/textures.c
+        srcs/game/ray_thorw.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
         )

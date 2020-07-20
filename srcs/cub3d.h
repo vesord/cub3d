@@ -170,7 +170,7 @@ void	**ft_realloc_tab(void **tab, int prev_size, int need_size);
 void	window_setup(t_cub *cub);
 void	hook_initialize(t_cub *cub);
 
-//	KEY FUNCTIONS	//
+//	KEY MLX FUNCTIONS	//
 
 #define XK_MISCELLANY
 #define XK_LATIN1
@@ -193,13 +193,29 @@ int		esc_press(t_cub *cub);
 #define DIR_RIGHT 4
 
 int		process_game(t_cub *cub);
+void	make_frame(t_cub *cub);
+void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub);
 t_img	*frame_init(void* mlx_ptr, int x, int y);
+
+//		KEY PROCESS GAME FUNCTIONS
+
+# define TURN_SCALER 72
+# define STEP_SCALER 25
+
 void	process_key(t_cub *cub);
 void	process_step(t_cub *cub, int dir);
-void	make_frame(t_cub *cub);
+
+//		RAY THROW FUNCTIONS
+
 double	throw_ray(t_cub *cub, double angle);
+void	ray_set_dir(double len_x, double len_y, t_cub *cub);
 int		is_next_cell_free(t_cub *cub);
 void	find_next_cross(double off_x, double off_y, t_cub *cub);
-void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub);
+
+//		TEXTURES FUNCTIONS
+
+double get_x_texture(t_cub *cub);
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub);
+
 
 #endif
