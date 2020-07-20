@@ -26,12 +26,14 @@ int		process_game(t_cub *cub)
 	return (0);
 }
 
+# define TURN_SCALER 72
+
 void	process_key(t_cub *cub)
 {
 	if (cub->key->l_arrow)
-		cub->cam->cam_direction_yaw -= M_PI / 120; // Speed of rotation
+		cub->cam->cam_direction_yaw -= M_PI / TURN_SCALER; // Speed of rotation
 	if (cub->key->r_arrow)
-		cub->cam->cam_direction_yaw += M_PI / 120; // Speed of rotation
+		cub->cam->cam_direction_yaw += M_PI / TURN_SCALER; // Speed of rotation
 	if (cub->key->w)
 		process_step(cub, STEP_FORWARD);
 	if (cub->key->a)
@@ -48,27 +50,29 @@ void	debug_show_cam(t_cub *cub)
 	printf("x: %.2f, y: %.2f, angle: %.2f\n", cub->cam->x, cub->cam->y, cub->cam->cam_direction_yaw);
 }
 
+# define STEP_SCALER 25
+
 void	process_step(t_cub *cub, int dir)
 {
 	if (dir == STEP_FORWARD)
 	{
-		cub->cam->x += ((double)cub->map->blk_x / 128) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y += ((double)cub->map->blk_y / 128) * -sin(cub->cam->cam_direction_yaw);
+		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw);
 	}
 	if (dir == STEP_BACK)
 	{
-		cub->cam->x -= ((double)cub->map->blk_x / 128) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y -= ((double)cub->map->blk_y / 128) * -sin(cub->cam->cam_direction_yaw);
+		cub->cam->x -= ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
+		cub->cam->y -= ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw);
 	}
 	if (dir == STEP_LEFT)
 	{
-		cub->cam->x += ((double)cub->map->blk_x / 128) * cos(cub->cam->cam_direction_yaw - M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / 128) * -sin(cub->cam->cam_direction_yaw - M_PI_2);
+		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw - M_PI_2);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw - M_PI_2);
 	}
 	if (dir == STEP_RIGHT)
 	{
-		cub->cam->x += ((double)cub->map->blk_x / 128) * cos(cub->cam->cam_direction_yaw + M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / 128) * -sin(cub->cam->cam_direction_yaw + M_PI_2);
+		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw + M_PI_2);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw + M_PI_2);
 	}
 }
 
@@ -89,6 +93,9 @@ void	make_frame(t_cub *cub)
 	}
 }
 
+double get_x_texture(t_cub *cub);
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub);
+
 void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub)
 {
 	int frame_y;
@@ -97,8 +104,8 @@ void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub)
 	double d_angle = cub->cam->cam_angle_pitch / cub->win->y;
 	double ceil_angle = atan((cub->map->blk_z - cub->cam->z) / len_to_wall);
 	double flor_angle = atan((-cub->cam->z) / len_to_wall);
-//	double wall_angle = ceil_angle - flor_angle;
-//	double wall_angle_cur = 0;
+	double wall_angle = ceil_angle - flor_angle;
+	double wall_angle_cur = 0;
 
 	frame_y = 0;
 	while (frame_y < cub->win->y)
@@ -107,14 +114,8 @@ void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub)
 			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = cub->tex->ceil;
 		else if (angle > flor_angle)
 		{
-
-//			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = get_pixel_texture(get_x_texture(), wall_angle_cur / wall_angle);
-//			wall_angle_cur += d_angle;
-
-			if (1)
-				((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = cub->tex->flor - 24975;
-//			else
-//				((unsigned int *) img_data)[y_p * win_x + frame_x] = 0;
+			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = get_pixel_texture(get_x_texture(cub), wall_angle_cur / wall_angle, cub);
+			wall_angle_cur += d_angle;
 		}
 		else
 			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = cub->tex->flor;
@@ -122,6 +123,30 @@ void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub)
 		frame_y++;
 		angle -= d_angle;
 	}
+}
+
+double get_x_texture(t_cub *cub)
+{
+	if (cub->ray->dir == DIR_LEFT)
+		return (1. - (cub->ray->y / (double)cub->map->blk_y - (size_t)(cub->ray->y / (double)cub->map->blk_y)));
+	else if (cub->ray->dir == DIR_TOP)
+		return (cub->ray->x / (double)cub->map->blk_x - (size_t)(cub->ray->x / (double)cub->map->blk_x));
+	else if (cub->ray->dir == DIR_RIGHT)
+		return (cub->ray->y / (double)cub->map->blk_y - (size_t)(cub->ray->y / (double)cub->map->blk_y));
+	else
+		return (1. - (cub->ray->x / (double)cub->map->blk_x - (size_t)(cub->ray->x / (double)cub->map->blk_x)));
+}
+
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub)
+{
+	if (cub->ray->dir == DIR_TOP)
+		return ((unsigned int *)cub->tex->no->data)[(int)((double)cub->tex->no->height * off_y) * cub->tex->no->width + (int)((double)cub->tex->no->width * off_x)];
+	else if (cub->ray->dir == DIR_BOT)
+		return ((unsigned int *)cub->tex->so->data)[(int)((double)cub->tex->so->height * off_y) * cub->tex->so->width + (int)((double)cub->tex->so->width * off_x)];
+	else if (cub->ray->dir == DIR_LEFT)
+		return ((unsigned int *)cub->tex->ea->data)[(int)((double)cub->tex->ea->height * off_y) * cub->tex->ea->width + (int)((double)cub->tex->ea->width * off_x)];
+	else
+		return ((unsigned int *)cub->tex->we->data)[(int)((double)cub->tex->we->height * off_y) * cub->tex->we->width + (int)((double)cub->tex->we->width * off_x)];
 }
 
 double	throw_ray(t_cub *cub, double angle)
