@@ -12,26 +12,23 @@
 
 #include "cub3d.h"
 
-double	throw_ray(t_cub *cub, double angle)
+double throw_ray(t_cub *cub, double angle, double mid_angle)
 {
 	int		iterations;
+	double	len_to_wall;
 
 	iterations = 0;
 	cub->ray->x = cub->cam->x;
 	cub->ray->y = cub->cam->y;
 	cub->ray->sin = -sin(angle);
 	cub->ray->cos = cos(angle);
-	cub->ray->len_to_sp = 0.;
-	cub->ray->sp_x = -1.;
+	cub->ray->spr = NULL; // if we need null here??
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
-	return (sqrt(pow(cub->ray->x - cub->cam->x, 2) +
-				 pow(cub->ray->y - cub->cam->y, 2)));
+	len_to_wall = sqrt(pow(cub->ray->x - cub->cam->x, 2) +
+					   pow(cub->ray->y - cub->cam->y, 2));
+	return (len_to_wall * fabs(cos(fabs(mid_angle - angle))));
 }
-
-char	get_cell(int x, int y, t_cub *cub);
-int		is_cell_free(char c);
-void	count_sprite(t_cub *cub);
 
 int		is_next_cell_free(t_cub *cub)
 {
@@ -46,43 +43,8 @@ int		is_next_cell_free(t_cub *cub)
 	find_next_cross(off_x, off_y, cub);
 	cell = get_cell((int)cell_x, (int)cell_y, cub);
 	if (cell == '2')
-		count_sprite(cub);
+		count_sprite(cell, cub);
 	return (is_cell_free(cell));
-}
-
-void	count_sprite_len_to_sp(double sp_x_mid, double sp_y_mid, t_cub *cub);
-void	count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
-
-void	count_sprite(t_cub *cub)
-{
-	double	sp_y_mid;
-	double	sp_x_mid;
-
-	modf(cub->ray->x / cub->map->blk_x, &sp_x_mid);
-	modf(cub->ray->y / cub->map->blk_y, &sp_y_mid);
-	sp_x_mid = (sp_x_mid + 0.5) * cub->map->blk_x;
-	sp_y_mid = (sp_y_mid + 0.5) * cub->map->blk_y;
-	if (!cub->ray->len_to_sp)
-		count_sprite_len_to_sp(sp_x_mid, sp_y_mid, cub);
-	count_sprite_x(sp_x_mid, sp_y_mid, cub);
-}
-
-void	count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub)
-{
-	double dist_to_mid;
-
-	sp_x_mid = sp_x_mid - cub->ray->x;
-	sp_y_mid = sp_y_mid - cub->ray->y;
-	dist_to_mid = cub->ray->cos * sp_y_mid + -cub->ray->sin * sp_x_mid;
-	cub->ray->sp_x = ((cub->map->blk_x / 2) + dist_to_mid) / cub->map->blk_x;
-	if (cub->ray->sp_x < 0 || cub->ray->sp_x > cub->map->blk_x)
-		cub->ray->sp_x = -1.;
-}
-
-void	count_sprite_len_to_sp(double sp_x_mid, double sp_y_mid, t_cub *cub)
-{
-	cub->ray->len_to_sp = sqrt(pow(sp_x_mid - cub->cam->x, 2) +
-		pow(sp_y_mid - cub->cam->y, 2));
 }
 
 char	get_cell(int x, int y, t_cub *cub)
@@ -100,13 +62,6 @@ char	get_cell(int x, int y, t_cub *cub)
 		if (y < cub->map->max_y && x + 1 < cub->map->max_x)
 			return (cub->map->field[y][x + 1]);
 	return ('1');
-}
-
-int		is_cell_free(char c)
-{
-	if (c == '0' || c == '2')
-		return (1);
-	return (0);
 }
 
 void	find_next_cross(double off_x, double off_y, t_cub *cub)
@@ -160,4 +115,11 @@ void	ray_set_dir(double len_x, double len_y, t_cub *cub)
 		cub->ray->dir = DIR_TOP;
 		cub->ray->y -= (double)cub->map->blk_y / 1000;
 	}
+}
+
+int		is_cell_free(char c)
+{
+	if (c == '0' || c == '2')
+		return (1);
+	return (0);
 }

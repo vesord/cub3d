@@ -34,68 +34,40 @@ void	make_frame(t_cub *cub)
 	frame_x = 0;
 	while (frame_x < cub->win->x)
 	{
-		frame_col_set(frame_x, throw_ray(cub, angle), cub);
+		frame_col_set(frame_x, throw_ray(cub, angle, cub->cam->cam_direction_yaw), cub);
 		angle += d_angle;
 		frame_x++;
 	}
 }
 
-void	frame_add_sprite(int frame_x, t_cub *cub);
-
-void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub)
+void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 {
-	int frame_y;
-	double angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
-	double d_angle = cub->cam->cam_angle_pitch / cub->win->y;
-	double ceil_angle = atan((cub->map->blk_z - cub->cam->z) / len_to_wall);
-	double flor_angle = atan((-cub->cam->z) / len_to_wall);
-	double wall_angle = ceil_angle - flor_angle;
-	double wall_angle_cur = 0;
+	int		f_y;
+	double	angle;
+	double	d_angle;
+	double	c_angl;
+	double	f_angl;
 
-	frame_y = 0;
-	while (frame_y < cub->win->y)
+	f_angl = atan((-cub->cam->z) / len_to_wall);
+	c_angl = atan((cub->map->blk_z - cub->cam->z) / len_to_wall);
+	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
+	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
+	f_y = -1;
+	while (++f_y < cub->win->y)
 	{
-		if (angle > ceil_angle)
-			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = cub->tex->ceil;
-		else if (angle > flor_angle)
-		{
-			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = get_pixel_texture(get_x_texture(cub), wall_angle_cur / wall_angle, cub, 0);
-			wall_angle_cur += d_angle;
-		}
+		if (angle > c_angl)
+			((int *) cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->ceil;
+		else if (angle > f_angl)
+			((unsigned int *) cub->frm->data)[f_y * cub->win->x + f_x] =
+				get_pixel_texture(get_x_texture(cub),
+					1. - (angle - f_angl) / (c_angl - f_angl), cub, 0);
 		else
-			((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = cub->tex->flor;
-		frame_y++;
+			((int *) cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->flor;
 		angle -= d_angle;
 	}
-	if (cub->ray->sp_x > 0)
-		frame_add_sprite(frame_x, cub);
+	if (cub->ray->spr)
+		frame_add_sprite(f_x, cub);
 }
-
-void	frame_add_sprite(int frame_x, t_cub *cub)
-{
-	double angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
-	double d_angle = cub->cam->cam_angle_pitch / cub->win->y;
-	double ceil_angle = atan((cub->map->blk_z - cub->cam->z) / cub->ray->len_to_sp);
-	double flor_angle = atan((-cub->cam->z) / cub->ray->len_to_sp);
-	double wall_angle = ceil_angle - flor_angle;
-	double wall_angle_cur = 0;
-	int			frame_y = 0;
-	unsigned int			pixel;
-
-	while (frame_y < cub->win->y)
-	{
-		if (angle < ceil_angle && angle > flor_angle)
-		{
-			pixel = get_pixel_texture(cub->ray->sp_x, wall_angle_cur / wall_angle, cub, 1);
-			if (pixel <= 255255255)
-				((unsigned int *) cub->frm->data)[frame_y * cub->win->x + frame_x] = pixel;
-			wall_angle_cur += d_angle;
-		}
-		frame_y++;
-		angle -= d_angle;
-	}
-}
-
 
 t_img	*frame_init(void* mlx_ptr, int x, int y)
 {

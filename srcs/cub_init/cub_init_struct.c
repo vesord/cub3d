@@ -22,14 +22,13 @@ void	cub_init_win(t_cub *cub)
 
 void	cub_init_ray(t_cub *cub)
 {
-	cub->ray->angle = 0;
+//	cub->ray->angle = 0;
 	cub->ray->cos = 0;
 	cub->ray->sin = 0;
 	cub->ray->x = 0;
 	cub->ray->y = 0;
 	cub->ray->dir = 0;
-	cub->ray->sp_x = 0.;
-	cub->ray->len_to_sp = 0.;
+	cub->ray->spr = NULL;
 }
 
 void	cub_init_textures(t_cub *cub)

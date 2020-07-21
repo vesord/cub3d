@@ -71,16 +71,24 @@ typedef struct	s_win
 	int		y;
 }				t_win;
 
+typedef struct	s_sprites
+{
+	struct s_sprites	*next;
+	struct s_sprites	*prev;
+	t_img				*tex_data;
+	double				len_to_sp;
+	double				sp_x;
+}				t_sprites;
+
 typedef struct	s_ray
 {
-	double	x;
-	double	y;
-	double	angle;
-	double	sin;
-	double	cos;
-	int		dir;
-	double	len_to_sp;
-	double	sp_x;
+	double		x;
+	double		y;
+//	double	angle;
+	double		sin;
+	double		cos;
+	int			dir;
+	t_sprites	*spr;
 }				t_ray;
 
 typedef struct	s_key
@@ -196,7 +204,7 @@ int		esc_press(t_cub *cub);
 
 int		process_game(t_cub *cub);
 void	make_frame(t_cub *cub);
-void	frame_col_set(int frame_x, double len_to_wall, t_cub *cub);
+void	frame_col_set(int f_x, double len_to_wall, t_cub *cub);
 t_img	*frame_init(void* mlx_ptr, int x, int y);
 
 //		KEY PROCESS GAME FUNCTIONS
@@ -209,15 +217,28 @@ void	process_step(t_cub *cub, int dir);
 
 //		RAY THROW FUNCTIONS
 
-double	throw_ray(t_cub *cub, double angle);
-void	ray_set_dir(double len_x, double len_y, t_cub *cub);
-int		is_next_cell_free(t_cub *cub);
+double throw_ray(t_cub *cub, double angle, double mid_angle);
 void	find_next_cross(double off_x, double off_y, t_cub *cub);
+int		is_next_cell_free(t_cub *cub);
+char	get_cell(int x, int y, t_cub *cub);
+int		is_cell_free(char c);
+void	ray_set_dir(double len_x, double len_y, t_cub *cub);
 
 //		TEXTURES FUNCTIONS
 
 double get_x_texture(t_cub *cub);
-unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub, int spr);
+unsigned int get_pixel_texture(double off_x, double off_y, t_cub *cub, int is_sprite);
 
+//		RAY_THROW_SPRITE
+
+void	count_sprite(char type, t_cub *cub);
+t_sprites	*new_sprite(t_sprites *prev, char type, t_cub *cub);
+double	count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
+
+//		TEXTURES_SPRITES
+
+void	frame_add_sprite(int frame_x, t_cub *cub);
+void	frame_add_sprite_one(int frame_x, double d_angle, t_sprites *spr, t_cub *cub);
+t_sprites	*sprites_last(t_sprites *spr);
 
 #endif

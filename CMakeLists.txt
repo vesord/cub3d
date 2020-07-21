@@ -36,7 +36,9 @@ set(SRC_FILES
         srcs/game/key_process_loop.c
         srcs/game/key_process_game.c
         srcs/game/textures.c
-        srcs/game/ray_thorw.c
+        srcs/game/textures_sprites.c
+        srcs/game/ray_throw.c
+        srcs/game/ray_throw_sprites.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
         )

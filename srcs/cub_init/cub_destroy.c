@@ -12,6 +12,8 @@
 
 #include "cub3d.h"
 
+void cub_ray_destroy(t_ray *ray);
+
 void	cub_destroy(t_cub *cub, char *msg)
 {
 	if (cub->confing_fd >= 0)
@@ -21,7 +23,7 @@ void	cub_destroy(t_cub *cub, char *msg)
 	if (cub->map)
 		cub_map_destroy(cub->map);
 	if (cub->ray)
-		free(cub->ray);
+		cub_ray_destroy(cub->ray);
 	if (cub->key)
 		free(cub->key);
 	if (cub->frm)
@@ -79,4 +81,11 @@ void	cub_map_destroy(t_map *map)
 	}
 	free(map->field);
 	free(map);
+}
+
+void cub_ray_destroy(t_ray *ray) // TODO: make destroy fnct
+{
+	if (ray)
+	{}
+	free(ray);
 }
