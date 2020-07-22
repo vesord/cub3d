@@ -12,14 +12,26 @@
 
 #include "cub3d.h"
 
+//
+#include <time.h>
+#include <stdio.h>
+
 int		process_game(t_cub *cub)
 {
+	//
+	clock_t t;
+	t = clock();
+	//
 	if (!cub->frm && !(cub->frm = frame_init(cub->win->mlx_ptr,
 		cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
 	make_frame(cub);
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr, cub->frm->ptr, 0 ,0);
+	//
+	t = clock() - t;
+	printf("FPS: %f\n", 1/ (((double)t) / CLOCKS_PER_SEC));
+	//
 	return (0);
 }
 

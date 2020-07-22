@@ -172,8 +172,18 @@ int		parse_line_texture_ret(t_cub *cub, void *data);
 char	*parse_line_err_msg(t_cub *cub, void *data);
 int		str_to_color(char *line, int *color);
 
-void	free_tab(void **tab);
 void	**ft_realloc_tab(void **tab, int prev_size, int need_size);
+void	free_tab(void **tab);
+
+int		is_map_chars_correct(const char *crct, t_cub *cub);
+int		map_find_player(t_cub *cub);
+void	map_find_player_flag(int *pl_x, int *f, char *c_ptr, char *y_ptr);
+void	map_set_player(int pl_x, int pl_y, t_cub *cub);
+
+int		is_map_surrounded(t_cub *cub);
+void	is_map_surrounded_set(int *x_start, int *y_start, t_cub *cub);
+int		is_map_surrounded_recursive(int x, int y, t_cub *cub);
+void	is_map_surrounded_recover(t_cub *cub);
 
 //	WINDOW FUNCTIONS	//
 

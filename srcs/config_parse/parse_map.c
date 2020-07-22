@@ -44,8 +44,12 @@ void	add_line_to_map(char *line, t_cub *cub)
 
 int		check_map(t_cub *cub)
 {
-	if (cub)
-	{}
+	if (!is_map_chars_correct(" 012NWES", cub))
+		return (0);
+	if (!map_find_player(cub))
+		return (0);
+	if (!is_map_surrounded(cub))
+		return (0);
 	return (PARSE_OK_MAP);
 }
 
