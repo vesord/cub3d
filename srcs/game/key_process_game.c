@@ -43,21 +43,21 @@ void	process_step(t_cub *cub, int dir)
 	if (dir == STEP_FORWARD)
 	{
 		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw);
 	}
 	if (dir == STEP_BACK)
 	{
 		cub->cam->x -= ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y -= ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw);
+		cub->cam->y -= ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw);
 	}
 	if (dir == STEP_LEFT)
 	{
 		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw - M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw - M_PI_2);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw - M_PI_2);
 	}
 	if (dir == STEP_RIGHT)
 	{
 		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw + M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * -sin(cub->cam->cam_direction_yaw + M_PI_2);
+		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw + M_PI_2);
 	}
 }

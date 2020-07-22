@@ -188,6 +188,7 @@ void	is_map_surrounded_recover(t_cub *cub);
 //	WINDOW FUNCTIONS	//
 
 void	window_setup(t_cub *cub);
+void	window_setup_save(t_cub *cub);
 void	hook_initialize(t_cub *cub);
 
 //	KEY MLX FUNCTIONS	//

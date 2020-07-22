@@ -42,6 +42,7 @@ set(SRC_FILES
         srcs/game/ray_throw_sprites.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
+        srcs/test.c
         )
 
 set(MY_LIB_FILES

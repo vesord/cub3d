@@ -22,16 +22,19 @@ int		process_game(t_cub *cub)
 	clock_t t;
 	t = clock();
 	//
+
 	if (!cub->frm && !(cub->frm = frame_init(cub->win->mlx_ptr,
 		cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
 	make_frame(cub);
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr, cub->frm->ptr, 0 ,0);
+
 	//
 	t = clock() - t;
 	printf("FPS: %f\n", 1/ (((double)t) / CLOCKS_PER_SEC));
 	//
+
 	return (0);
 }
 
@@ -71,7 +74,7 @@ void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 			((int *) cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->ceil;
 		else if (angle > f_angl)
 			((unsigned int *) cub->frm->data)[f_y * cub->win->x + f_x] =
-				get_pixel_texture(get_x_texture(cub),
+				get_pixel_texture(1. - get_x_texture(cub),
 					1. - (angle - f_angl) / (c_angl - f_angl), cub, 0);
 		else
 			((int *) cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->flor;

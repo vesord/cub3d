@@ -20,7 +20,7 @@ double throw_ray(t_cub *cub, double angle, double mid_angle)
 	iterations = 0;
 	cub->ray->x = cub->cam->x;
 	cub->ray->y = cub->cam->y;
-	cub->ray->sin = -sin(angle);
+	cub->ray->sin = sin(angle);
 	cub->ray->cos = cos(angle);
 	cub->ray->spr = NULL; // if we need null here??
 	while (is_next_cell_free(cub) && iterations < 50)
@@ -119,7 +119,7 @@ void	ray_set_dir(double len_x, double len_y, t_cub *cub)
 
 int		is_cell_free(char c)
 {
-	if (c == '0' || c == '2')
+	if (ft_strchr("02NWES", c))
 		return (1);
 	return (0);
 }

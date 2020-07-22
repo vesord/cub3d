@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+//
 void	debug_show_cub(t_cub *cub);
 
-int main(int argc, char **argv)
+int main2(int argc, char **argv)
 {
 	if (argc == 2)
 		cube_start(argv[1]);
@@ -49,13 +49,31 @@ void	ft_exit(char *msg)
 	exit(0);
 }
 
-void	save_frame()
+void	save_frame(char *path_to_conf)
 {
-	;
+	t_cub *cub;
+
+	if(!(cub = (t_cub*)malloc(sizeof(t_cub))))
+		ft_exit(ERR_NO_MEMORY);
+	cub_init(cub);
+	if (!(cub->win->mlx_ptr = mlx_init()))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	player_init(cub);
+	config_parse(path_to_conf, cub);
+	window_setup_save(cub);
+	if (!cub->frm && !(cub->frm = frame_init(cub->win->mlx_ptr,
+											 cub->win->x, cub->win->y)))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	make_frame(cub);
+	//mlx_x
 }
 
-//
 
+
+
+
+
+//
 #include <stdio.h>
 
 void	debug_show_cub(t_cub *cub)
