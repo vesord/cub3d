@@ -100,6 +100,7 @@ void	cub_init_cam(t_cub *cub)
 	cub->cam->x = 0;
 	cub->cam->y = 0;
 	cub->cam->z = 0;
+	cub->cam->step = 0;
 }
 
 void	cub_init_key(t_cub *cub)

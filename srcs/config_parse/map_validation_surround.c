@@ -17,6 +17,8 @@ int		is_map_surrounded(t_cub *cub)
 	int x_start;
 	int y_start;
 
+	x_start = 0;
+	y_start = 0;
 	is_map_surrounded_set(&x_start, &y_start, cub);
 	if (!is_map_surrounded_recursive(x_start, y_start, cub))
 		return (0);
@@ -53,6 +55,7 @@ int		is_map_surrounded_recursive(int x, int y, t_cub *cub)
 {
 	int f;
 
+	f = 0;
 	if (cub->map->field[y][x] == '1' || cub->map->field[y][x] < 0)
 		return (1);
 	if (cub->map->field[y][x] == ' ')

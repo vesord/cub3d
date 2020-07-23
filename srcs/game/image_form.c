@@ -32,7 +32,7 @@ int		process_game(t_cub *cub)
 
 	//
 	t = clock() - t;
-	printf("FPS: %f\n", 1/ (((double)t) / CLOCKS_PER_SEC));
+//	printf("FPS: %f\n", 1/ (((double)t) / CLOCKS_PER_SEC));
 	//
 
 	return (0);

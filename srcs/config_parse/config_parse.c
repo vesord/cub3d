@@ -12,28 +12,39 @@
 
 #include "cub3d.h"
 
-void	config_parse(char *path, t_cub *cub)		// TODO: add check to filetype .cub
+void	gnl_func_parse(char *line, int *is_parse_ok, t_cub *cub);
+
+void	config_parse(char *path, t_cub *cub)
 {
 	int		is_parse_ok;
 	char	*line;
 	int		is_line_ok;
 
-	if((cub->confing_fd = open(path, O_RDONLY)) < 0)
+	if(!check_path(path) || (cub->confing_fd = open(path, O_RDONLY)) < 0)
 		cub_destroy(cub, NULL);
 	is_parse_ok = 0;
 	while ((is_line_ok = get_next_line(cub->confing_fd, &line)) > 0)
-	{
-		if (*line)
-			is_parse_ok |= parse_line(line, cub);
-		free(line);
-	}
+		gnl_func_parse(line, &is_parse_ok, cub);
 	is_line_ok_check(line, is_line_ok, cub);
-	if (*line)
-		is_parse_ok |= parse_line(line, cub);
-	free(line);
+	gnl_func_parse(line, &is_parse_ok, cub);
 	is_parse_ok |= check_map(cub);
 	if ((is_parse_ok & PARSE_OK) != PARSE_OK)
 		cub_destroy(cub, ERR_PARSE);
+}
+
+void	gnl_func_parse(char *line, int *is_parse_ok, t_cub *cub)
+{
+	int parse_res;
+
+	if (*line)
+	{
+		parse_res = parse_line(line, cub);
+		if (parse_res & *is_parse_ok)
+			cub_destroy(cub, ERR_PARSE_DUPLICATE);
+		else
+			*is_parse_ok |= parse_res;
+	}
+	free(line);
 }
 
 int		parse_line(char *line, t_cub *cub)

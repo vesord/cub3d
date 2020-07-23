@@ -36,7 +36,7 @@ OBJ_ALL = $(SRC_ALL:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 LIB_DIR = ./libs
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 CC = gcc
 LINKED_LIBS = -lft -lmlx -lm -lX11 -lXext
 LINKED_LIBS_DIR = -L./$(LIB_DIR)/libft -L./$(LIB_DIR)/minilibx
@@ -45,7 +45,7 @@ LINKED_LIBS_DIR = -L./$(LIB_DIR)/libft -L./$(LIB_DIR)/minilibx
 .PHONY: all
 all: $(OBJ_DIR) $(NAME)
 
-$(NAME): minilibx libft $(OBJ_ALL)
+$(NAME): libft $(OBJ_ALL)
 	$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_DIR)) $(OBJ_ALL) $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@ 
 
 $(OBJ_ALL): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLLUDES)
@@ -53,10 +53,6 @@ $(OBJ_ALL): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLLUDES)
 
 $(OBJ_DIR):
 		mkdir $@ $@/$(DIR_PARSE) $@/$(DIR_INIT) $@/$(DIR_GAME) $@/$(DIR_WINDOW)
-
-.PHONY: minilibx
-minilibx: $(LIB_DIR)/minilibx
-	cd $< && make
 
 .PHONY: libft
 libft: $(LIB_DIR)/libft
@@ -67,16 +63,17 @@ clean:
 	rm -rf $(OBJ_DIR)
 	rm -rf *.bmp
 	cd $(LIB_DIR)/libft && make clean
-	cd $(LIB_DIR)/minilibx && make clean
 
 .PHONY: fclean
 fclean: clean
 	rm $(NAME)
 	cd $(LIB_DIR)/libft && make fclean
-	cd $(LIB_DIR)/minilibx && make fclean
+
+.PHONY: re
+re: fclean all
+
 
 .PHONY: test
-
 test:
 	echo "$(SRC_ALL)"
 

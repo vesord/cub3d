@@ -35,29 +35,38 @@ void	process_key(t_cub *cub)
 		process_step(cub, STEP_RIGHT);
 	if (cub->key->s)
 		process_step(cub, STEP_BACK);
-	debug_show_cam(cub);
+	if (cub->key->esc)
+		esc_press(cub);
+//	debug_show_cam(cub);
 }
+
+void	process_step_direction(double angle, t_cub *cub);
 
 void	process_step(t_cub *cub, int dir)
 {
 	if (dir == STEP_FORWARD)
-	{
-		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw);
-	}
+		process_step_direction(cub->cam->cam_direction_yaw, cub);
 	if (dir == STEP_BACK)
-	{
-		cub->cam->x -= ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw);
-		cub->cam->y -= ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw);
-	}
+		process_step_direction(cub->cam->cam_direction_yaw + M_PI, cub);
 	if (dir == STEP_LEFT)
-	{
-		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw - M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw - M_PI_2);
-	}
+		process_step_direction(cub->cam->cam_direction_yaw - M_PI_2, cub);
 	if (dir == STEP_RIGHT)
+		process_step_direction(cub->cam->cam_direction_yaw + M_PI_2, cub);
+}
+
+void	process_step_direction(double angle, t_cub *cub)
+{
+	double		len_to_wall;
+
+	len_to_wall = throw_ray(cub, angle, angle) - cub->cam->dst_to_wall;
+	if (cub->cam->step < len_to_wall)
 	{
-		cub->cam->x += ((double)cub->map->blk_x / STEP_SCALER) * cos(cub->cam->cam_direction_yaw + M_PI_2);
-		cub->cam->y += ((double)cub->map->blk_y / STEP_SCALER) * sin(cub->cam->cam_direction_yaw + M_PI_2);
+		cub->cam->x += cub->cam->step * cos(angle);
+		cub->cam->y += cub->cam->step * sin(angle);
+	}
+	else
+	{
+		cub->cam->x += len_to_wall * cos(angle);
+		cub->cam->y += len_to_wall * sin(angle);
 	}
 }

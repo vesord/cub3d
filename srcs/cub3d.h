@@ -29,6 +29,8 @@ typedef struct	s_cam
 	double cam_direction_yaw;
 	double cam_angle_pitch;
 	double cam_direction_pitch;
+	double step;
+	double dst_to_wall;
 }				t_cam;
 
 typedef struct	s_img
@@ -167,13 +169,14 @@ int		parse_line_resolution(char *line, t_cub *cub);
 void	add_line_to_map(char *line, t_cub *cub);
 int		check_map(t_cub *cub);
 
+int		check_path(char *path);
 void	is_line_ok_check(char *line, int is_line_ok, t_cub *cub);
 int		parse_line_texture_ret(t_cub *cub, void *data);
 char	*parse_line_err_msg(t_cub *cub, void *data);
 int		str_to_color(char *line, int *color);
 
-void	**ft_realloc_tab(void **tab, int prev_size, int need_size);
-void	free_tab(void **tab);
+//void	**ft_realloc_tab(void **tab, int prev_size, int need_size);
+//void	free_tab(void **tab);
 
 int		is_map_chars_correct(const char *crct, t_cub *cub);
 int		map_find_player(t_cub *cub);
@@ -221,6 +224,7 @@ t_img	*frame_init(void* mlx_ptr, int x, int y);
 
 # define TURN_SCALER 72
 # define STEP_SCALER 25
+# define WALL_SCALER 6
 
 void	process_key(t_cub *cub);
 void	process_step(t_cub *cub, int dir);

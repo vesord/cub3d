@@ -12,6 +12,16 @@
 
 #include "cub3d.h"
 
+int		check_path(char *path)
+{
+	int len;
+
+	len = ft_strlen(path);
+	if (len > 4)
+		return (!ft_strncmp((path + len - 4), ".cub", 4));
+	return (0);
+}
+
 void	is_line_ok_check(char *line, int is_line_ok, t_cub *cub)
 {
 	if (is_line_ok == -1)

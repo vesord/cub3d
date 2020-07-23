@@ -19,6 +19,7 @@ int		is_map_chars_correct(const char *crct, t_cub *cub)
 	int	max_j;
 
 	i = 0;
+	j = 0;
 	max_j = 0;
 	while (cub->map->field[i])
 	{
@@ -68,6 +69,8 @@ void	map_set_player(int pl_x, int pl_y, t_cub *cub)
 {
 	char dir;
 
+	cub->cam->step = (double)cub->map->blk_x / STEP_SCALER;
+	cub->cam->dst_to_wall = (double)cub->map->blk_x / WALL_SCALER;
 	cub->cam->x = cub->map->blk_x * pl_x + cub->map->blk_x / 2;
 	cub->cam->y = cub->map->blk_y * pl_y + cub->map->blk_y / 2;
 	dir = cub->map->field[pl_y][pl_x];

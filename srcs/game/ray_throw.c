@@ -22,7 +22,7 @@ double throw_ray(t_cub *cub, double angle, double mid_angle)
 	cub->ray->y = cub->cam->y;
 	cub->ray->sin = sin(angle);
 	cub->ray->cos = cos(angle);
-	cub->ray->spr = NULL; // if we need null here??
+	cub->ray->spr = NULL;
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
 	len_to_wall = sqrt(pow(cub->ray->x - cub->cam->x, 2) +
@@ -38,6 +38,8 @@ int		is_next_cell_free(t_cub *cub)
 	double	off_y;
 	char	cell;
 
+	cell_x = -1.;
+	cell_y = -1.;
 	off_x = modf(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
 	off_y = modf(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
@@ -47,8 +49,15 @@ int		is_next_cell_free(t_cub *cub)
 	return (is_cell_free(cell));
 }
 
+/*
+**	get_cell() checks x < 0 and y < 0 cos in some cases x and y came here
+**	as MIN_INT value :/
+*/
+
 char	get_cell(int x, int y, t_cub *cub)
 {
+	if (x < 0 || y < 0)
+		return ('1');
 	if (cub->ray->dir == DIR_TOP)
 		if (y - 1 < cub->map->max_y && x < cub->map->max_x) // TODO: check if in correct map we need checks on y - 1 < max_y
 			return (cub->map->field[y - 1][x]);
@@ -72,11 +81,11 @@ void	find_next_cross(double off_x, double off_y, t_cub *cub)
 	if (cub->ray->cos > 0)
 		len_x = ((double)cub->map->blk_x - off_x) / cub->ray->cos;
 	else
-		len_x = -off_x / cub->ray->cos;
+		len_x = fabs(off_x / cub->ray->cos);
 	if (cub->ray->sin > 0)
 		len_y = ((double)cub->map->blk_y - off_y) / cub->ray->sin;
 	else
-		len_y = -off_y / cub->ray->sin;
+		len_y = fabs(off_y / cub->ray->sin);
 	if (len_x < len_y)
 	{
 		cub->ray->x += len_x * cub->ray->cos;

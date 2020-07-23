@@ -30,7 +30,7 @@ int		key_press(int keycode, t_cub *cub)
 		cub->key->r_arrow = 1;
 	if (keycode == XK_Escape)
 		cub->key->esc = 1;
-	printf("%i key pressed\n", keycode);
+//	printf("%i key pressed\n", keycode);
 	return (0);
 }
 
@@ -50,15 +50,13 @@ int		key_release(int keycode, t_cub *cub)
 		cub->key->r_arrow = 0;
 	if (keycode == XK_Escape)
 		cub->key->esc = 0;
-	printf("%i key released\n", keycode);
+//	printf("%i key released\n", keycode);
 	return (0);
 }
 
 int		esc_press(t_cub *cub)
 {
-	if (cub)
-	{}
-	ft_putendl_fd("Esc pressed!!!", 1);
+	cub_destroy(cub, ERR_NO_ERR);
 	return (0);
 }
 

@@ -14,9 +14,9 @@ include_directories(includes)
 
 set(HEADER_FILES
         libs/libft/libft.h
+        libs/libft/get_next_line.h
         libs/minilibx/mlx.h
         libs/minilibx/mlx_int.h
-        libs/get_next_line/get_next_line.h
         srcs/errors.h
         srcs/cub3d.h
         )
@@ -42,8 +42,8 @@ set(SRC_FILES
         srcs/game/textures_sprites.c
         srcs/game/ray_throw.c
         srcs/game/ray_throw_sprites.c
-        libs/get_next_line/get_next_line.c
-        libs/get_next_line/get_next_line_utils.c
+        #libs/get_next_line/get_next_line.c
+        #libs/get_next_line/get_next_line_utils.c
         #srcs/test.c
         )
 
