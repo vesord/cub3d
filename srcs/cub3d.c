@@ -14,11 +14,11 @@
 //
 void	debug_show_cub(t_cub *cub);
 
-int main2(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	if (argc == 2)
 		cube_start(argv[1]);
-	else if (argc == 3 && ft_strncmp(argv[2], "--save", 7))
+	else if (argc == 3 && !ft_strncmp(argv[2], "--save", 7))
 		save_frame(argv[1]);
 	else
 		ft_exit(ERR_WRONG_ARGUMENTS);
@@ -43,6 +43,8 @@ void	cube_start(char *path_to_conf)
 
 void	ft_exit(char *msg)
 {
+	if (msg && !ft_strncmp(msg, ERR_NO_ERR, 20))
+		exit(0);
 	ft_putendl_fd("Error.", 2);
 	if (msg)
 		ft_putendl_fd(msg, 2);
@@ -65,13 +67,10 @@ void	save_frame(char *path_to_conf)
 											 cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	make_frame(cub);
-	//mlx_x
+	if (!create_bmp_img(cub->frm))
+		cub_destroy(cub, NULL);
+	cub_destroy(cub, ERR_NO_ERR);
 }
-
-
-
-
-
 
 //
 #include <stdio.h>

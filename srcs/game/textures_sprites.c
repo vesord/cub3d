@@ -26,11 +26,13 @@ void	frame_add_sprite(int frame_x, t_cub *cub)
 		{
 			spr = spr->prev;
 			free(spr->next);
+			spr->next = NULL;
 		}
 		else
 		{
 			free(spr);
 			spr = NULL;
+			cub->ray->spr = NULL;
 		}
 	}
 }

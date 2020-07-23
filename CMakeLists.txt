@@ -32,7 +32,9 @@ set(SRC_FILES
         srcs/config_parse/parse_utils.c
         srcs/config_parse/parse_map.c
         srcs/config_parse/map_validation.c
+        srcs/config_parse/map_validation_surround.c
         srcs/window_work/window_setup.c
+        srcs/window_work/bmp.c
         srcs/game/image_form.c
         srcs/game/key_process_loop.c
         srcs/game/key_process_game.c
@@ -42,7 +44,7 @@ set(SRC_FILES
         srcs/game/ray_throw_sprites.c
         libs/get_next_line/get_next_line.c
         libs/get_next_line/get_next_line_utils.c
-        srcs/test.c
+        #srcs/test.c
         )
 
 set(MY_LIB_FILES

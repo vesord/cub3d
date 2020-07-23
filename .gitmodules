@@ -4,6 +4,3 @@
 [submodule "libs/libft"]
 	path = libs/libft
 	url = https://github.com/vesord/libft
-[submodule "libs/get_next_line"]
-	path = libs/get_next_line
-	url = https://github.com/vesord/get_next_line

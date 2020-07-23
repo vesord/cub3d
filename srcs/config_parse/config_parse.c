@@ -12,20 +12,6 @@
 
 #include "cub3d.h"
 
-/*
-**	RESOLUTION
-** 	R		1920 1080
-** 	TEXTURES
-** 	NO		./path_to_the_north_texture
-** 	EA		./path_to_the_east_texture
-** 	WE		./path_to_the_west_texture
-** 	SO		./path_to_the_south_texture
-** 	S		./path_to_the_sprite_texture
-** 	F		0,255,130
-** 	C		122,83,2
-** 	MAP
-*/
-
 void	config_parse(char *path, t_cub *cub)		// TODO: add check to filetype .cub
 {
 	int		is_parse_ok;
@@ -115,7 +101,6 @@ int		parse_line_color(char *line, t_cub *cub, int *color)
 
 int		parse_line_resolution(char *line, t_cub *cub)
 {
-	// TODO: check mlx_get_screen_size();
 	int i;
 
 	i = 2;

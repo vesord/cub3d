@@ -177,7 +177,6 @@ void	free_tab(void **tab);
 
 int		is_map_chars_correct(const char *crct, t_cub *cub);
 int		map_find_player(t_cub *cub);
-void	map_find_player_flag(int *pl_x, int *f, char *c_ptr, char *y_ptr);
 void	map_set_player(int pl_x, int pl_y, t_cub *cub);
 
 int		is_map_surrounded(t_cub *cub);
@@ -251,5 +250,34 @@ double	count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
 void	frame_add_sprite(int frame_x, t_cub *cub);
 void	frame_add_sprite_one(int frame_x, double d_angle, t_sprites *spr, t_cub *cub);
 t_sprites	*sprites_last(t_sprites *spr);
+
+//		BMP_FUNCTIONS
+
+typedef struct	s_bmp_file_header
+{
+	char	type_1;
+	char	type_2;
+	int		size;
+	int		reserved;
+	int		offset_to_color_bits;
+}				t_bmp_file_header;
+
+typedef struct	s_bmp_info
+{
+	int		size;
+	int		width;
+	int		height;
+	short	planes;
+	short	btp;
+	int		compression;
+	int 	img_size;
+	int 	ppm_x;
+	int 	ppm_y;
+	int 	color_table;
+	int		color_table_size;
+}				t_bmp_info;
+
+int		create_bmp_img(t_img *img);
+int		create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi, char *data);
 
 #endif

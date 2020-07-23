@@ -19,7 +19,7 @@ void	is_line_ok_check(char *line, int is_line_ok, t_cub *cub)
 		free(line);
 		cub_destroy(cub, ERR_READ_CONFIG);
 	}
-	if (is_line_ok == -2)					//	TODO: Edit your GNL for ret -2 at malloc error
+	if (is_line_ok == -2)
 		cub_destroy(cub, ERR_NO_MEMORY);
 }
 

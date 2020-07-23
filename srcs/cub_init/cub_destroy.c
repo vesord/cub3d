@@ -83,9 +83,16 @@ void	cub_map_destroy(t_map *map)
 	free(map);
 }
 
-void cub_ray_destroy(t_ray *ray) // TODO: make destroy fnct
+void cub_ray_destroy(t_ray *ray)
 {
-	if (ray)
-	{}
+	t_sprites *cur_spr;
+
+	cur_spr = ray->spr;
+	while (ray->spr)
+	{
+		cur_spr = cur_spr->next;
+		free(ray->spr);
+		ray->spr = cur_spr;
+	}
 	free(ray);
 }
