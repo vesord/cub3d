@@ -26,9 +26,12 @@ set(SRC_FILES
         srcs/cub3d.c
         srcs/cub_init/cub_init.c
         srcs/cub_init/cub_init_struct.c
+        srcs/cub_init/cub_init_struct_2.c
         srcs/cub_init/cub_destroy.c
+        srcs/cub_init/cub_destroy_2.c
         srcs/cub_init/player_init.c
         srcs/config_parse/config_parse.c
+        srcs/config_parse/config_parse_lines.c
         srcs/config_parse/parse_utils.c
         srcs/config_parse/parse_map.c
         srcs/config_parse/map_validation.c
@@ -40,6 +43,7 @@ set(SRC_FILES
         srcs/game/key_process_game.c
         srcs/game/textures.c
         srcs/game/textures_sprites.c
+        srcs/game/cells.c
         srcs/game/ray_throw.c
         srcs/game/ray_throw_sprites.c
         #libs/get_next_line/get_next_line.c

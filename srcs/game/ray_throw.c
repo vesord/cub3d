@@ -6,13 +6,13 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:48:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/20 14:48:26 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 11:12:29 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double throw_ray(t_cub *cub, double angle, double mid_angle)
+double	throw_ray(t_cub *cub, double angle, double mid_angle)
 {
 	int		iterations;
 	double	len_to_wall;
@@ -26,7 +26,7 @@ double throw_ray(t_cub *cub, double angle, double mid_angle)
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
 	len_to_wall = sqrt(pow(cub->ray->x - cub->cam->x, 2) +
-					   pow(cub->ray->y - cub->cam->y, 2));
+			pow(cub->ray->y - cub->cam->y, 2));
 	return (len_to_wall * fabs(cos(fabs(mid_angle - angle))));
 }
 
@@ -47,30 +47,6 @@ int		is_next_cell_free(t_cub *cub)
 	if (cell == '2')
 		count_sprite(cell, cub);
 	return (is_cell_free(cell));
-}
-
-/*
-**	get_cell() checks x < 0 and y < 0 cos in some cases x and y came here
-**	as MIN_INT value :/
-*/
-
-char	get_cell(int x, int y, t_cub *cub)
-{
-	if (x < 0 || y < 0)
-		return ('1');
-	if (cub->ray->dir == DIR_TOP)
-		if (y - 1 < cub->map->max_y && x < cub->map->max_x) // TODO: check if in correct map we need checks on y - 1 < max_y
-			return (cub->map->field[y - 1][x]);
-	if (cub->ray->dir == DIR_BOT)
-		if (y + 1 < cub->map->max_y && x < cub->map->max_x)
-			return (cub->map->field[y + 1][x]);
-	if (cub->ray->dir == DIR_LEFT)
-		if (y < cub->map->max_y && x - 1 < cub->map->max_x)
-			return (cub->map->field[y][x - 1]);
-	if (cub->ray->dir == DIR_RIGHT)
-		if (y < cub->map->max_y && x + 1 < cub->map->max_x)
-			return (cub->map->field[y][x + 1]);
-	return ('1');
 }
 
 void	find_next_cross(double off_x, double off_y, t_cub *cub)
@@ -114,21 +90,16 @@ void	ray_set_dir(double len_x, double len_y, t_cub *cub)
 			cub->ray->x -= (double)cub->map->blk_x / 1000;
 		}
 	else
-	if (cub->ray->sin > 0)
 	{
-		cub->ray->dir = DIR_BOT;
-		cub->ray->y += (double)cub->map->blk_y / 1000;
+		if (cub->ray->sin > 0)
+		{
+			cub->ray->dir = DIR_BOT;
+			cub->ray->y += (double)cub->map->blk_y / 1000;
+		}
+		else
+		{
+			cub->ray->dir = DIR_TOP;
+			cub->ray->y -= (double)cub->map->blk_y / 1000;
+		}
 	}
-	else
-	{
-		cub->ray->dir = DIR_TOP;
-		cub->ray->y -= (double)cub->map->blk_y / 1000;
-	}
-}
-
-int		is_cell_free(char c)
-{
-	if (ft_strchr("02NWES", c))
-		return (1);
-	return (0);
 }

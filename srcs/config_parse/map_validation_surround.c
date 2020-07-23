@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 12:44:24 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/23 12:44:25 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:14:53 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	is_map_surrounded_set(int *x_start, int *y_start, t_cub *cub)
 			if (ft_strchr("WESN", cub->map->field[i][j]))
 			{
 				map_set_player(j, i, cub);
-				//cub->map->field[i][j] = -cub->map->field[i][j];
 				*x_start = j;
 				*y_start = i;
 				return ;

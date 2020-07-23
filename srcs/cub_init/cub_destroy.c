@@ -6,13 +6,11 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 16:10:07 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/15 16:10:08 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 09:51:56 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void cub_ray_destroy(t_ray *ray);
 
 void	cub_destroy(t_cub *cub, char *msg)
 {
@@ -41,7 +39,7 @@ void	cub_win_destroy(t_win *win)
 	if (win->win_ptr)
 		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
 	if (win->mlx_ptr)
-		free(win->mlx_ptr);		// ???
+		free(win->mlx_ptr);
 	free(win);
 }
 
@@ -79,18 +77,4 @@ void	cub_map_destroy(t_map *map)
 	}
 	free(map->field);
 	free(map);
-}
-
-void cub_ray_destroy(t_ray *ray)
-{
-	t_sprites *cur_spr;
-
-	cur_spr = ray->spr;
-	while (ray->spr)
-	{
-		cur_spr = cur_spr->next;
-		free(ray->spr);
-		ray->spr = cur_spr;
-	}
-	free(ray);
 }

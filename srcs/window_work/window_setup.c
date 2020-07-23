@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:06:33 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/17 12:06:34 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:42:53 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	window_setup_save(t_cub *cub)
 void	hook_initialize(t_cub *cub)
 {
 	mlx_loop_hook(cub->win->mlx_ptr, process_game, cub);
-	mlx_hook(cub->win->win_ptr, 2, 1L<<0, key_press, cub);
-	mlx_hook(cub->win->win_ptr, 3, 1L<<1, key_release, cub);
-	mlx_hook(cub->win->win_ptr, 17, 1L<<17, esc_press, cub);
+	mlx_hook(cub->win->win_ptr, 2, 1L << 0, key_press, cub);
+	mlx_hook(cub->win->win_ptr, 3, 1L << 1, key_release, cub);
+	mlx_hook(cub->win->win_ptr, 17, 1L << 17, esc_press, cub);
 	mlx_loop(cub->win->mlx_ptr);
 }

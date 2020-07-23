@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 10:24:59 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/23 10:25:01 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:42:22 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		create_bmp_img(t_img *img)
 {
 	t_bmp_file_header	bfh;
-	t_bmp_info 			bmi;
+	t_bmp_info			bmi;
 
 	bfh.type_1 = 'B';
 	bfh.type_2 = 'M';
@@ -36,7 +36,8 @@ int		create_bmp_img(t_img *img)
 	return (create_bmp_img_write(&bfh, &bmi, img->data));
 }
 
-int		create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi, char *data)
+int		create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi,
+		char *data)
 {
 	int		fd;
 

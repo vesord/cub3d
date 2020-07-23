@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 22:44:09 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/16 22:44:09 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:01:33 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	is_line_ok_check(char *line, int is_line_ok, t_cub *cub)
 
 int		str_to_color(char *line, int *color)
 {
-	int 	r;
-	int 	g;
-	int 	b;
+	int	r;
+	int	g;
+	int	b;
 
 	r = ft_atoi(line);
 	if (!(ft_isdigit(*line)) || r < 0 || r > 255 || line[ft_ilen(r)] != ',')

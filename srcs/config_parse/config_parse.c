@@ -6,13 +6,11 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 16:25:59 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/15 16:26:00 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:35:07 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	gnl_func_parse(char *line, int *is_parse_ok, t_cub *cub);
 
 void	config_parse(char *path, t_cub *cub)
 {
@@ -20,7 +18,7 @@ void	config_parse(char *path, t_cub *cub)
 	char	*line;
 	int		is_line_ok;
 
-	if(!check_path(path) || (cub->confing_fd = open(path, O_RDONLY)) < 0)
+	if (!check_path(path) || (cub->confing_fd = open(path, O_RDONLY)) < 0)
 		cub_destroy(cub, NULL);
 	is_parse_ok = 0;
 	while ((is_line_ok = get_next_line(cub->confing_fd, &line)) > 0)
@@ -73,64 +71,4 @@ int		parse_line(char *line, t_cub *cub)
 	}
 	add_line_to_map(line, cub);
 	return (0);
-}
-
-int		parse_line_texture(char *line, t_cub *cub, t_img *img)
-{
-	int i;
-
-	i = 2;
-	while (line[i] && line[i] == ' ')
-		i++;
-	if (!line[i] || ft_strlen(line) < 7 
-	|| !(ft_strnstr(&(line[ft_strlen(line) - 4]), ".xpm", 4))
-	|| !(img->ptr = mlx_xpm_file_to_image(cub->win->mlx_ptr,
-		&(line[i]), &(img->width), &(img->height)))
-	|| !(img->data = mlx_get_data_addr(img->ptr, &(img->btp), 
-		&(img->sz_ln), &(img->endian))))
-	{
-		free(line);
-		cub_destroy(cub, parse_line_err_msg(cub, img));
-	}
-	return (parse_line_texture_ret(cub, img));
-}
-
-int		parse_line_color(char *line, t_cub *cub, int *color)
-{
-	int i;
-
-	i = 2;
-	while (line[i] && line[i] == ' ')
-		i++;
-	if(!line[i] || !(str_to_color(&(line[i]), color)))
-	{
-		free(line);
-		cub_destroy(cub, parse_line_err_msg(cub, color));
-	}
-	return (parse_line_texture_ret(cub, color));
-}
-
-int		parse_line_resolution(char *line, t_cub *cub)
-{
-	int i;
-
-	i = 2;
-	while (line[i] && line[i] == ' ')
-		i++;
-	if (!line[i] && !ft_isdigit(line[i]))
-	{
-		free(line);
-		cub_destroy(cub, ERR_PARSE_R);
-	}
-	cub->win->x = ft_atoi(&(line[i]));
-	i += ft_ilen(cub->win->x);
-	while (line[i] && line[i] == ' ')
-		i++;
-	if (cub->win->x < 1 || !ft_isdigit(line[i])
-	|| (cub->win->y = ft_atoi(&(line[i]))) < 1)
-	{
-		free(line);
-		cub_destroy(cub, ERR_PARSE_R);
-	}
-	return (PARSE_OK_R);
 }

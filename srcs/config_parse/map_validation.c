@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 09:46:13 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/22 09:46:14 by matrus           ###   ########.fr       */
+/*   Updated: 2020/07/24 10:01:06 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		map_find_player(t_cub *cub)
 		}
 		pl_y++;
 	}
-		return (1);
+	return (1);
 }
 
 void	map_set_player(int pl_x, int pl_y, t_cub *cub)

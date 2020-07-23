@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_init.c                                      :+:      :+:    :+:   */
+/*   cub_destroy_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/17 14:19:49 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/24 09:57:48 by matrus           ###   ########.fr       */
+/*   Created: 2020/07/24 09:53:45 by matrus            #+#    #+#             */
+/*   Updated: 2020/07/24 09:57:20 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	player_init(t_cub *cub)
+void	cub_ray_destroy(t_ray *ray)
 {
-	map_set_scales(cub);
-	cam_init(cub);
-}
+	t_sprites *cur_spr;
 
-void	map_set_scales(t_cub *cub)
-{
-	cub->map->blk_z = 16;
-	cub->map->blk_x = 16;
-	cub->map->blk_y = 16;
-}
-
-void	cam_init(t_cub *cub)
-{
-	cub->cam->cam_angle_yaw = M_PI / 3;
-	cub->cam->cam_angle_pitch = M_PI / 3;
-	cub->cam->z = cub->map->blk_z * 2 / 3;
-	cub->cam->cam_direction_pitch = 0.;
+	cur_spr = ray->spr;
+	while (ray->spr)
+	{
+		cur_spr = cur_spr->next;
+		free(ray->spr);
+		ray->spr = cur_spr;
+	}
+	free(ray);
 }
