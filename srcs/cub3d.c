@@ -60,11 +60,11 @@ void	save_frame(char *path_to_conf)
 	player_init(cub);
 	config_parse(path_to_conf, cub);
 	window_setup_save(cub);
-	if (!cub->frm && !(cub->frm = frame_init(cub->win->mlx_ptr,
-					cub->win->x, cub->win->y)))
+	if (!cub->frm_0 && !(cub->frm_0 = frame_init(cub->win->mlx_ptr,
+		cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	make_frame(cub);
-	if (!create_bmp_img(cub->frm))
+	if (!create_bmp_img(cub->frm_0))
 		cub_destroy(cub, NULL);
 	cub_destroy(cub, ERR_NO_ERR);
 }

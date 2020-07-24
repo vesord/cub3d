@@ -14,13 +14,19 @@
 
 int		process_game(t_cub *cub)
 {
-	if (!cub->frm && !(cub->frm = frame_init(cub->win->mlx_ptr,
-		cub->win->x, cub->win->y)))
+	t_img *tmp_frm;
+
+	if (!cub->frm_0 && !(cub->frm_0 = frame_init(cub->win->mlx_ptr,
+		cub->win->x, cub->win->y)) && !(cub->frm_1 =
+			frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
 	make_frame(cub);
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr,
-			cub->frm->ptr, 0, 0);
+							cub->frm_0->ptr, 0, 0);
+	tmp_frm = cub->frm_0;
+	cub->frm_0 = cub->frm_1;
+	cub->frm_1 = tmp_frm;
 	return (0);
 }
 
@@ -36,7 +42,7 @@ void	make_frame(t_cub *cub)
 	while (frame_x < cub->win->x)
 	{
 		frame_col_set(frame_x, throw_ray(cub, angle,
-					cub->cam->cam_direction_yaw), cub);
+			cub->cam->cam_direction_yaw), cub);
 		angle += d_angle;
 		frame_x++;
 	}
@@ -58,13 +64,13 @@ void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 	while (++f_y < cub->win->y)
 	{
 		if (angle > c_angl)
-			((int*)cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->ceil;
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil;
 		else if (angle > f_angl)
-			((unsigned int*)cub->frm->data)[f_y * cub->win->x + f_x] =
+			((unsigned int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =
 				get_pixel_texture(1. - get_x_texture(cub),
-					1. - (angle - f_angl) / (c_angl - f_angl), cub, 0);
+					get_y_texture(angle, len_to_wall, cub), cub, 0);
 		else
-			((int*)cub->frm->data)[f_y * cub->win->x + f_x] = cub->tex->flor;
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->flor;
 		angle -= d_angle;
 	}
 	if (cub->ray->spr)

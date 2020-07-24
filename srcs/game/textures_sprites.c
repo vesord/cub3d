@@ -55,10 +55,10 @@ void		frame_add_sprite_one(int frame_x, double d_angle,
 		if (angle < c_angl && angle > f_angl)
 		{
 			pixel = get_pixel_texture(spr->sp_x,
-					1. - (angle - f_angl) / (c_angl - f_angl), cub, 1);
+				get_y_texture(angle, spr->len_to_sp, cub), cub, 1);
 			if (pixel != 0)
-				((unsigned int*)cub->frm->data)[frame_y * cub->win->x +
-					frame_x] = pixel;
+				((unsigned int*)cub->frm_0->data)[frame_y * cub->win->x +
+				frame_x] = pixel;
 		}
 		angle -= d_angle;
 	}

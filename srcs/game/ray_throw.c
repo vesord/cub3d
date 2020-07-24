@@ -22,6 +22,7 @@ double	throw_ray(t_cub *cub, double angle, double mid_angle)
 	cub->ray->y = cub->cam->y;
 	cub->ray->sin = sin(angle);
 	cub->ray->cos = cos(angle);
+	cub->ray->mid_rel_angle = angle - mid_angle;
 	cub->ray->spr = NULL;
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
@@ -82,24 +83,24 @@ void	ray_set_dir(double len_x, double len_y, t_cub *cub)
 		if (cub->ray->cos > 0)
 		{
 			cub->ray->dir = DIR_RIGHT;
-			cub->ray->x += (double)cub->map->blk_x / 1000;
+			cub->ray->x += (double)cub->map->blk_x / 10000;
 		}
 		else
 		{
 			cub->ray->dir = DIR_LEFT;
-			cub->ray->x -= (double)cub->map->blk_x / 1000;
+			cub->ray->x -= (double)cub->map->blk_x / 10000;
 		}
 	else
 	{
 		if (cub->ray->sin > 0)
 		{
 			cub->ray->dir = DIR_BOT;
-			cub->ray->y += (double)cub->map->blk_y / 1000;
+			cub->ray->y += (double)cub->map->blk_y / 10000;
 		}
 		else
 		{
 			cub->ray->dir = DIR_TOP;
-			cub->ray->y -= (double)cub->map->blk_y / 1000;
+			cub->ray->y -= (double)cub->map->blk_y / 10000;
 		}
 	}
 }

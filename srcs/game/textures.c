@@ -26,6 +26,11 @@ double			get_x_texture(t_cub *cub)
 		return (1. - modf(cub->ray->x / (double)cub->map->blk_x, &not_used));
 }
 
+double			get_y_texture(double angle, double len_to_wall, t_cub *cub)
+{
+	return ((cub->cam->z + len_to_wall * tan(angle)) / cub->map->blk_z);
+}
+
 unsigned int	get_pixel_texture(double off_x, double off_y, t_cub *cub,
 					int is_sp)
 {

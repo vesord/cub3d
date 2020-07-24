@@ -92,6 +92,7 @@ typedef struct	s_ray
 	double		y;
 	double		sin;
 	double		cos;
+	double		mid_rel_angle;
 	int			dir;
 	t_sprites	*spr;
 }				t_ray;
@@ -115,7 +116,8 @@ typedef struct	s_cub
 	t_win		*win;
 	t_ray		*ray;
 	t_key		*key;
-	t_img		*frm;
+	t_img		*frm_0;
+	t_img		*frm_1;
 	int			confing_fd;
 }				t_cub;
 
@@ -269,6 +271,7 @@ int				is_cell_free(char c);
 void			ray_set_dir(double len_x, double len_y, t_cub *cub);
 
 double			get_x_texture(t_cub *cub);
+double			get_y_texture(double angle, double len_to_wall, t_cub *cub);
 unsigned int	get_pixel_texture(double off_x, double off_y, t_cub *cub,
 	int is_sprite);
 

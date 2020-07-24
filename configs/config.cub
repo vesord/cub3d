@@ -1,16 +1,17 @@
-R 640 480
+R 640 640
 
-NO ./imgs/NO.xpm
-WE ./imgs/WE.xpm
-SO ./imgs/SO.xpm
-EA ./imgs/EA.xpm
+
+NO ./imgs/grid.xpm
+WE ./imgs/grid.xpm
+SO ./imgs/grid.xpm
+EA ./imgs/grid.xpm
 S  ./imgs/SPRITE.xpm
 
 C  250,0,0
 F  0,250,0
 
 1111111111
-1E0020000111111
+10002000W111111
 100000000122001
 100000000111101
 1000000001  101
