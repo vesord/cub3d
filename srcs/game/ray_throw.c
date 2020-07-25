@@ -22,7 +22,6 @@ double	throw_ray(t_cub *cub, double angle, double mid_angle)
 	cub->ray->y = cub->cam->y;
 	cub->ray->sin = sin(angle);
 	cub->ray->cos = cos(angle);
-	cub->ray->mid_rel_angle = angle - mid_angle;
 	cub->ray->spr = NULL;
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;

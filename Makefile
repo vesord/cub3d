@@ -43,9 +43,9 @@ LINKED_LIBS_DIR = -L./$(LIB_DIR)/libft -L./$(LIB_DIR)/minilibx
 
 
 .PHONY: all
-all: $(OBJ_DIR) $(NAME)
+all: $(OBJ_DIR) libft $(NAME)
 
-$(NAME): libft $(OBJ_ALL)
+$(NAME): $(OBJ_ALL)
 	$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_DIR)) $(OBJ_ALL) $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@ 
 
 $(OBJ_ALL): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLLUDES)

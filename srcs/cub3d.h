@@ -92,7 +92,6 @@ typedef struct	s_ray
 	double		y;
 	double		sin;
 	double		cos;
-	double		mid_rel_angle;
 	int			dir;
 	t_sprites	*spr;
 }				t_ray;
@@ -256,7 +255,7 @@ void			frame_col_set(int f_x, double len_to_wall, t_cub *cub);
 t_img			*frame_init(void *mlx_ptr, int x, int y);
 
 # define TURN_SCALER 72
-# define STEP_SCALER 25
+# define STEP_SCALER 10
 # define WALL_SCALER 6
 
 void			process_key(t_cub *cub);
