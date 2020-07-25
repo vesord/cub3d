@@ -22,7 +22,6 @@ set(HEADER_FILES
         )
 
 set(SRC_FILES
-        #srcs/main.c
         srcs/cub3d.c
         srcs/cub_init/cub_init.c
         srcs/cub_init/cub_init_struct.c
@@ -46,9 +45,6 @@ set(SRC_FILES
         srcs/game/cells.c
         srcs/game/ray_throw.c
         srcs/game/ray_throw_sprites.c
-        #libs/get_next_line/get_next_line.c
-        #libs/get_next_line/get_next_line_utils.c
-        #srcs/test.c
         )
 
 set(MY_LIB_FILES
@@ -62,3 +58,60 @@ add_executable(cub3D
         )
 
 target_link_libraries(cub3D ${MY_LIB_FILES} m X11 Xext)
+
+#   ---BONUS_PART---
+
+include_directories(srcs_bonus)
+
+set(HEADER_FILES_BONUS
+        libs/libft/libft.h
+        libs/libft/get_next_line.h
+        libs/minilibx/mlx.h
+        libs/minilibx/mlx_int.h
+        srcs/errors.h
+        srcs/cub3d.h
+        )
+
+set(SRC_FILES_BONUS
+        srcs_bonus/cub3d_bonus.c
+        srcs_bonus/cub_init/cub_init.c
+        srcs_bonus/cub_init/cub_init_struct.c
+        srcs_bonus/cub_init/cub_init_struct_2.c
+        srcs_bonus/cub_init/cub_destroy.c
+        srcs_bonus/cub_init/cub_destroy_2.c
+        srcs_bonus/cub_init/player_init.c
+        srcs_bonus/config_parse/config_parse.c
+        srcs_bonus/config_parse/config_parse_lines.c
+        srcs_bonus/config_parse/parse_utils.c
+        srcs_bonus/config_parse/parse_map.c
+        srcs_bonus/config_parse/map_validation.c
+        srcs_bonus/config_parse/map_validation_surround.c
+        srcs_bonus/window_work/window_setup.c
+        srcs_bonus/window_work/bmp.c
+        srcs_bonus/game/image_form.c
+        srcs_bonus/game/key_process_loop.c
+        srcs_bonus/game/key_process_game.c
+        srcs_bonus/game/textures.c
+        srcs_bonus/game/textures_sprites.c
+        srcs_bonus/game/cells.c
+        srcs_bonus/game/ray_throw.c
+        srcs_bonus/game/ray_throw_sprites.c
+
+        srcs_bonus/game/shadows.c
+        srcs_bonus/game/get_length_ceil_floor.c
+        )
+
+
+add_executable(bonus
+        ${HEADER_FILES_BONUS}
+        ${SRC_FILES_BONUS}
+        ${LIBS_SRC}
+        )
+
+target_link_libraries(bonus ${MY_LIB_FILES} m X11 Xext)
+
+add_executable(test
+        test/ft_cos.c)
+
+target_link_libraries(test m)
+
