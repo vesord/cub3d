@@ -16,7 +16,7 @@
 # include "mlx.h"
 # include "libft.h"
 # include "get_next_line.h"
-# include "errors.h"
+# include "errors_bonus.h"
 # include <math.h>
 # include <fcntl.h>
 
@@ -109,6 +109,14 @@ typedef struct	s_key
 	int	esc;
 }				t_key;
 
+typedef struct	s_hud
+{
+	int		life;
+	t_img	*face;
+	t_img	*wand;
+	int 	mana;
+}				t_hud;
+
 typedef struct	s_cub
 {
 	t_map		*map;
@@ -117,6 +125,7 @@ typedef struct	s_cub
 	t_win		*win;
 	t_ray		*ray;
 	t_key		*key;
+	t_hud		*hud;
 	t_img		*frm_0;
 	t_img		*frm_1;
 	int			confing_fd;
@@ -140,6 +149,7 @@ void			cub_textures_destroy(t_textures *tex, void *mlx_ptr);
 void			cub_img_destroy(t_img *img, void *mlx_ptr);
 void			cub_win_destroy(t_win *win);
 void			cub_ray_destroy(t_ray *ray);
+void			cub_hud_destroy(t_hud *hud, void *mlx_ptr);
 
 void			cub_init(t_cub *cub);
 void			cub_set_null(t_cub *cub);
@@ -148,6 +158,7 @@ void			cub_init_map(t_cub *cub);
 void			cub_init_ray(t_cub *cub);
 void			cub_init_win(t_cub *cub);
 void			cub_init_key(t_cub *cub);
+void			cub_init_hud(t_cub *cub);
 void			cub_init_textures(t_cub *cub);
 void			cub_init_textures_null(t_textures *tex);
 void			cub_init_img(t_img *img);
@@ -160,20 +171,23 @@ void			player_init(t_cub *cub);
 **	---CONFIG_PARSE_FUNCTIONS---
 */
 
-# define PARSE_OK		0b111111111
-# define PARSE_OK_NO	0b000000001
-# define PARSE_OK_WE	0b000000010
-# define PARSE_OK_SO	0b000000100
-# define PARSE_OK_EA	0b000001000
-# define PARSE_OK_S		0b000010000
-# define PARSE_OK_F		0b000100000
-# define PARSE_OK_C		0b001000000
-# define PARSE_OK_R		0b010000000
-# define PARSE_OK_MAP	0b100000000
+# define PARSE_OK		0b11111111111
+# define PARSE_OK_NO	0b00000000001
+# define PARSE_OK_WE	0b00000000010
+# define PARSE_OK_SO	0b00000000100
+# define PARSE_OK_EA	0b00000001000
+# define PARSE_OK_S		0b00000010000
+# define PARSE_OK_F		0b00000100000
+# define PARSE_OK_C		0b00001000000
+# define PARSE_OK_R		0b00010000000
+# define PARSE_OK_HF	0b00100000000
+# define PARSE_OK_HW	0b01000000000
+# define PARSE_OK_MAP	0b10000000000
 
 void			config_parse(char *path, t_cub *cub);
 void			gnl_func_parse(char *line, int *is_parse_ok, t_cub *cub);
 int				parse_line(char *line, t_cub *cub);
+int				parse_line_conf(char *line, t_cub *cub);
 
 int				parse_line_texture(char *line, t_cub *cub, t_img *img);
 int				parse_line_color(char *line, t_cub *cub, int *color);
@@ -271,10 +285,10 @@ char			get_cell(int x, int y, t_cub *cub);
 int				is_cell_free(char c);
 void			ray_set_dir(double len_x, double len_y, t_cub *cub);
 
-double			get_x_texture(t_cub *cub);
-double			get_y_texture(double angle, double len_to_wall, t_cub *cub);
-unsigned int	get_pixel_texture(double off_x, double off_y, t_cub *cub,
-	int is_sprite);
+double			get_x_wall(t_cub *cub);
+double			get_y_wall(double angle, double len_to_wall, t_cub *cub);
+unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
+							   int is_sp);
 
 void			count_sprite(char type, t_cub *cub);
 t_sprites		*new_sprite(t_sprites *prev, char type, t_cub *cub);
@@ -290,12 +304,18 @@ t_sprites		*sprites_last(t_sprites *spr);
 */
 
 #define NO_SHADOW_DST 1.5
-#define FULL_SHADOW_DST 7.
+#define FULL_SHADOW_DST 18.
 
 unsigned int	add_shadow(unsigned int color, double len, t_cub *cub);
 unsigned int	decrease_color(unsigned int color, double scaler);
 
 double	get_len_ceil(double angle, t_cub *cub);
 double	get_len_flor(double angle, t_cub *cub);
+
+void	add_hud(t_cub *cub);
+void	add_hud_face(t_cub *cub);
+void	add_hud_wand(t_cub *cub);
+
+void	put_tex_to_img(t_img *tex, t_img *img);
 
 #endif

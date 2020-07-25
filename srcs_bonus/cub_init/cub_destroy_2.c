@@ -25,3 +25,12 @@ void	cub_ray_destroy(t_ray *ray)
 	}
 	free(ray);
 }
+
+void	cub_hud_destroy(t_hud *hud, void *mlx_ptr)
+{
+	if (hud->face)
+		cub_img_destroy(hud->face, mlx_ptr);
+	if (hud->wand)
+		cub_img_destroy(hud->wand, mlx_ptr);
+	free(hud);
+}

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	cub_destroy(t_cub *cub, char *msg)
 {
@@ -24,6 +24,8 @@ void	cub_destroy(t_cub *cub, char *msg)
 		cub_ray_destroy(cub->ray);
 	if (cub->key)
 		free(cub->key);
+	if (cub->hud)
+		cub_hud_destroy(cub->hud, cub->win->mlx_ptr);
 	if (cub->frm_0)
 		cub_img_destroy(cub->frm_0, cub->win->mlx_ptr);
 	if (cub->frm_1)

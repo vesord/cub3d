@@ -1,14 +1,14 @@
-R 640 640
+R 640 420
 
 
-NO ./imgs/grid.xpm
-WE ./imgs/grid.xpm
-SO ./imgs/grid.xpm
-EA ./imgs/grid.xpm
+NO ./imgs/plant_wall.xpm
+WE ./imgs/plant_wall.xpm
+SO               ./imgs/plant_wall.xpm
+EA ./imgs/plant_wall.xpm
 S  ./imgs/SPRITE.xpm
 
-C  250,0,0
-F  0,250,0
+C  135,206,235
+F  244,164,96
 
 1111111111
 10002000W111111
@@ -16,9 +16,4 @@ F  0,250,0
 100000000111101
 1000000001  101
 1000000001  101
-1111111111  101
-            101
-            101
-            101
-           1001
-            111
+1111111111  111

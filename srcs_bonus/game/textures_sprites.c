@@ -54,8 +54,9 @@ void		frame_add_sprite_one(int frame_x, double d_angle,
 	{
 		if (angle < c_angl && angle > f_angl)
 		{
-			pixel = get_pixel_texture(spr->sp_x,
-				get_y_texture(angle, spr->len_to_sp, cub), cub, 1);
+			pixel = get_pixel_wall(spr->sp_x,
+								   1. - get_y_wall(angle, spr->len_to_sp, cub), cub,
+								   1);
 			if (pixel != 0)
 				((unsigned int*)cub->frm_0->data)[frame_y * cub->win->x +
 				frame_x] = add_shadow(pixel, spr->len_to_sp, cub);

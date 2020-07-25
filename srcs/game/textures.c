@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-double			get_x_texture(t_cub *cub)
+double			get_x_wall(t_cub *cub)
 {
 	double not_used;
 
@@ -26,13 +26,13 @@ double			get_x_texture(t_cub *cub)
 		return (1. - modf(cub->ray->x / (double)cub->map->blk_x, &not_used));
 }
 
-double			get_y_texture(double angle, double len_to_wall, t_cub *cub)
+double			get_y_wall(double angle, double len_to_wall, t_cub *cub)
 {
 	return ((cub->cam->z + len_to_wall * tan(angle)) / cub->map->blk_z);
 }
 
-unsigned int	get_pixel_texture(double off_x, double off_y, t_cub *cub,
-					int is_sp)
+unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
+							   int is_sp)
 {
 	t_img *no;
 	t_img *so;

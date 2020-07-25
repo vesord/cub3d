@@ -67,8 +67,8 @@ void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil;
 		else if (angle > f_angl)
 			((unsigned int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =
-				get_pixel_texture(1. - get_x_texture(cub),
-					get_y_texture(angle, len_to_wall, cub), cub, 0);
+				get_pixel_wall(1. - get_x_wall(cub),
+							   get_y_wall(angle, len_to_wall, cub), cub, 0);
 		else
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->flor;
 		angle -= d_angle;

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_ERRORS_H
-# define CUB3D_ERRORS_H
+#ifndef CUB3D_ERRORS_BONUS_H
+# define CUB3D_ERRORS_BONUS_H
 
 # define ERR_NO_ERR	"NO_ERROR"
 # define ERR_PARSE_DUPLICATE "Some of config params are duplicated."
@@ -27,5 +27,7 @@
 # define ERR_PARSE_C "Error occur while parsing Ceiiling color."
 # define ERR_PARSE_S "Error occur while parsing Sprite texture."
 # define ERR_PARSE_R "Error occur while parsing screen Resolution."
+# define ERR_PARSE_HF "Error occur while parsing HUD Face."
+# define ERR_PARSE_HW "Error occur while parsing HUD Wand."
 
 #endif

@@ -12,6 +12,8 @@
 
 #include "cub3d_bonus.h"
 
+void	cub_init_2(t_cub *cub);
+
 void	cub_init(t_cub *cub)
 {
 	cub_set_null(cub);
@@ -35,10 +37,19 @@ void	cub_init(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_key(cub);
+	cub_init_2(cub);
+}
+
+void	cub_init_2(t_cub *cub)
+{
 	if (!(cub->tex = (t_textures*)malloc(sizeof(t_textures))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_textures(cub);
+	if (!(cub->hud = (t_hud*)malloc(sizeof(t_hud))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_hud(cub);
 }
 
 void	cub_set_null(t_cub *cub)

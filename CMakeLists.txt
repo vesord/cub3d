@@ -68,8 +68,8 @@ set(HEADER_FILES_BONUS
         libs/libft/get_next_line.h
         libs/minilibx/mlx.h
         libs/minilibx/mlx_int.h
-        srcs/errors.h
-        srcs/cub3d.h
+        srcs_bonus/errors_bonus.h
+        srcs_bonus/cub3d_bonus.h
         )
 
 set(SRC_FILES_BONUS
@@ -91,12 +91,13 @@ set(SRC_FILES_BONUS
         srcs_bonus/game/image_form.c
         srcs_bonus/game/key_process_loop.c
         srcs_bonus/game/key_process_game.c
-        srcs_bonus/game/textures.c
+        srcs_bonus/game/walls.c
         srcs_bonus/game/textures_sprites.c
         srcs_bonus/game/cells.c
         srcs_bonus/game/ray_throw.c
         srcs_bonus/game/ray_throw_sprites.c
 
+        srcs_bonus/game/hud.c
         srcs_bonus/game/shadows.c
         srcs_bonus/game/get_length_ceil_floor.c
         )
@@ -111,7 +112,8 @@ add_executable(bonus
 target_link_libraries(bonus ${MY_LIB_FILES} m X11 Xext)
 
 add_executable(test
-        test/ft_cos.c)
+        test/ft_cos.c
+        test/double_vs_float.c)
 
 target_link_libraries(test m)
 

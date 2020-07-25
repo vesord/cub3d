@@ -12,21 +12,32 @@
 
 #include "cub3d_bonus.h"
 
+//
+#include <time.h>
+#include <stdio.h>
+
 int		process_game(t_cub *cub)
 {
 	t_img *tmp_frm;
 
+	//
+	time_t start, end;
+
+	start = clock();
 	if (!cub->frm_0 && !(cub->frm_0 = frame_init(cub->win->mlx_ptr,
 		cub->win->x, cub->win->y)) && !(cub->frm_1 =
 			frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y)))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
 	make_frame(cub);
+	add_hud(cub);
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr,
 							cub->frm_0->ptr, 0, 0);
 	tmp_frm = cub->frm_0;
 	cub->frm_0 = cub->frm_1;
 	cub->frm_1 = tmp_frm;
+	end = clock();
+	printf("FPS: %f\n", 1 /  ((double)(end - start) / CLOCKS_PER_SEC ));
 	return (0);
 }
 
@@ -64,11 +75,12 @@ void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 	while (++f_y < cub->win->y)
 	{
 		if (angle > c_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
 		else if (angle > f_angl)
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =
-				add_shadow(get_pixel_texture(1. - get_x_texture(cub),
-					get_y_texture(angle, len_to_wall, cub), cub, 0), len_to_wall / fabs(cos(fabs(cub->ray->mid_rel_angle))), cub);
+				add_shadow(get_pixel_wall(1. - get_x_wall(cub),
+										  1. - get_y_wall(angle, len_to_wall, cub),
+										  cub, 0), len_to_wall / fabs(cos(fabs(cub->ray->mid_rel_angle))), cub);
 		else
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
 		angle -= d_angle;

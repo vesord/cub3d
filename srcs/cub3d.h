@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_CUB3D_H
+#ifndef CUB3D_CUB3D_BONUS_H
 # define CUB3D_CUB3D_H
 
 # include "mlx.h"
@@ -269,10 +269,10 @@ char			get_cell(int x, int y, t_cub *cub);
 int				is_cell_free(char c);
 void			ray_set_dir(double len_x, double len_y, t_cub *cub);
 
-double			get_x_texture(t_cub *cub);
-double			get_y_texture(double angle, double len_to_wall, t_cub *cub);
-unsigned int	get_pixel_texture(double off_x, double off_y, t_cub *cub,
-	int is_sprite);
+double			get_x_wall(t_cub *cub);
+double			get_y_wall(double angle, double len_to_wall, t_cub *cub);
+unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
+							   int is_sp);
 
 void			count_sprite(char type, t_cub *cub);
 t_sprites		*new_sprite(t_sprites *prev, char type, t_cub *cub);

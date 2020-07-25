@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	cub_init_map(t_cub *cub)
 {
@@ -46,4 +46,21 @@ void	cub_init_key(t_cub *cub)
 	cub->key->l_arrow = 0;
 	cub->key->r_arrow = 0;
 	cub->key->esc = 0;
+}
+
+void	cub_init_hud(t_cub *cub)
+{
+	cub->hud->life = 0;
+	cub->hud->mana = 0;
+	cub->hud->face = NULL;
+	cub->hud->wand = NULL;
+	if (!(cub->hud->face = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->hud->face);
+
+	if (!(cub->hud->wand = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->hud->wand);
 }

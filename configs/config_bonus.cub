@@ -1,0 +1,20 @@
+R 640 480
+
+NO ./imgs/rainbow1.xpm
+WE ./imgs/rainbow1.xpm
+SO ./imgs/rainbow1.xpm
+EA ./imgs/rainbow1.xpm
+S  ./imgs/ponyhead.xpm
+HF ./imgs/forelock.xpm
+HW ./imgs/wand.xpm
+
+C  135,206,235
+F  244,164,96
+
+1111111111
+10002000W111111
+100000000122001
+100000000111101
+1000000001  101
+1000000001  101
+1111111111  111

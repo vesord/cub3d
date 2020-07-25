@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int		check_path(char *path)
 {
@@ -70,6 +70,10 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_F);
 	if (&(cub->tex->ceil) == data)
 		return (ERR_PARSE_C);
+	if (cub->hud->face == data)
+		return (ERR_PARSE_HF);
+	if (cub->hud->wand == data)
+		return (ERR_PARSE_HW);
 	return (0);
 }
 
@@ -89,5 +93,9 @@ int		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_F);
 	if (&(cub->tex->ceil) == data)
 		return (PARSE_OK_C);
+	if (cub->hud->face == data)
+		return (PARSE_OK_HF);
+	if (cub->hud->wand == data)
+		return (PARSE_OK_HW);
 	return (0);
 }
