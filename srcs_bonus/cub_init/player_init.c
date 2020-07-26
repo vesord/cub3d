@@ -30,5 +30,5 @@ void	cam_init(t_cub *cub)
 	cub->cam->cam_angle_yaw = M_PI / 3;
 	cub->cam->cam_angle_pitch = M_PI / 3;
 	cub->cam->z = cub->map->blk_z * 2 / 3;
-	cub->cam->cam_direction_pitch = 0.;
+	cub->cam->cam_direction_pitch = 0.f;
 }

@@ -26,15 +26,15 @@
 
 typedef struct	s_cam
 {
-	double x;
-	double y;
-	double z;
-	double cam_angle_yaw;
-	double cam_direction_yaw;
-	double cam_angle_pitch;
-	double cam_direction_pitch;
-	double step;
-	double dst_to_wall;
+	float x;
+	float y;
+	float z;
+	float cam_angle_yaw;
+	float cam_direction_yaw;
+	float cam_angle_pitch;
+	float cam_direction_pitch;
+	float step;
+	float dst_to_wall;
 }				t_cam;
 
 typedef struct	s_img
@@ -82,18 +82,18 @@ typedef struct	s_sprites
 	struct s_sprites	*next;
 	struct s_sprites	*prev;
 	t_img				*tex_data;
-	double				len_to_sp;
-	double				sp_x;
+	float				len_to_sp;
+	float				sp_x;
 }				t_sprites;
 
 typedef struct	s_ray
 {
-	double		x;
-	double		y;
-	double		mid_rel_angle;
-	double		len_to_wall_real;
-	double		sin;
-	double		cos;
+	float		x;
+	float		y;
+	float		mid_rel_angle;
+	float		len_to_wall_real;
+	float		sin;
+	float		cos;
 	int			dir;
 	t_sprites	*spr;
 }				t_ray;
@@ -267,7 +267,7 @@ int				esc_press(t_cub *cub);
 
 int				process_game(t_cub *cub);
 void			make_frame(t_cub *cub);
-void			frame_col_set(int f_x, double len_to_wall, t_cub *cub);
+void			frame_col_set(int f_x, float len_to_wall, t_cub *cub);
 t_img			*frame_init(void *mlx_ptr, int x, int y);
 
 # define TURN_SCALER 72
@@ -276,26 +276,26 @@ t_img			*frame_init(void *mlx_ptr, int x, int y);
 
 void			process_key(t_cub *cub);
 void			process_step(t_cub *cub, int dir);
-void			process_step_direction(double angle, t_cub *cub);
+void			process_step_direction(float angle, t_cub *cub);
 
-double			throw_ray(t_cub *cub, double angle, double mid_angle);
-void			find_next_cross(double off_x, double off_y, t_cub *cub);
+float			throw_ray(t_cub *cub, float angle, float mid_angle);
+void			find_next_cross(float off_x, float off_y, t_cub *cub);
 int				is_next_cell_free(t_cub *cub);
 char			get_cell(int x, int y, t_cub *cub);
 int				is_cell_free(char c);
-void			ray_set_dir(double len_x, double len_y, t_cub *cub);
+void			ray_set_dir(float len_x, float len_y, t_cub *cub);
 
-double			get_x_wall(t_cub *cub);
-double			get_y_wall(double angle, double len_to_wall, t_cub *cub);
-unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
+float			get_x_wall(t_cub *cub);
+float			get_y_wall(float angle, float len_to_wall, t_cub *cub);
+unsigned int	get_pixel_wall(float off_x, float off_y, t_cub *cub,
 							   int is_sp);
 
 void			count_sprite(char type, t_cub *cub);
 t_sprites		*new_sprite(t_sprites *prev, char type, t_cub *cub);
-double			count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
+float			count_sprite_x(float sp_x_mid, float sp_y_mid, t_cub *cub);
 
 void			frame_add_sprite(int frame_x, t_cub *cub);
-void			frame_add_sprite_one(int frame_x, double d_angle,
+void			frame_add_sprite_one(int frame_x, float d_angle,
 	t_sprites *spr, t_cub *cub);
 t_sprites		*sprites_last(t_sprites *spr);
 
@@ -303,14 +303,14 @@ t_sprites		*sprites_last(t_sprites *spr);
 **	---BONUS_FUNCTIONS---
 */
 
-#define NO_SHADOW_DST 1.5
-#define FULL_SHADOW_DST 18.
+#define NO_SHADOW_DST 1.5f
+#define FULL_SHADOW_DST 18.f
 
-unsigned int	add_shadow(unsigned int color, double len, t_cub *cub);
-unsigned int	decrease_color(unsigned int color, double scaler);
+unsigned int	add_shadow(unsigned int color, float len, t_cub *cub);
+unsigned int	decrease_color(unsigned int color, float scaler);
 
-double	get_len_ceil(double angle, t_cub *cub);
-double	get_len_flor(double angle, t_cub *cub);
+float	get_len_ceil(float angle, t_cub *cub);
+float	get_len_flor(float angle, t_cub *cub);
 
 void	add_hud(t_cub *cub);
 void	add_hud_face(t_cub *cub);

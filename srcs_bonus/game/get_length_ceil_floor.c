@@ -12,12 +12,12 @@
 
 #include "cub3d_bonus.h"
 
-double	get_len_ceil(double angle, t_cub *cub)
+float	get_len_ceil(float angle, t_cub *cub)
 {
-	return ((double)(cub->map->blk_z - cub->cam->z) / tan(angle));
+	return ((cub->map->blk_z - cub->cam->z) / tanf(angle));
 }
 
-double	get_len_flor(double angle, t_cub *cub)
+float	get_len_flor(float angle, t_cub *cub)
 {
-	return ((double)(cub->cam->z) / -tan(angle));
+	return ((cub->cam->z) / -tanf(angle));
 }

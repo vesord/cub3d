@@ -37,15 +37,15 @@ int		process_game(t_cub *cub)
 	cub->frm_0 = cub->frm_1;
 	cub->frm_1 = tmp_frm;
 	end = clock();
-	printf("FPS: %f\n", 1 /  ((double)(end - start) / CLOCKS_PER_SEC ));
+	printf("FPS: %f\n", 1 /  ((float)(end - start) / CLOCKS_PER_SEC ));
 	return (0);
 }
 
 void	make_frame(t_cub *cub)
 {
 	int		frame_x;
-	double	angle;
-	double	d_angle;
+	float	angle;
+	float	d_angle;
 
 	angle = cub->cam->cam_direction_yaw - cub->cam->cam_angle_yaw / 2;
 	d_angle = cub->cam->cam_angle_yaw / cub->win->x;
@@ -59,16 +59,16 @@ void	make_frame(t_cub *cub)
 	}
 }
 
-void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
+void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 {
 	int		f_y;
-	double	angle;
-	double	d_angle;
-	double	c_angl;
-	double	f_angl;
+	float	angle;
+	float	d_angle;
+	float	c_angl;
+	float	f_angl;
 
-	f_angl = atan((-cub->cam->z) / len_to_wall);
-	c_angl = atan((cub->map->blk_z - cub->cam->z) / len_to_wall);
+	f_angl = atanf((-cub->cam->z) / len_to_wall);
+	c_angl = atanf((cub->map->blk_z - cub->cam->z) / len_to_wall);
 	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
 	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
 	f_y = -1;
@@ -77,12 +77,12 @@ void	frame_col_set(int f_x, double len_to_wall, t_cub *cub)
 		if (angle > c_angl)
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
 		else if (angle > f_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =
-				add_shadow(get_pixel_wall(1. - get_x_wall(cub),
-										  1. - get_y_wall(angle, len_to_wall, cub),
-										  cub, 0), len_to_wall / fabs(cos(fabs(cub->ray->mid_rel_angle))), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
+
+//				add_shadow(get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0),
+//					len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
 		else
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->flor; //add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
 		angle -= d_angle;
 	}
 	if (cub->ray->spr)

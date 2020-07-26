@@ -42,15 +42,15 @@ void	process_step(t_cub *cub, int dir)
 		process_step_direction(cub->cam->cam_direction_yaw + M_PI_2, cub);
 }
 
-void	process_step_direction(double angle, t_cub *cub)
+void	process_step_direction(float angle, t_cub *cub)
 {
-	double		len_to_wall_x;
-	double		len_to_wall_y;
-	double		sin_;
-	double		cos_;
+	float		len_to_wall_x;
+	float		len_to_wall_y;
+	float		sin_;
+	float		cos_;
 
-	sin_ = sin(angle);
-	cos_ = cos(angle);
+	sin_ = sinf(angle);
+	cos_ = cosf(angle);
 	if (sin_ > 0)
 		len_to_wall_y = throw_ray(cub, M_PI_2, M_PI_2) - cub->cam->dst_to_wall;
 	else

@@ -12,7 +12,7 @@
 
 #include "cub3d_bonus.h"
 
-double	throw_ray(t_cub *cub, double angle, double mid_angle)
+float	throw_ray(t_cub *cub, float angle, float mid_angle)
 {
 	int		iterations;
 
@@ -20,28 +20,28 @@ double	throw_ray(t_cub *cub, double angle, double mid_angle)
 	cub->ray->x = cub->cam->x;
 	cub->ray->y = cub->cam->y;
 	cub->ray->mid_rel_angle = mid_angle - angle;
-	cub->ray->sin = sin(angle);
-	cub->ray->cos = cos(angle);
+	cub->ray->sin = sinf(angle);
+	cub->ray->cos = cosf(angle);
 	cub->ray->spr = NULL;
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
-	cub->ray->len_to_wall_real = sqrt(pow(cub->ray->x - cub->cam->x, 2) +
-			pow(cub->ray->y - cub->cam->y, 2));
-	return (cub->ray->len_to_wall_real * fabs(cos(fabs(cub->ray->mid_rel_angle))));
+	cub->ray->len_to_wall_real = sqrtf(powf(cub->ray->x - cub->cam->x, 2) +
+			powf(cub->ray->y - cub->cam->y, 2));
+	return (cub->ray->len_to_wall_real * fabsf(cosf(fabsf(cub->ray->mid_rel_angle))));
 }
 
 int		is_next_cell_free(t_cub *cub)
 {
-	double	cell_x;
-	double	cell_y;
-	double	off_x;
-	double	off_y;
+	float	cell_x;
+	float	cell_y;
+	float	off_x;
+	float	off_y;
 	char	cell;
 
-	cell_x = -1.;
-	cell_y = -1.;
-	off_x = modf(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
-	off_y = modf(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
+	cell_x = -1.f;
+	cell_y = -1.f;
+	off_x = modff(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
+	off_y = modff(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
 	cell = get_cell((int)cell_x, (int)cell_y, cub);
 	if (cell == '2')
@@ -49,19 +49,19 @@ int		is_next_cell_free(t_cub *cub)
 	return (is_cell_free(cell));
 }
 
-void	find_next_cross(double off_x, double off_y, t_cub *cub)
+void	find_next_cross(float off_x, float off_y, t_cub *cub)
 {
-	double len_x;
-	double len_y;
+	float len_x;
+	float len_y;
 
 	if (cub->ray->cos > 0)
-		len_x = ((double)cub->map->blk_x - off_x) / cub->ray->cos;
+		len_x = ((float)cub->map->blk_x - off_x) / cub->ray->cos;
 	else
-		len_x = fabs(off_x / cub->ray->cos);
+		len_x = fabsf(off_x / cub->ray->cos);
 	if (cub->ray->sin > 0)
-		len_y = ((double)cub->map->blk_y - off_y) / cub->ray->sin;
+		len_y = ((float)cub->map->blk_y - off_y) / cub->ray->sin;
 	else
-		len_y = fabs(off_y / cub->ray->sin);
+		len_y = fabsf(off_y / cub->ray->sin);
 	if (len_x < len_y)
 	{
 		cub->ray->x += len_x * cub->ray->cos;
@@ -76,30 +76,30 @@ void	find_next_cross(double off_x, double off_y, t_cub *cub)
 	}
 }
 
-void	ray_set_dir(double len_x, double len_y, t_cub *cub)
+void	ray_set_dir(float len_x, float len_y, t_cub *cub)
 {
 	if (len_x < len_y)
 		if (cub->ray->cos > 0)
 		{
 			cub->ray->dir = DIR_RIGHT;
-			cub->ray->x += (double)cub->map->blk_x / 10000;
+			cub->ray->x += (float)cub->map->blk_x / 10000;
 		}
 		else
 		{
 			cub->ray->dir = DIR_LEFT;
-			cub->ray->x -= (double)cub->map->blk_x / 10000;
+			cub->ray->x -= (float)cub->map->blk_x / 10000;
 		}
 	else
 	{
 		if (cub->ray->sin > 0)
 		{
 			cub->ray->dir = DIR_BOT;
-			cub->ray->y += (double)cub->map->blk_y / 10000;
+			cub->ray->y += (float)cub->map->blk_y / 10000;
 		}
 		else
 		{
 			cub->ray->dir = DIR_TOP;
-			cub->ray->y -= (double)cub->map->blk_y / 10000;
+			cub->ray->y -= (float)cub->map->blk_y / 10000;
 		}
 	}
 }

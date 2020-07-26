@@ -24,8 +24,8 @@ void	cub_init_ray(t_cub *cub)
 {
 	cub->ray->cos = 0;
 	cub->ray->sin = 0;
-	cub->ray->mid_rel_angle = 0.;
-	cub->ray->len_to_wall_real = 0.;
+	cub->ray->mid_rel_angle = 0.f;
+	cub->ray->len_to_wall_real = 0.f;
 	cub->ray->x = 0;
 	cub->ray->y = 0;
 	cub->ray->dir = 0;
