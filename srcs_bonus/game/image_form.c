@@ -24,13 +24,14 @@ int		process_game(t_cub *cub)
 	time_t start, end;
 
 	start = clock();
-	if (!cub->frm_0 && !(cub->frm_0 = frame_init(cub->win->mlx_ptr,
-		cub->win->x, cub->win->y)) && !(cub->frm_1 =
-			frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y)))
+	if (!cub->frm_0
+		&& (!(cub->frm_0 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))
+		|| !(cub->frm_1 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
+	if (cub->hud->need_update)
+		update_hud(cub);
 	make_frame(cub);
-	add_hud(cub);
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr,
 							cub->frm_0->ptr, 0, 0);
 	tmp_frm = cub->frm_0;
@@ -74,20 +75,57 @@ void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 	f_y = -1;
 	while (++f_y < cub->win->y)
 	{
-		if (angle > c_angl)
+		if ((((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] & 0xff000000) == HUD_TRANSP_MASK)
+			;
+		else if (angle > c_angl)
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
 		else if (angle > f_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
-
-//				add_shadow(get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0),
-//					len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =  //get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
+				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f -
+											 get_y_tex(
+												 angle,
+												 len_to_wall,
+												 cub),
+										 cub->ray->wall),len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
 		else
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->flor; //add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub); // cub->tex->flor;
 		angle -= d_angle;
 	}
 	if (cub->ray->spr)
 		frame_add_sprite(f_x, cub);
 }
+
+//void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
+//{
+//	int		f_y;
+//	float	angle;
+//	float	d_angle;
+//	float	c_angl;
+//	float	f_angl;
+//
+//	c_angl = atanf((cub->map->blk_z - cub->cam->z) / len_to_wall);
+//	f_angl = atanf((-cub->cam->z) / len_to_wall);
+////	f_angl = (-cub->cam->z) * c_angl / (cub->map->blk_z - cub->cam->z);
+//	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
+//	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
+//	f_y = f_x - cub->win->x;
+//	int all = cub->win->x * cub->win->y;
+//	while ((f_y += cub->win->x) < all)
+//	{
+//		if (angle > c_angl)
+//			((int*)cub->frm_0->data)[f_y] = cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
+//		else if (angle > f_angl)
+//			((int*)cub->frm_0->data)[f_y] = get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
+//
+////				add_shadow(get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0),
+////					len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
+//		else
+//			((int*)cub->frm_0->data)[f_y] = cub->tex->flor; //add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
+//		angle -= d_angle;
+//	}
+//	if (cub->ray->spr)
+//		frame_add_sprite(f_x, cub);
+//}
 
 t_img	*frame_init(void *mlx_ptr, int x, int y)
 {

@@ -15,7 +15,7 @@
 void		frame_add_sprite(int frame_x, t_cub *cub)
 {
 	float		d_angle;
-	t_sprites	*spr;
+	t_ray_sprites	*spr;
 
 	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
 	spr = sprites_last(cub->ray->spr);
@@ -38,7 +38,7 @@ void		frame_add_sprite(int frame_x, t_cub *cub)
 }
 
 void		frame_add_sprite_one(int frame_x, float d_angle,
-		t_sprites *spr, t_cub *cub)
+								 t_ray_sprites *spr, t_cub *cub)
 {
 	float			f_angl;
 	float			c_angl;
@@ -52,11 +52,13 @@ void		frame_add_sprite_one(int frame_x, float d_angle,
 	frame_y = -1;
 	while (spr->sp_x >= 0 && ++frame_y < cub->win->y)
 	{
-		if (angle < c_angl && angle > f_angl)
+		if ((((int*)cub->frm_0->data)[frame_y * cub->win->x + frame_x] & 0xff000000) == HUD_TRANSP_MASK)
+			;
+		else if (angle < c_angl && angle > f_angl)
 		{
-			pixel = get_pixel_wall(spr->sp_x,
-								   1.f - get_y_wall(angle, spr->len_to_sp, cub), cub,
-								   1);
+			pixel = get_pixel_tex(spr->sp_x,
+								  1.f - get_y_tex(angle, spr->len_to_sp, cub),
+								  spr->tex);
 			if (pixel != 0)
 				((unsigned int*)cub->frm_0->data)[frame_y * cub->win->x +
 				frame_x] = add_shadow(pixel, spr->len_to_sp, cub);
@@ -65,7 +67,7 @@ void		frame_add_sprite_one(int frame_x, float d_angle,
 	}
 }
 
-t_sprites	*sprites_last(t_sprites *spr)
+t_ray_sprites	*sprites_last(t_ray_sprites *spr)
 {
 	if (!spr)
 		return (NULL);

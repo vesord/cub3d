@@ -77,10 +77,18 @@ set(SRC_FILES_BONUS
         srcs_bonus/cub_init/cub_init.c
         srcs_bonus/cub_init/cub_init_struct.c
         srcs_bonus/cub_init/cub_init_struct_2.c
+        srcs_bonus/cub_init/cub_init_struct_tx_walls.c
+        srcs_bonus/cub_init/cub_init_struct_tx_floors_scrns.c
+        srcs_bonus/cub_init/cub_init_struct_tx_skybox.c
+        srcs_bonus/cub_init/cub_init_struct_tx_spr_go.c
+        srcs_bonus/cub_init/cub_init_struct_tx_spr_ngo.c
         srcs_bonus/cub_init/cub_destroy.c
-        srcs_bonus/cub_init/cub_destroy_2.c
+        srcs_bonus/cub_init/cub_destroy_tex.c
+        srcs_bonus/cub_init/cub_destroy_tex_2.c
         srcs_bonus/cub_init/player_init.c
+
         srcs_bonus/config_parse/config_parse.c
+        srcs_bonus/config_parse/config_parse_line_type.c
         srcs_bonus/config_parse/config_parse_lines.c
         srcs_bonus/config_parse/parse_utils.c
         srcs_bonus/config_parse/parse_map.c
@@ -91,6 +99,7 @@ set(SRC_FILES_BONUS
         srcs_bonus/game/image_form.c
         srcs_bonus/game/key_process_loop.c
         srcs_bonus/game/key_process_game.c
+        srcs_bonus/game/select_textures.c
         srcs_bonus/game/walls.c
         srcs_bonus/game/textures_sprites.c
         srcs_bonus/game/cells.c

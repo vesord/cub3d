@@ -36,9 +36,16 @@ char	get_cell(int x, int y, t_cub *cub)
 	return ('1');
 }
 
-int		is_cell_free(char c)
+int		is_cell_sprite(char c)
 {
-	if (ft_strchr("02NWES", c))
+	if (ft_strchr("*$?wceslbgjlMDROPLBGHJK", c))
+			return (1);
+	return (0);
+}
+
+int		is_cell_wall(char c)
+{
+	if (ft_strchr("123456789", c)) // TODO: add not walking through sprites
 		return (1);
 	return (0);
 }

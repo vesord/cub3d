@@ -16,6 +16,10 @@ void	player_init(t_cub *cub)
 {
 	map_set_scales(cub);
 	cam_init(cub);
+	cub->hud->need_update = 1;
+	cub->hud->need_update_weap = 1;
+	cub->hud->need_update_hp = 1;
+	cub->hud->life = 3;
 }
 
 void	map_set_scales(t_cub *cub)

@@ -12,7 +12,7 @@
 
 #include "cub3d_bonus.h"
 
-int		parse_line_texture(char *line, t_cub *cub, t_img *img)
+size_t	parse_line_texture(char *line, t_cub *cub, t_img *img)
 {
 	int i;
 
@@ -32,7 +32,7 @@ int		parse_line_texture(char *line, t_cub *cub, t_img *img)
 	return (parse_line_texture_ret(cub, img));
 }
 
-int		parse_line_color(char *line, t_cub *cub, int *color)
+size_t	parse_line_color(char *line, t_cub *cub, int *color)
 {
 	int i;
 
@@ -47,7 +47,7 @@ int		parse_line_color(char *line, t_cub *cub, int *color)
 	return (parse_line_texture_ret(cub, color));
 }
 
-int		parse_line_resolution(char *line, t_cub *cub)
+size_t	parse_line_resolution(char *line, t_cub *cub)
 {
 	int i;
 

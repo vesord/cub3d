@@ -50,17 +50,35 @@ void	cub_init_key(t_cub *cub)
 
 void	cub_init_hud(t_cub *cub)
 {
+	cub->hud->need_update = 0;
+	cub->hud->need_update_weap = 0;
+	cub->hud->need_update_hp = 0;
 	cub->hud->life = 0;
 	cub->hud->mana = 0;
-	cub->hud->face = NULL;
-	cub->hud->wand = NULL;
-	if (!(cub->hud->face = (t_img*)malloc(sizeof(t_img))))
+	cub->hud->tx_face = NULL;
+	cub->hud->tx_wand = NULL;
+	cub->hud->tx_hp = NULL;
+	if (!(cub->hud->tx_face = (t_img*)malloc(sizeof(t_img))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->hud->face);
+		cub_init_img(cub->hud->tx_face);
+	if (!(cub->hud->tx_wand = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->hud->tx_wand);
+	if (!(cub->hud->tx_hp = (t_img*)malloc(sizeof(t_img))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_img(cub->hud->tx_hp);
+}
 
-	if (!(cub->hud->wand = (t_img*)malloc(sizeof(t_img))))
-		cub_destroy(cub, ERR_NO_MEMORY);
-	else
-		cub_init_img(cub->hud->wand);
+void	cub_init_img(t_img *img)
+{
+	img->width = 0;
+	img->height = 0;
+	img->btp = 0;
+	img->sz_ln = 0;
+	img->endian = 0;
+	img->ptr = NULL;
+	img->data = NULL;
 }

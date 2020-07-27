@@ -19,6 +19,7 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 	iterations = 0;
 	cub->ray->x = cub->cam->x;
 	cub->ray->y = cub->cam->y;
+	cub->ray->wall = NULL;
 	cub->ray->mid_rel_angle = mid_angle - angle;
 	cub->ray->sin = sinf(angle);
 	cub->ray->cos = cosf(angle);
@@ -44,9 +45,16 @@ int		is_next_cell_free(t_cub *cub)
 	off_y = modff(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
 	cell = get_cell((int)cell_x, (int)cell_y, cub);
-	if (cell == '2')
+	if (is_cell_sprite(cell))
 		count_sprite(cell, cub);
-	return (is_cell_free(cell));
+//	if (is_cell_walkable(cell) && cub->ray->walk_dst == 0.f)	// TODO: set param to not walkable sprites as wall
+//		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2) + powf(cub->ray->y - cub->cam->y, 2));
+	if (is_cell_wall(cell))
+	{
+		cub->ray->wall = select_wall(cell, cub);
+		return (0);
+	}
+	return (1);
 }
 
 void	find_next_cross(float off_x, float off_y, t_cub *cub)

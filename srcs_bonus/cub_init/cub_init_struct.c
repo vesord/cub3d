@@ -12,6 +12,8 @@
 
 #include "cub3d_bonus.h"
 
+void	cub_init_textures_2(t_cub *cub);
+
 void	cub_init_win(t_cub *cub)
 {
 	cub->win->mlx_ptr = NULL;
@@ -29,52 +31,57 @@ void	cub_init_ray(t_cub *cub)
 	cub->ray->x = 0;
 	cub->ray->y = 0;
 	cub->ray->dir = 0;
+	cub->ray->wall = NULL;
 	cub->ray->spr = NULL;
 }
 
 void	cub_init_textures(t_cub *cub)
 {
 	cub_init_textures_null(cub->tex);
-	if (!(cub->tex->ea = (t_img*)malloc(sizeof(t_img))))
+	if (!(cub->tex->tx_walls = (t_tx_walls*)malloc(sizeof(t_tx_walls))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->tex->ea);
-	if (!(cub->tex->we = (t_img*)malloc(sizeof(t_img))))
+		cub_init_tex_walls(cub);
+	if (!(cub->tex->tx_floors = (t_tx_floors*)malloc(sizeof(t_tx_floors))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->tex->we);
-	if (!(cub->tex->no = (t_img*)malloc(sizeof(t_img))))
+		cub_init_tex_floors(cub);
+	if (!(cub->tex->tx_screens = (t_tx_screens*)malloc(sizeof(t_tx_screens))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->tex->no);
-	if (!(cub->tex->so = (t_img*)malloc(sizeof(t_img))))
+		cub_init_tex_screens(cub);
+	cub_init_textures_2(cub);
+}
+
+void	cub_init_textures_2(t_cub *cub)
+{
+	if (!(cub->tex->tx_spr_go = (t_tx_spr_go*)malloc(sizeof(t_tx_spr_go))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->tex->so);
-	if (!(cub->tex->s0 = (t_img*)malloc(sizeof(t_img))))
+		cub_init_tex_spr_go(cub);
+	if (!(cub->tex->tx_spr_ngo = (t_tx_spr_ngo*)malloc(sizeof(t_tx_spr_ngo))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
-		cub_init_img(cub->tex->s0);
+		cub_init_tex_spr_ngo(cub);
+	if (!(cub->tex->tx_sky_rick = (t_tx_skybox*)malloc(sizeof(t_tx_skybox))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_tex_skybox_rick(cub);
+	if (!(cub->tex->tx_sky_mew = (t_tx_skybox*)malloc(sizeof(t_tx_skybox))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	else
+		cub_init_tex_skybox_mew(cub);
 }
 
 void	cub_init_textures_null(t_textures *tex)
 {
-	tex->ea = NULL;
-	tex->no = NULL;
-	tex->we = NULL;
-	tex->so = NULL;
-	tex->s0 = NULL;
-	tex->ceil = 0;
 	tex->flor = 0;
-}
-
-void	cub_init_img(t_img *img)
-{
-	img->width = 0;
-	img->height = 0;
-	img->btp = 0;
-	img->sz_ln = 0;
-	img->endian = 0;
-	img->ptr = NULL;
-	img->data = NULL;
+	tex->ceil = 0;
+	tex->tx_floors = NULL;
+	tex->tx_walls = NULL;
+	tex->tx_spr_ngo = NULL;
+	tex->tx_screens = NULL;
+	tex->tx_sky_mew = NULL;
+	tex->tx_sky_rick = NULL;
+	tex->tx_spr_go = NULL;
 }

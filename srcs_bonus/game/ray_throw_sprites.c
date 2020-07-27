@@ -14,7 +14,7 @@
 
 void		count_sprite(char type, t_cub *cub)
 {
-	t_sprites	*spr;
+	t_ray_sprites	*spr;
 
 	spr = cub->ray->spr;
 	if (!spr)
@@ -28,18 +28,17 @@ void		count_sprite(char type, t_cub *cub)
 	spr->next = new_sprite(spr, type, cub);
 }
 
-t_sprites	*new_sprite(t_sprites *prev, char type, t_cub *cub)
+t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub)
 {
-	t_sprites	*new_spr;
+	t_ray_sprites	*new_spr;
 	float		sp_y_mid;
 	float		sp_x_mid;
 
-	if (!(new_spr = (t_sprites*)malloc(sizeof(t_sprites))))
+	if (!(new_spr = (t_ray_sprites*)malloc(sizeof(t_ray_sprites))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	new_spr->next = NULL;
 	new_spr->prev = prev;
-	if (type == '2')
-		new_spr->tex_data = cub->tex->s0->data;
+	new_spr->tex = select_sprite(type, cub);
 	modff(cub->ray->x / cub->map->blk_x, &sp_x_mid);
 	modff(cub->ray->y / cub->map->blk_y, &sp_y_mid);
 	sp_x_mid = (sp_x_mid + 0.5f) * cub->map->blk_x;

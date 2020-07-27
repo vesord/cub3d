@@ -12,26 +12,40 @@
 
 #include "cub3d_bonus.h"
 
-void	add_hud(t_cub *cub)
+void	update_hud(t_cub *cub)
 {
-	//add_hud_face(cub);
+
+	add_hud_face(cub);
 	add_hud_wand(cub);
+	cub->hud->need_update = 0;
 }
 
 void	add_hud_face(t_cub *cub)
 {
-//	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr, cub->hud->face->ptr, 0, 0);
-	put_tex_to_img(cub->hud->face, cub->frm_0);
+	static int	face_added;
+
+	if (!face_added)
+	{
+		put_tex_to_img(cub->hud->tx_face, cub->frm_0, HUD_TRANSP_MASK);
+		put_tex_to_img(cub->hud->tx_face, cub->frm_1, HUD_TRANSP_MASK);
+	}
+	if (!face_added)
+		face_added = 1;
 }
 
 void	add_hud_wand(t_cub *cub)
 {
-	put_tex_to_img(cub->hud->wand, cub->frm_0);
+	if (cub->hud->need_update_weap)
+	{
+		put_tex_to_img(cub->hud->tx_wand, cub->frm_0, HUD_TRANSP_MASK);
+		put_tex_to_img(cub->hud->tx_wand, cub->frm_1, HUD_TRANSP_MASK);
+	}
+	cub->hud->need_update_weap = 0;
 }
 
 unsigned int	get_pixel_texture(float off_x, float off_y, t_img *img);
 
-void	put_tex_to_img(t_img *tex, t_img *img)
+void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp)
 {
 	int				x;
 	int				y;
@@ -45,7 +59,7 @@ void	put_tex_to_img(t_img *tex, t_img *img)
 		{
 			pixel = get_pixel_texture((float)(x) / img->width, (float)(y) / img->height, tex);
 			if (pixel)
-				((unsigned int*)(img->data))[img->width * y + x] = pixel;
+				((unsigned int*)(img->data))[img->width * y + x] = pixel | transp;
 		}
 	}
 }

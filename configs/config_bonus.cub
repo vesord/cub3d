@@ -1,25 +1,150 @@
+#       ___WALLS___
+#   W1 | 1 - wall 1
+#   W2 | 2 - wall 2
+#   W3 | 3 - wall 3
+#   W4 | 4 - wall 4
+#   W5 | 5 - wall 5
+#   W6 | 6 - wall 6
+#   W7 | 7 - wall 7
+#   W8 | 8 - wall 8
+#   W9 | 9 - wall 9
+#
+#       ___FLOORS___
+#   FM - floor Mewni
+#   FE - floor Rick
+#   FC - floor Ludo Castle
+#
+#       ___SCREENS___
+#   WI - victory
+#   DI - you died
+#   R0 - reserved
+#
+#       ___SPRITES_GO_THROUGH___
+#   TR | * - trap
+#   LI | $ - life
+#   TU | ? - tutorial
+#   DW | w - dropped wand
+#   PL | c - portal to Ludo castle
+#   PR | e - portal to Rick (earth)
+#   SM | s - secret on Mewni
+#   LB | l - Ludo beaten
+#   BB | b - Buffrog beaten
+#   M1 | g - Mewni sprite 1
+#   L1 | j - Ludo castle sprite 1
+#   E1 | p - Earth Rick sprite 1
+#
+#       ___SPRITES_NO_GO_THROUGH___
+#   MO | M - Butterfly's mom
+#   DA | D - Butterfly's dad
+#   RS | R - Rick Sanches
+#   MS | O - mOrty Smith
+#   PH | P - Pony Head
+#   LU | L - Ludo
+#   BF | B - Buffrog
+#   M2 | G - Mewni sprite 2
+#   M3 | H - Mewni sprite 3
+#   L2 | J - Ludo castle sprite 2
+#   L3 | K - Ludo castle sprite 3
+#
+#       ___SKYBOXES___	
+#   S0 - Mewni skybox north
+#   S1 - Mewni skybox south
+#   S2 - Mewni skybox west
+#   S3 - Mewni skybox east
+#   S4 - Mewni skybox top
+#   S5 - RIck skybox north
+#   S6 - RIck skybox south
+#   S7 - RIck skybox west
+#   S8 - RIck skybox east
+#   S9 - RIck skybox top
+#
+#
+#       ___HUD_TEXTURES___
+#   WA - wand
+#   HP - HP heart
+#   FL - forelock
+#   AX - axe (probably will added)
+#
+#       ___ANIMATION___ (ADD SOON)
+#   A1 - anim 1
+#   A2 - anim 2
+#   A3 - anim 3
+#
+
+
 R 640 480
 
-NO ./imgs/rainbow1.xpm
-WE ./imgs/rainbow1.xpm
-SO ./imgs/rainbow1.xpm
-EA ./imgs/rainbow1.xpm
-S  ./imgs/ponyhead.xpm
-HF ./imgs/forelock.xpm
-HW ./imgs/wand.xpm
+W1 ./imgs/rainbow1.xpm
+W2 ./imgs/rainbow1.xpm
+W3 ./imgs/rainbow1.xpm
+W4 ./imgs/rainbow1.xpm
+W5 ./imgs/rainbow1.xpm
+W6 ./imgs/rainbow1.xpm
+W7 ./imgs/rainbow1.xpm
+W8 ./imgs/rainbow1.xpm
+W9 ./imgs/rainbow1.xpm
+
+FM ./imgs/rainbow1.xpm
+FE ./imgs/rainbow1.xpm
+FC ./imgs/rainbow1.xpm
+
+WI ./imgs/rainbow1.xpm
+DI ./imgs/rainbow1.xpm
+R0 ./imgs/rainbow1.xpm
+
+TR ./imgs/rainbow1.xpm
+LI ./imgs/rainbow1.xpm
+TU ./imgs/rainbow1.xpm
+DW ./imgs/rainbow1.xpm
+PL ./imgs/rainbow1.xpm
+PR ./imgs/rainbow1.xpm
+SM ./imgs/rainbow1.xpm
+LB ./imgs/rainbow1.xpm
+BB ./imgs/rainbow1.xpm
+M1 ./imgs/rainbow1.xpm
+L1 ./imgs/rainbow1.xpm
+E1 ./imgs/rainbow1.xpm
+
+MO ./imgs/rainbow1.xpm
+DA ./imgs/rainbow1.xpm
+RS ./imgs/rainbow1.xpm
+MS ./imgs/rainbow1.xpm
+PH ./imgs/ponyhead.xpm
+LU ./imgs/rainbow1.xpm
+BF ./imgs/rainbow1.xpm
+M2 ./imgs/rainbow1.xpm
+M3 ./imgs/rainbow1.xpm
+L2 ./imgs/rainbow1.xpm
+L3 ./imgs/rainbow1.xpm
+
+S0 ./imgs/rainbow1.xpm
+S1 ./imgs/rainbow1.xpm
+S2 ./imgs/rainbow1.xpm
+S3 ./imgs/rainbow1.xpm
+S4 ./imgs/rainbow1.xpm
+S5 ./imgs/rainbow1.xpm
+S6 ./imgs/rainbow1.xpm
+S7 ./imgs/rainbow1.xpm
+S8 ./imgs/rainbow1.xpm
+S9 ./imgs/rainbow1.xpm
+
+WA ./imgs/wand.xpm
+HP ./imgs/rainbow1.xpm
+FL ./imgs/forelock.xpm
+
 
 C  135,206,235
 F  244,164,96
 
 111111111111111111
-10002000W000000001
-100000000000200001
-100002000000000001
-100002000000000001
-100000000020200001
-100000000000200001
-100000220000000001
+1000P000W000000001
+100000000000P00001
+10000P000000000001
+10000P000000000001
+1000000000P0P00001
+100000000000P00001
+100000PP0000000001
 100000000000000001
-100002000020020001
+10000P0000P00P0001
 100000000000000001
 111111111111111111
