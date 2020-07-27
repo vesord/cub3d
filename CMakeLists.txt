@@ -108,6 +108,8 @@ set(SRC_FILES_BONUS
 
         srcs_bonus/game/hud.c
         srcs_bonus/game/shadows.c
+        srcs_bonus/game/interactions.c
+        srcs_bonus/game/show_screen.c
         srcs_bonus/game/get_length_ceil_floor.c
         )
 

@@ -184,12 +184,13 @@ typedef struct	s_key
 
 typedef struct	s_hud
 {
-	int		life;
 	t_img	*tx_face;
 	t_img	*tx_wand;
 	t_img	*tx_hp;
+	int		hp;
+	int 	status;
 	int 	mana;
-	int		need_update;
+	int		need_update_face;
 	int		need_update_weap;
 	int		need_update_hp;
 }				t_hud;
@@ -443,7 +444,8 @@ void			process_step_direction(float angle, t_cub *cub);
 float			throw_ray(t_cub *cub, float angle, float mid_angle);
 void			find_next_cross(float off_x, float off_y, t_cub *cub);
 int				is_next_cell_free(t_cub *cub);
-char			get_cell(int x, int y, t_cub *cub);
+char			get_cell_map(int x, int y, t_cub *cub);
+char			get_cell_ray(int x, int y, t_cub *cub);
 int				is_cell_wall(char c);
 int				is_cell_sprite(char c);
 int				is_cell_walkable(char c);
@@ -483,6 +485,8 @@ float	get_len_flor(float angle, t_cub *cub);
 void	update_hud(t_cub *cub);
 void	add_hud_face(t_cub *cub);
 void	add_hud_wand(t_cub *cub);
+
+void	set_status_screen(t_cub *cub);
 
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp);
 

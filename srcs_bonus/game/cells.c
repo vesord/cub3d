@@ -17,7 +17,14 @@
 **	as MIN_INT value :/
 */
 
-char	get_cell(int x, int y, t_cub *cub)
+char	get_cell_map(int x, int y, t_cub *cub)
+{
+	if (x < 0 || y < 0 || x > cub->map->max_x || y > cub->map->max_y)
+		return ('1');
+	return (cub->map->field[y][x]);
+}
+
+char	get_cell_ray(int x, int y, t_cub *cub)
 {
 	if (x < 0 || y < 0)
 		return ('1');

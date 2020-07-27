@@ -50,10 +50,11 @@ void	cub_init_key(t_cub *cub)
 
 void	cub_init_hud(t_cub *cub)
 {
-	cub->hud->need_update = 0;
+	cub->hud->need_update_face = 0;
 	cub->hud->need_update_weap = 0;
 	cub->hud->need_update_hp = 0;
-	cub->hud->life = 0;
+	cub->hud->status = 0;
+	cub->hud->hp = 0;
 	cub->hud->mana = 0;
 	cub->hud->tx_face = NULL;
 	cub->hud->tx_wand = NULL;

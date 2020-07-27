@@ -47,7 +47,7 @@ int		is_next_cell_free(t_cub *cub)
 	off_x = modff(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
 	off_y = modff(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
-	cell = get_cell((int)cell_x, (int)cell_y, cub);
+	cell = get_cell_ray((int) cell_x, (int) cell_y, cub);
 	if (is_cell_sprite(cell))
 		count_sprite(cell, cub);
 	if (cub->ray->walk_dst == 0.f && !is_cell_walkable(cell))

@@ -89,10 +89,10 @@ FE ./imgs/rainbow1.xpm
 FC ./imgs/rainbow1.xpm
 
 WI ./imgs/rainbow1.xpm
-DI ./imgs/rainbow1.xpm
+DI ./imgs/die.xpm
 R0 ./imgs/rainbow1.xpm
 
-TR ./imgs/rainbow1.xpm
+TR ./imgs/trap.xpm
 LI ./imgs/rainbow1.xpm
 TU ./imgs/rainbow1.xpm
 DW ./imgs/rainbow1.xpm
@@ -129,7 +129,7 @@ S8 ./imgs/rainbow1.xpm
 S9 ./imgs/rainbow1.xpm
 
 WA ./imgs/wand.xpm
-HP ./imgs/rainbow1.xpm
+HP ./imgs/hp.xpm
 FL ./imgs/forelock.xpm
 
 
@@ -139,12 +139,12 @@ F  244,164,96
 111111111111111111
 1000P000W000000001
 100000000000P00001
-10000P000000000001
-10000P000000000001
-1000000000P0P00001
-100000000000P00001
-100000PP0000000001
 100000000000000001
-10000P0000P00P0001
+10000*000*00000001
+100000*00000000001
+1000*000*000P00001
+100000P00000000001
+100000000000000001
+1000000000000P0001
 100000000000000001
 111111111111111111
