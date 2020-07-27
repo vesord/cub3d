@@ -163,6 +163,7 @@ typedef struct	s_ray
 	float		y;
 	float		mid_rel_angle;
 	float		len_to_wall_real;
+	float		walk_dst;
 	float		sin;
 	float		cos;
 	int			dir;
@@ -445,6 +446,7 @@ int				is_next_cell_free(t_cub *cub);
 char			get_cell(int x, int y, t_cub *cub);
 int				is_cell_wall(char c);
 int				is_cell_sprite(char c);
+int				is_cell_walkable(char c);
 void			ray_set_dir(float len_x, float len_y, t_cub *cub);
 
 t_img 			*select_sprite(char type, t_cub *cub);

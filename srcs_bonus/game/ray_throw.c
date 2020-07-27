@@ -21,6 +21,7 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 	cub->ray->y = cub->cam->y;
 	cub->ray->wall = NULL;
 	cub->ray->mid_rel_angle = mid_angle - angle;
+	cub->ray->walk_dst = 0.f;
 	cub->ray->sin = sinf(angle);
 	cub->ray->cos = cosf(angle);
 	cub->ray->spr = NULL;
@@ -28,6 +29,8 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 		iterations++;
 	cub->ray->len_to_wall_real = sqrtf(powf(cub->ray->x - cub->cam->x, 2) +
 			powf(cub->ray->y - cub->cam->y, 2));
+	if (cub->ray->walk_dst == 0.f)
+		cub->ray->walk_dst = cub->ray->len_to_wall_real;
 	return (cub->ray->len_to_wall_real * fabsf(cosf(fabsf(cub->ray->mid_rel_angle))));
 }
 
@@ -47,8 +50,8 @@ int		is_next_cell_free(t_cub *cub)
 	cell = get_cell((int)cell_x, (int)cell_y, cub);
 	if (is_cell_sprite(cell))
 		count_sprite(cell, cub);
-//	if (is_cell_walkable(cell) && cub->ray->walk_dst == 0.f)	// TODO: set param to not walkable sprites as wall
-//		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2) + powf(cub->ray->y - cub->cam->y, 2));
+	if (cub->ray->walk_dst == 0.f && !is_cell_walkable(cell))
+		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2) + powf(cub->ray->y - cub->cam->y, 2));
 	if (is_cell_wall(cell))
 	{
 		cub->ray->wall = select_wall(cell, cub);

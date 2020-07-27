@@ -45,7 +45,14 @@ int		is_cell_sprite(char c)
 
 int		is_cell_wall(char c)
 {
-	if (ft_strchr("123456789", c)) // TODO: add not walking through sprites
+	if (ft_strchr("123456789", c))
+		return (1);
+	return (0);
+}
+
+int		is_cell_walkable(char c)
+{
+	if (ft_strchr("NWES0*$?wceslbgjl", c))
 		return (1);
 	return (0);
 }

@@ -42,6 +42,8 @@ void	process_step(t_cub *cub, int dir)
 		process_step_direction(cub->cam->cam_direction_yaw + M_PI_2, cub);
 }
 
+float	get_walk_len_dir(float angle, t_cub *cub);
+
 void	process_step_direction(float angle, t_cub *cub)
 {
 	float		len_to_wall_x;
@@ -52,14 +54,13 @@ void	process_step_direction(float angle, t_cub *cub)
 	sin_ = sinf(angle);
 	cos_ = cosf(angle);
 	if (sin_ > 0)
-		len_to_wall_y = throw_ray(cub, M_PI_2, M_PI_2) - cub->cam->dst_to_wall;
+		len_to_wall_y = get_walk_len_dir(M_PI_2, cub);
 	else
-		len_to_wall_y = throw_ray(cub, -M_PI_2, -M_PI_2)
-			- cub->cam->dst_to_wall;
+		len_to_wall_y = get_walk_len_dir(-M_PI_2, cub);
 	if (cos_ > 0)
-		len_to_wall_x = throw_ray(cub, 0, 0) - cub->cam->dst_to_wall;
+		len_to_wall_x = get_walk_len_dir(0, cub);
 	else
-		len_to_wall_x = throw_ray(cub, M_PI, M_PI) - cub->cam->dst_to_wall;
+		len_to_wall_x = get_walk_len_dir(M_PI, cub);
 	if (len_to_wall_y > fabs(cub->cam->step * sin_))
 		cub->cam->y += cub->cam->step * sin_;
 	else
@@ -68,4 +69,10 @@ void	process_step_direction(float angle, t_cub *cub)
 		cub->cam->x += cub->cam->step * cos_;
 	else
 		cub->cam->x += len_to_wall_x * cos_;
+}
+
+float	get_walk_len_dir(float angle, t_cub *cub)
+{
+	throw_ray(cub, angle, angle);
+	return (cub->ray->walk_dst - cub->cam->dst_to_wall);
 }
