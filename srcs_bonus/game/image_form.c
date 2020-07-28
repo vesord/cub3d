@@ -23,9 +23,9 @@ int		process_game(t_cub *cub)
 	t_img *tmp_frm;
 
 	//
-	time_t start, end;
+//	time_t start, end;
 
-	start = clock();
+//	start = clock();
 	if (!cub->frm_0
 		&& (!(cub->frm_0 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))
 		|| !(cub->frm_1 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))))
@@ -42,8 +42,8 @@ int		process_game(t_cub *cub)
 	tmp_frm = cub->frm_0;
 	cub->frm_0 = cub->frm_1;
 	cub->frm_1 = tmp_frm;
-	end = clock();
-	printf("FPS: %f\n", 1 /  ((float)(end - start) / CLOCKS_PER_SEC ));
+//	end = clock();
+//	printf("FPS: %f\n", 1 /  ((float)(end - start) / CLOCKS_PER_SEC ));
 	return (0);
 }
 

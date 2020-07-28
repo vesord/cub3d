@@ -12,6 +12,8 @@
 
 #include "cub3d_bonus.h"
 
+void	process_action(t_cub *cub);
+
 void	process_key(t_cub *cub)
 {
 	if (cub->key->l_arrow)
@@ -28,6 +30,8 @@ void	process_key(t_cub *cub)
 		process_step(cub, STEP_BACK);
 	if (cub->key->esc)
 		esc_press(cub);
+	if (cub->key->action)
+		process_action(cub);
 }
 
 void	process_step(t_cub *cub, int dir)
@@ -75,4 +79,29 @@ float	get_walk_len_dir(float angle, t_cub *cub)
 {
 	throw_ray(cub, angle, angle);
 	return (cub->ray->walk_dst - cub->cam->dst_to_wall);
+}
+
+void	process_action(t_cub *cub)
+{
+	float	cam_x;
+	float	cam_y;
+	char	cell;
+
+	throw_ray(cub, cub->cam->cam_direction_yaw, cub->cam->cam_direction_yaw);
+	modff(cub->cam->x / cub->map->blk_x, &cam_x);
+	modff(cub->cam->y / cub->map->blk_y, &cam_y);
+	cell = get_cell_ray((int)cam_x, (int)cam_y, cub);
+	if (cub->ray->dir == DIR_TOP)
+		cam_y -= 1.f;
+	if (cub->ray->dir == DIR_BOT)
+		cam_y += 1.f;
+	if (cub->ray->dir == DIR_LEFT)
+		cam_x -= 1.f;
+	if (cub->ray->dir == DIR_RIGHT)
+		cam_x += 1.f;
+	if (is_cell_door_opened(cell))
+		(cub->map->field)[(int)cam_y][(int)cam_x] = (char)ft_toupper(cell);
+	if (is_cell_door_closed(cell))
+		(cub->map->field)[(int)cam_y][(int)cam_x] = (char)ft_tolower(cell);
+	cub->key->action = 0;
 }

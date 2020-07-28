@@ -12,6 +12,8 @@
 
 #include "cub3d_bonus.h"
 
+void	restart_game(t_cub *cub);
+
 int		key_press(int keycode, t_cub *cub)
 {
 	if (keycode == XK_w)
@@ -28,6 +30,10 @@ int		key_press(int keycode, t_cub *cub)
 		cub->key->r_arrow = 1;
 	if (keycode == XK_Escape)
 		cub->key->esc = 1;
+	if (keycode == XK_Control_L)
+		cub->key->action = 1;
+	if (cub->hud->status == -1 && keycode == 65293)
+		restart_game(cub);
 	return (0);
 }
 
@@ -47,6 +53,8 @@ int		key_release(int keycode, t_cub *cub)
 		cub->key->r_arrow = 0;
 	if (keycode == XK_Escape)
 		cub->key->esc = 0;
+	if (keycode == XK_Control_L)
+		cub->key->action = 0;
 	return (0);
 }
 
@@ -54,4 +62,21 @@ int		esc_press(t_cub *cub)
 {
 	cub_destroy(cub, ERR_NO_ERR);
 	return (0);
+}
+
+void	restart_game(t_cub *cub)
+{
+	cub_textures_destroy(cub->tex, cub->win->mlx_ptr);
+	cub->tex = NULL;
+	if (!(cub->tex = (t_textures*)malloc(sizeof(t_textures))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	cub_init_textures(cub);
+	cub_map_destroy(cub->map);
+	cub->map = NULL;
+	if (!(cub->map = (t_map*)malloc(sizeof(t_map))))
+		cub_destroy(cub, ERR_NO_MEMORY);
+	cub_init_map(cub);
+	player_init(cub);
+	cub->parse_is_map = 0;
+	config_parse(cub->config_path, cub);
 }

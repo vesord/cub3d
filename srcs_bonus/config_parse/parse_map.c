@@ -31,7 +31,7 @@ void	add_line_to_map(char *line, t_cub *cub)
 
 size_t check_map(t_cub *cub)
 {
-	if (!is_map_chars_correct(" 0123456789NWES*$?wceslbgjpMDROPLBGHJK", cub))
+	if (!is_map_chars_correct(" 0123456789NWES*$?wcelbgjpMDROPLBGHJKyYqQuU", cub))
 		return (0);
 	if (!map_find_player(cub))
 		return (0);

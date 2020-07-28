@@ -70,7 +70,6 @@ typedef struct	s_tx_sprites_go
 	t_img	*ludo_portal;
 	t_img	*rick_portal;
 	t_img	*tutorial;
-	t_img	*secret;
 	t_img	*ludo_beaten;
 	t_img	*buffrog_beaten;
 	t_img	*mew_s_go;
@@ -117,15 +116,33 @@ typedef	struct	s_tx_floors
 	t_img	*rick;
 }				t_tx_floors;
 
+typedef struct	s_tx_doors
+{
+	t_img	*mew_open;
+	t_img	*mew_close;
+	t_img	*secret_open;
+	t_img	*secret_close;
+	t_img	*lud_open;
+	t_img	*lud_close;
+}				t_tx_doors;
+
+typedef struct	s_tx_animation
+{
+	t_img	*wand_1;
+	t_img	*wand_2;
+}				t_tx_animation;
+
 typedef struct	s_textures
 {
 	t_tx_walls			*tx_walls;
-	t_tx_spr_go		*tx_spr_go;
-	t_tx_spr_ngo	*tx_spr_ngo;
+	t_tx_spr_go			*tx_spr_go;
+	t_tx_spr_ngo		*tx_spr_ngo;
 	t_tx_skybox			*tx_sky_mew;
 	t_tx_skybox			*tx_sky_rick;
 	t_tx_screens		*tx_screens;
 	t_tx_floors			*tx_floors;
+	t_tx_doors			*tx_doors;
+	t_tx_animation		*tx_animation;
 	int		flor;
 	int		ceil;
 }				t_textures;
@@ -180,6 +197,7 @@ typedef struct	s_key
 	int l_arrow;
 	int r_arrow;
 	int	esc;
+	int action;
 }				t_key;
 
 typedef struct	s_hud
@@ -206,6 +224,8 @@ typedef struct	s_cub
 	t_hud		*hud;
 	t_img		*frm_0;
 	t_img		*frm_1;
+	char 		*config_path;
+	int			parse_is_map;
 	int			confing_fd;
 }				t_cub;
 
@@ -236,6 +256,8 @@ void			cub_textures_destroy_spr_go(t_tx_spr_go *tx_spr_go, void *mlx_ptr);
 void			cub_textures_destroy_spr_ngo(t_tx_spr_ngo *tx_spr_ngo, void *mlx_ptr);
 void			cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr);
 void			cub_textures_destroy_skybox(t_tx_skybox *tx_skybox, void *mlx_ptr);
+void			cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr);
+void			cub_textures_destroy_animation(t_tx_animation *tx_anim, void *mlx_ptr);
 
 void			cub_init(t_cub *cub);
 void			cub_set_null(t_cub *cub);
@@ -252,6 +274,9 @@ void			cub_init_textures(t_cub *cub);
 void			cub_init_tex_walls(t_cub *cub);
 void			cub_init_tex_walls_1(t_cub *cub);
 void			cub_init_tex_wall_set_null(t_tx_walls *tx_walls);
+
+void			cub_init_tex_animation(t_cub *cub);
+void			cub_init_tex_doors(t_cub *cub);
 
 void			cub_init_tex_spr_go(t_cub *cub);
 void			cub_init_tex_spr_go_2(t_cub *cub);
@@ -280,7 +305,7 @@ void			player_init(t_cub *cub);
 **	---CONFIG_PARSE_FUNCTIONS---
 */
 
-# define PARSE_OK		0x7804ffffffffffff
+# define PARSE_OK		0x7bffffffffffffff
 # define PARSE_FAIL		0x8000000000000000
 
 # define PARSE_OK_W1	0x0000000000000001
@@ -303,7 +328,6 @@ void			player_init(t_cub *cub);
 # define PARSE_OK_PL	0x0000000000008000
 # define PARSE_OK_PR	0x0000000000010000
 # define PARSE_OK_TU	0x0000000000020000
-# define PARSE_OK_SM	0x0000000000040000
 # define PARSE_OK_LB	0x0000000000080000
 # define PARSE_OK_BB	0x0000000000100000
 # define PARSE_OK_M1	0x0000000000200000
@@ -340,6 +364,16 @@ void			player_init(t_cub *cub);
 # define PARSE_OK_FM	0x0001000000000000
 # define PARSE_OK_FE	0x0002000000000000
 # define PARSE_OK_FC	0x0004000000000000
+
+# define PARSE_OK_D1	0x0000000000040000
+# define PARSE_OK_D2	0x0008000000000000
+# define PARSE_OK_D3	0x0010000000000000
+# define PARSE_OK_D4	0x0020000000000000
+# define PARSE_OK_D5	0x0040000000000000
+# define PARSE_OK_D6	0x0080000000000000
+
+# define PARSE_OK_A1	0x0100000000000000
+# define PARSE_OK_A2	0x0200000000000000
 
 # define PARSE_OK_C		0x0800000000000000
 # define PARSE_OK_F		0x1000000000000000
@@ -449,10 +483,13 @@ char			get_cell_ray(int x, int y, t_cub *cub);
 int				is_cell_wall(char c);
 int				is_cell_sprite(char c);
 int				is_cell_walkable(char c);
+int				is_cell_door_opened(char c);
+int				is_cell_door_closed(char c);
 void			ray_set_dir(float len_x, float len_y, t_cub *cub);
 
 t_img 			*select_sprite(char type, t_cub *cub);
 t_img			*select_wall(char type, t_cub *cub);
+t_img			*select_door(char type, t_cub *cub);
 
 float			get_x_tex(t_cub *cub);
 float			get_y_tex(float angle, float len_to_wall, t_cub *cub);

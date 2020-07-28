@@ -14,6 +14,7 @@
 # define CUB3D_ERRORS_BONUS_H
 
 # define ERR_NO_ERR	"NO_ERROR"
+# define ERR_DESTROY_NO_EXIT "NO_EXIT"
 # define ERR_PARSE_DUPLICATE "Some of config params are duplicated."
 # define ERR_WRONG_ARGUMENTS "Wrong argumets."
 # define ERR_NO_MEMORY "No enough memory to play:("
@@ -41,7 +42,6 @@
 # define ERR_PARSE_PL	"Error occur while parsing PL texture."
 # define ERR_PARSE_PR	"Error occur while parsing PR texture."
 # define ERR_PARSE_TU	"Error occur while parsing TU texture."
-# define ERR_PARSE_SM	"Error occur while parsing SM texture."
 # define ERR_PARSE_LB	"Error occur while parsing LB texture."
 # define ERR_PARSE_BB	"Error occur while parsing BB texture."
 # define ERR_PARSE_M1	"Error occur while parsing M1 texture."
@@ -70,6 +70,16 @@
 # define ERR_PARSE_S7	"Error occur while parsing S7 texture."
 # define ERR_PARSE_S8	"Error occur while parsing S8 texture."
 # define ERR_PARSE_S9	"Error occur while parsing S9 texture."
+
+# define ERR_PARSE_D1	"Error occur while parsing D1 texture."
+# define ERR_PARSE_D2	"Error occur while parsing D2 texture."
+# define ERR_PARSE_D3	"Error occur while parsing D3 texture."
+# define ERR_PARSE_D4	"Error occur while parsing D4 texture."
+# define ERR_PARSE_D5	"Error occur while parsing D5 texture."
+# define ERR_PARSE_D6	"Error occur while parsing D6 texture."
+
+# define ERR_PARSE_A1	"Error occur while parsing A1 texture."
+# define ERR_PARSE_A2	"Error occur while parsing A2 texture."
 
 # define ERR_PARSE_WA	"Error occur while parsing WA texture."
 # define ERR_PARSE_HP	"Error occur while parsing HP texture."

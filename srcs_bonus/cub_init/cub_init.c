@@ -60,7 +60,9 @@ void	cub_set_null(t_cub *cub)
 	cub->tex = NULL;
 	cub->ray = NULL;
 	cub->key = NULL;
+	cub->hud = NULL;
 	cub->frm_0 = NULL;
 	cub->frm_1 = NULL;
 	cub->confing_fd = -1;
+	cub->parse_is_map = 0;
 }

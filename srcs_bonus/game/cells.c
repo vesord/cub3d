@@ -45,7 +45,7 @@ char	get_cell_ray(int x, int y, t_cub *cub)
 
 int		is_cell_sprite(char c)
 {
-	if (ft_strchr("*$?wceslbgjlMDROPLBGHJK", c))
+	if (ft_strchr("*$?wcelbgjlMDROPLBGHJKyuq", c))
 			return (1);
 	return (0);
 }
@@ -57,9 +57,23 @@ int		is_cell_wall(char c)
 	return (0);
 }
 
+int		is_cell_door_opened(char c)
+{
+	if (ft_strchr("yuq", c))
+		return (1);
+	return (0);
+}
+
+int		is_cell_door_closed(char c)
+{
+	if (ft_strchr("YUQ", c))
+		return (1);
+	return (0);
+}
+
 int		is_cell_walkable(char c)
 {
-	if (ft_strchr("NWES0*$?wceslbgjl", c))
+	if (ft_strchr("NWES0*$?wcelbgjluyq", c))
 		return (1);
 	return (0);
 }

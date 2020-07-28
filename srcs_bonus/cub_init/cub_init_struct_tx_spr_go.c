@@ -27,10 +27,6 @@ void	cub_init_tex_spr_go(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_img(cub->tex->tx_spr_go->trap);
-	if (!(cub->tex->tx_spr_go->secret = (t_img*)malloc(sizeof(t_img))))
-		cub_destroy(cub, ERR_NO_MEMORY);
-	else
-		cub_init_img(cub->tex->tx_spr_go->secret);
 	cub_init_tex_spr_go_2(cub);
 }
 
@@ -89,6 +85,5 @@ void	cub_init_tex_spr_go_set_null(t_tx_spr_go *tx_spr_go)
 	tx_spr_go->mew_s_go = NULL;
 	tx_spr_go->ric_s_go = NULL;
 	tx_spr_go->trap = NULL;
-	tx_spr_go->secret = NULL;
 	tx_spr_go->tutorial = NULL;
 }

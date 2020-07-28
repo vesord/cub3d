@@ -52,9 +52,12 @@ int		is_next_cell_free(t_cub *cub)
 		count_sprite(cell, cub);
 	if (cub->ray->walk_dst == 0.f && !is_cell_walkable(cell))
 		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2) + powf(cub->ray->y - cub->cam->y, 2));
-	if (is_cell_wall(cell))
+	if (is_cell_wall(cell) || is_cell_door_closed(cell))
 	{
-		cub->ray->wall = select_wall(cell, cub);
+		if (is_cell_door_closed(cell))
+			cub->ray->wall = select_door(cell, cub);
+		else
+			cub->ray->wall = select_wall(cell, cub);
 		return (0);
 	}
 	return (1);

@@ -55,7 +55,7 @@ int		is_map_surrounded_recursive(int x, int y, t_cub *cub)
 	int f;
 
 	f = 0;
-	if (cub->map->field[y][x] == '1' || cub->map->field[y][x] < 0)
+	if (is_cell_wall(cub->map->field[y][x]) || cub->map->field[y][x] < 0)
 		return (1);
 	if (cub->map->field[y][x] == ' ')
 		return (0);

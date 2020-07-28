@@ -106,8 +106,6 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_PL);
 	else if ((cub->tex->tx_spr_go->rick_portal) == data)
 		return (ERR_PARSE_PR);
-	else if ((cub->tex->tx_spr_go->secret) == data)
-		return (ERR_PARSE_SM);
 	else if ((cub->tex->tx_spr_go->ludo_beaten) == data)
 		return (ERR_PARSE_LB);
 	else if ((cub->tex->tx_spr_go->buffrog_beaten) == data)
@@ -164,6 +162,24 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 	else if ((cub->tex->tx_sky_rick->to) == data)
 		return (ERR_PARSE_S9);
 
+	else if ((cub->tex->tx_doors->mew_close) == data)
+		return (ERR_PARSE_D1);
+	else if ((cub->tex->tx_doors->mew_open) == data)
+		return (ERR_PARSE_D2);
+	else if ((cub->tex->tx_doors->lud_close) == data)
+		return (ERR_PARSE_D3);
+	else if ((cub->tex->tx_doors->lud_open) == data)
+		return (ERR_PARSE_D4);
+	else if ((cub->tex->tx_doors->secret_close) == data)
+		return (ERR_PARSE_D5);
+	else if ((cub->tex->tx_doors->secret_open) == data)
+		return (ERR_PARSE_D6);
+
+	else if ((cub->tex->tx_animation->wand_1) == data)
+		return (ERR_PARSE_A1);
+	else if ((cub->tex->tx_animation->wand_2) == data)
+		return (ERR_PARSE_A2);
+	
 	else if ((cub->hud->tx_face) == data)
 		return (ERR_PARSE_FL);
 	else if ((cub->hud->tx_wand) == data)
@@ -226,8 +242,6 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_PL);
 	else if ((cub->tex->tx_spr_go->rick_portal) == data)
 		return (PARSE_OK_PR);
-	else if ((cub->tex->tx_spr_go->secret) == data)
-		return (PARSE_OK_SM);
 	else if ((cub->tex->tx_spr_go->ludo_beaten) == data)
 		return (PARSE_OK_LB);
 	else if ((cub->tex->tx_spr_go->buffrog_beaten) == data)
@@ -284,6 +298,24 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 	else if ((cub->tex->tx_sky_rick->to) == data)
 		return (PARSE_OK_S9);
 
+	else if ((cub->tex->tx_doors->mew_close) == data)
+		return (PARSE_OK_D1);
+	else if ((cub->tex->tx_doors->mew_open) == data)
+		return (PARSE_OK_D2);
+	else if ((cub->tex->tx_doors->lud_close) == data)
+		return (PARSE_OK_D3);
+	else if ((cub->tex->tx_doors->lud_open) == data)
+		return (PARSE_OK_D4);
+	else if ((cub->tex->tx_doors->secret_close) == data)
+		return (PARSE_OK_D5);
+	else if ((cub->tex->tx_doors->secret_open) == data)
+		return (PARSE_OK_D6);
+	
+	else if ((cub->tex->tx_animation->wand_1) == data)
+		return (PARSE_OK_A1);
+	else if ((cub->tex->tx_animation->wand_2) == data)
+		return (PARSE_OK_A2);
+	
 	else if ((cub->hud->tx_face) == data)
 		return (PARSE_OK_FL);
 	else if ((cub->hud->tx_wand) == data)

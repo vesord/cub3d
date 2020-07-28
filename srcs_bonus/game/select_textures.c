@@ -26,8 +26,6 @@ t_img	*select_sprite(char type, t_cub *cub)
 		return (cub->tex->tx_spr_go->ludo_portal);
 	else if (type == 'e')
 		return (cub->tex->tx_spr_go->rick_portal);
-	else if (type == 's')
-		return (cub->tex->tx_spr_go->secret);
 	else if (type == 'l')
 		return (cub->tex->tx_spr_go->ludo_beaten);
 	else if (type == 'b')
@@ -60,7 +58,24 @@ t_img	*select_sprite(char type, t_cub *cub)
 		return (cub->tex->tx_spr_ngo->lud_s_ngo_1);
 	else if (type == 'K')
 		return (cub->tex->tx_spr_ngo->lud_s_ngo_2);
+	else if (type == 'y')
+		return (cub->tex->tx_doors->secret_open);
+	else if (type == 'q')
+		return (cub->tex->tx_doors->mew_open);
+	else if (type == 'u')
+		return (cub->tex->tx_doors->lud_open);
 	return (cub->tex->tx_spr_go->life);
+}
+
+t_img	*select_door(char type, t_cub *cub)
+{
+	if (type == 'Y')
+		return (cub->tex->tx_doors->secret_close);
+	else if (type == 'Q')
+		return (cub->tex->tx_doors->mew_close);
+	else if (type == 'U')
+		return (cub->tex->tx_doors->lud_close);
+	return (cub->tex->tx_doors->secret_close);
 }
 
 t_img	*select_wall(char type, t_cub *cub)

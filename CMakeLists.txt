@@ -82,6 +82,8 @@ set(SRC_FILES_BONUS
         srcs_bonus/cub_init/cub_init_struct_tx_skybox.c
         srcs_bonus/cub_init/cub_init_struct_tx_spr_go.c
         srcs_bonus/cub_init/cub_init_struct_tx_spr_ngo.c
+        srcs_bonus/cub_init/cub_init_struct_tx_animation.c
+        srcs_bonus/cub_init/cub_init_struct_tx_doors.c
         srcs_bonus/cub_init/cub_destroy.c
         srcs_bonus/cub_init/cub_destroy_tex.c
         srcs_bonus/cub_init/cub_destroy_tex_2.c

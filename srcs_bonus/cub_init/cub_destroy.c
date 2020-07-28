@@ -35,7 +35,8 @@ void	cub_destroy(t_cub *cub, char *msg)
 	if (cub->win)
 		cub_win_destroy(cub->win);
 	free(cub);
-	ft_exit(msg);
+	if (ft_strncmp(ERR_DESTROY_NO_EXIT, msg, 20))
+		ft_exit(msg);
 }
 
 void	cub_win_destroy(t_win *win)

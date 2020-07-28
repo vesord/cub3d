@@ -14,6 +14,7 @@
 
 void	get_player_pos(int *x, int *y, t_cub *cub);
 void	check_trap(int x, int y, t_cub *cub);
+void	check_life(int x, int y, t_cub *cub);
 
 void	check_interactions(t_cub *cub)
 {
@@ -26,10 +27,21 @@ void	check_interactions(t_cub *cub)
 	cur_y = 0;
 	get_player_pos(&cur_x, &cur_y, cub);
 	check_trap(cur_x, cur_y, cub);
+	check_life(cur_x, cur_y, cub);
 	if (prev_x != cur_x)
 		prev_x = cur_x;
 	if (prev_y != cur_y)
 		prev_y = cur_y;
+}
+
+void	check_life(int x, int y, t_cub *cub)
+{
+	if (cub->hud->hp >= 3 || get_cell_map(x, y, cub) != '$')
+		return ;
+	cub->hud->hp++;
+	cub->hud->need_update_face = 1;
+	cub->hud->need_update_hp = 1;
+	(cub->map->field)[y][x] = '0';
 }
 
 void	check_trap(int x, int y, t_cub *cub)

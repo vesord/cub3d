@@ -24,8 +24,6 @@ void	cub_textures_destroy_spr_go(t_tx_spr_go *tx_spr_go, void *mlx_ptr)
 		cub_img_destroy(tx_spr_go->ludo_beaten, mlx_ptr);
 	if (tx_spr_go->buffrog_beaten)
 		cub_img_destroy(tx_spr_go->buffrog_beaten, mlx_ptr);
-	if (tx_spr_go->secret)
-		cub_img_destroy(tx_spr_go->secret, mlx_ptr);
 	if (tx_spr_go->ludo_portal)
 		cub_img_destroy(tx_spr_go->ludo_portal, mlx_ptr);
 	if (tx_spr_go->rick_portal)
@@ -79,17 +77,26 @@ void	cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr)
 	free(tx_screens);
 }
 
-void	cub_textures_destroy_skybox(t_tx_skybox *tx_skybox, void *mlx_ptr)
+void	cub_textures_destroy_animation(t_tx_animation *tx_anim, void *mlx_ptr)
 {
-	if (tx_skybox->to)
-		cub_img_destroy(tx_skybox->to, mlx_ptr);
-	if (tx_skybox->so)
-		cub_img_destroy(tx_skybox->so, mlx_ptr);
-	if (tx_skybox->no)
-		cub_img_destroy(tx_skybox->no, mlx_ptr);
-	if (tx_skybox->ea)
-		cub_img_destroy(tx_skybox->ea, mlx_ptr);
-	if (tx_skybox->we)
-		cub_img_destroy(tx_skybox->we, mlx_ptr);
-	free(tx_skybox);
+	if (tx_anim->wand_2)
+		cub_img_destroy(tx_anim->wand_2, mlx_ptr);
+	if (tx_anim->wand_1)
+		cub_img_destroy(tx_anim->wand_1, mlx_ptr);
+}
+
+void	cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr)
+{
+	if (tx_doors->mew_open)
+		cub_img_destroy(tx_doors->mew_open, mlx_ptr);
+	if (tx_doors->mew_close)
+		cub_img_destroy(tx_doors->mew_close, mlx_ptr);
+	if (tx_doors->lud_open)
+		cub_img_destroy(tx_doors->lud_open, mlx_ptr);
+	if (tx_doors->lud_close)
+		cub_img_destroy(tx_doors->lud_close, mlx_ptr);
+	if (tx_doors->secret_close)
+		cub_img_destroy(tx_doors->secret_close, mlx_ptr);
+	if (tx_doors->secret_open)
+		cub_img_destroy(tx_doors->secret_open, mlx_ptr);
 }

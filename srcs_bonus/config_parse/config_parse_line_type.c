@@ -52,8 +52,6 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_spr_go->ludo_portal));
 	else if (line[0] == 'P' && line[1] == 'R' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_spr_go->rick_portal));
-	else if (line[0] == 'S' && line[1] == 'M' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_spr_go->secret));
 	else if (line[0] == 'L' && line[1] == 'B' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_spr_go->ludo_beaten));
 	else if (line[0] == 'B' && line[1] == 'B' && line[2] == ' ')
@@ -123,6 +121,24 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->hud->tx_hp));
 	else if (line[0] == 'F' && line[1] == 'L' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->hud->tx_face));
+
+	else if (line[0] == 'D' && line[1] == '1' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->mew_close));
+	else if (line[0] == 'D' && line[1] == '2' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->mew_open));
+	else if (line[0] == 'D' && line[1] == '3' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->lud_close));
+	else if (line[0] == 'D' && line[1] == '4' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->lud_open));
+	else if (line[0] == 'D' && line[1] == '5' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->secret_close));
+	else if (line[0] == 'D' && line[1] == '6' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_doors->secret_open));
+
+	else if (line[0] == 'A' && line[1] == '1' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_animation->wand_1));
+	else if (line[0] == 'A' && line[1] == '2' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_animation->wand_2));
 
 	else if (line[0] == 'F' && line[1] == ' ')
 		return (parse_line_color(line, cub, &(cub->tex->flor)));

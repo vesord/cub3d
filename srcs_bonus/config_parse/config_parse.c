@@ -38,7 +38,10 @@ void	gnl_func_parse(char *line, size_t *is_parse_ok, t_cub *cub)
 	{
 		parse_res = parse_line(line, cub);
 		if (parse_res & *is_parse_ok)
+		{
+			free(line);
 			cub_destroy(cub, ERR_PARSE_DUPLICATE);
+		}
 		else
 			*is_parse_ok |= parse_res;
 	}
@@ -47,15 +50,14 @@ void	gnl_func_parse(char *line, size_t *is_parse_ok, t_cub *cub)
 
 size_t parse_line(char *line, t_cub *cub)
 {
-	static int	is_map;
 	size_t		ret;
 
-	if (!is_map)
+	if (!cub->parse_is_map)
 	{
 		ret = parse_line_type(line, cub);
 		if (ret != PARSE_FAIL)
 			return (ret);
-		is_map = 1;
+		cub->parse_is_map = 1;
 	}
 	add_line_to_map(line, cub);
 	return (0);
