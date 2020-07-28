@@ -17,6 +17,7 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 	int		iterations;
 
 	iterations = 0;
+	cub->ray->angle = angle;
 	cub->ray->x = cub->cam->x;
 	cub->ray->y = cub->cam->y;
 	cub->ray->wall = NULL;

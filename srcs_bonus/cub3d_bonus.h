@@ -183,6 +183,7 @@ typedef struct	s_ray
 	float		walk_dst;
 	float		sin;
 	float		cos;
+	float		angle;
 	int			dir;
 	t_img		*wall;
 	t_ray_sprites	*spr;
@@ -196,6 +197,8 @@ typedef struct	s_key
 	int d;
 	int l_arrow;
 	int r_arrow;
+	int	u_arrow;
+	int	d_arrow;
 	int	esc;
 	int action;
 	int	jump;
@@ -527,5 +530,6 @@ void	add_hud_wand(t_cub *cub);
 void	set_status_screen(t_cub *cub);
 
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp);
+unsigned int		get_skybox_pixel(float p_angle, t_cub *cub);
 
 #endif

@@ -73,6 +73,7 @@ void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 	float	c_angl;
 	float	f_angl;
 
+	len_to_wall *= cosf(cub->cam->cam_direction_pitch);
 	f_angl = atanf((-cub->cam->z) / len_to_wall);
 	c_angl = atanf((cub->map->blk_z - cub->cam->z) / len_to_wall);
 	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
@@ -83,15 +84,11 @@ void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 		if ((((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] & 0xff000000) == HUD_TRANSP_MASK)
 			;
 		else if (angle > c_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub); //cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
 		else if (angle > f_angl)
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =  //get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
-				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f -
-											 get_y_tex(
-												 angle,
-												 len_to_wall,
-												 cub),
-										 cub->ray->wall),len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
+				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub),cub->ray->wall),
+					len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
 		else
 			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub); // cub->tex->flor;
 		angle -= d_angle;

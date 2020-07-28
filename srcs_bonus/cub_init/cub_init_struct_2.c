@@ -48,6 +48,8 @@ void	cub_init_key(t_cub *cub)
 	cub->key->esc = 0;
 	cub->key->action = 0;
 	cub->key->jump = 0;
+	cub->key->d_arrow = 0;
+	cub->key->d_arrow = 0;
 }
 
 void	cub_init_hud(t_cub *cub)

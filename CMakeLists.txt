@@ -108,6 +108,7 @@ set(SRC_FILES_BONUS
         srcs_bonus/game/ray_throw.c
         srcs_bonus/game/ray_throw_sprites.c
 
+        srcs_bonus/game/skybox.c
         srcs_bonus/game/hud.c
         srcs_bonus/game/shadows.c
         srcs_bonus/game/interactions.c

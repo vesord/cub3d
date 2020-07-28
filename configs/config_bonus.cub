@@ -78,7 +78,7 @@
 #
 
 
-R 640 480
+R 640 1500
 
 W1 ./imgs/pinc_wall.xpm
 W2 ./imgs/pinc_wall.xpm
@@ -122,11 +122,11 @@ M3 ./imgs/rainbow1.xpm
 L2 ./imgs/rainbow1.xpm
 L3 ./imgs/rainbow1.xpm
 
-S0 ./imgs/rainbow1.xpm
-S1 ./imgs/rainbow1.xpm
-S2 ./imgs/rainbow1.xpm
-S3 ./imgs/rainbow1.xpm
-S4 ./imgs/rainbow1.xpm
+S0 ./imgs/mewni_sky_no.xpm
+S1 ./imgs/mewni_sky_so.xpm
+S2 ./imgs/mewni_sky_we.xpm
+S3 ./imgs/mewni_sky_ea.xpm
+S4 ./imgs/mewni_sky_to.xpm
 S5 ./imgs/rainbow1.xpm
 S6 ./imgs/rainbow1.xpm
 S7 ./imgs/rainbow1.xpm
