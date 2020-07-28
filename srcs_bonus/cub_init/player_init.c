@@ -21,6 +21,7 @@ void	player_init(t_cub *cub)
 	cub->hud->need_update_hp = 1;
 	cub->hud->hp = 3;
 	cub->hud->status = 0;
+	cub->hud->jumping = 0;
 }
 
 void	map_set_scales(t_cub *cub)

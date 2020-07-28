@@ -30,6 +30,8 @@ void	process_key(t_cub *cub)
 		process_step(cub, STEP_BACK);
 	if (cub->key->esc)
 		esc_press(cub);
+	if (cub->key->jump && !cub->hud->jumping)
+		cub->hud->jumping = 1;
 	if (cub->key->action)
 		process_action(cub);
 }

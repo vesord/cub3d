@@ -32,6 +32,8 @@ int		key_press(int keycode, t_cub *cub)
 		cub->key->esc = 1;
 	if (keycode == XK_Control_L)
 		cub->key->action = 1;
+	if (keycode == XK_space)
+		cub->key->jump = 1;
 	if (cub->hud->status == -1 && keycode == 65293)
 		restart_game(cub);
 	return (0);
@@ -55,6 +57,8 @@ int		key_release(int keycode, t_cub *cub)
 		cub->key->esc = 0;
 	if (keycode == XK_Control_L)
 		cub->key->action = 0;
+	if (keycode == XK_space)
+		cub->key->jump = 0;
 	return (0);
 }
 

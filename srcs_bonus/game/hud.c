@@ -14,6 +14,7 @@
 
 void	put_hp_to_img(int off_x, int off_y, int size, t_cub *cub);
 void	add_hud_hp(t_cub *cub);
+void	process_jumping(t_cub *cub);
 
 void	update_hud(t_cub *cub)
 {
@@ -22,6 +23,8 @@ void	update_hud(t_cub *cub)
 	add_hud_face(cub);
 	add_hud_wand(cub);
 	add_hud_hp(cub);
+	if (cub->hud->jumping)
+		process_jumping(cub);
 }
 
 void	add_hud_hp(t_cub *cub)
@@ -55,6 +58,24 @@ void	add_hud_wand(t_cub *cub)
 	put_tex_to_img(cub->hud->tx_wand, cub->frm_1, HUD_TRANSP_MASK);
 	cub->hud->need_update_weap = 0;
 }
+
+void	process_jumping(t_cub *cub)
+{
+	static int jump_status = -36;
+	static int jump_max = 36;
+
+	cub->cam->z = ((float)cub->map->blk_z * 2 / 3) + ((float)jump_max - (float)abs(jump_status)) / 2.f;
+	jump_status += (int)sqrtf((float)abs(jump_status));
+	if (jump_status == 0)
+		jump_status = 1;
+	if (jump_status > jump_max)
+	{
+		jump_status = -jump_max;
+		cub->hud->jumping = 0;
+	}
+}
+
+
 
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp)
 {

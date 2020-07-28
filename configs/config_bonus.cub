@@ -26,7 +26,6 @@
 #   DW | w - dropped wand
 #   PL | c - portal to Ludo castle
 #   PR | e - portal to Rick (earth)
-#   SM | s - secret on Mewni
 #   LB | l - Ludo beaten
 #   BB | b - Buffrog beaten
 #   M1 | g - Mewni sprite 1
@@ -65,24 +64,31 @@
 #   FL - forelock
 #   AX - axe (probably will added)
 #
-#       ___ANIMATION___ (ADD SOON)
+#       ___ANIMATION___
 #   A1 - anim 1
 #   A2 - anim 2
-#   A3 - anim 3
+#
+#       ___DOORS___
+#   D1 | Q - door Mewni close
+#   D2 | q - door Mewni open
+#   D3 | U - door Ludo close
+#   D4 | u - door Ludo open
+#   D5 | Y - door Secret close
+#   D6 | y - door Secret open
 #
 
 
 R 640 480
 
-W1 ./imgs/rainbow1.xpm
-W2 ./imgs/rainbow1.xpm
-W3 ./imgs/rainbow1.xpm
-W4 ./imgs/rainbow1.xpm
-W5 ./imgs/rainbow1.xpm
-W6 ./imgs/rainbow1.xpm
-W7 ./imgs/rainbow1.xpm
-W8 ./imgs/rainbow1.xpm
-W9 ./imgs/rainbow1.xpm
+W1 ./imgs/pinc_wall.xpm
+W2 ./imgs/pinc_wall.xpm
+W3 ./imgs/pinc_wall.xpm
+W4 ./imgs/pinc_wall.xpm
+W5 ./imgs/pinc_wall.xpm
+W6 ./imgs/pinc_wall.xpm
+W7 ./imgs/pinc_wall.xpm
+W8 ./imgs/pinc_wall.xpm
+W9 ./imgs/pinc_wall.xpm
 
 FM ./imgs/rainbow1.xpm
 FE ./imgs/rainbow1.xpm
@@ -93,12 +99,11 @@ DI ./imgs/die.xpm
 R0 ./imgs/rainbow1.xpm
 
 TR ./imgs/trap.xpm
-LI ./imgs/rainbow1.xpm
+LI ./imgs/life.xpm
 TU ./imgs/rainbow1.xpm
 DW ./imgs/rainbow1.xpm
 PL ./imgs/rainbow1.xpm
 PR ./imgs/rainbow1.xpm
-SM ./imgs/rainbow1.xpm
 LB ./imgs/rainbow1.xpm
 BB ./imgs/rainbow1.xpm
 M1 ./imgs/rainbow1.xpm
@@ -128,6 +133,16 @@ S7 ./imgs/rainbow1.xpm
 S8 ./imgs/rainbow1.xpm
 S9 ./imgs/rainbow1.xpm
 
+D1 ./imgs/rainbow1.xpm
+D2 ./imgs/SPRITE.xpm
+D3 ./imgs/rainbow1.xpm
+D4 ./imgs/SPRITE.xpm
+D5 ./imgs/rainbow1.xpm
+D6 ./imgs/SPRITE.xpm
+
+A1 ./imgs/rainbow1.xpm
+A2 ./imgs/rainbow1.xpm
+
 WA ./imgs/wand.xpm
 HP ./imgs/hp.xpm
 FL ./imgs/forelock.xpm
@@ -136,15 +151,20 @@ FL ./imgs/forelock.xpm
 C  135,206,235
 F  244,164,96
 
-111111111111111111
-1000P000W000000001
-100000000000P00001
+111111111111111
+100000000000001
+100000000000001
+100000000000001
+100000000000001
+111Y111Q111U111111
+1000P000W$00$00001
+1000$0000000P00001
 100000000000000001
 10000*000*00000001
-100000*00000000001
+100000*00$000$0001
 1000*000*000P00001
 100000P00000000001
-100000000000000001
+10000000$000000001
 1000000000000P0001
-100000000000000001
+1000$0000000000001
 111111111111111111

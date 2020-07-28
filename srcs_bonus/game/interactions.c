@@ -26,7 +26,8 @@ void	check_interactions(t_cub *cub)
 	cur_x = 0;
 	cur_y = 0;
 	get_player_pos(&cur_x, &cur_y, cub);
-	check_trap(cur_x, cur_y, cub);
+	if (!cub->hud->jumping)
+		check_trap(cur_x, cur_y, cub);
 	check_life(cur_x, cur_y, cub);
 	if (prev_x != cur_x)
 		prev_x = cur_x;

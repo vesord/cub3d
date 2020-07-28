@@ -198,6 +198,7 @@ typedef struct	s_key
 	int r_arrow;
 	int	esc;
 	int action;
+	int	jump;
 }				t_key;
 
 typedef struct	s_hud
@@ -207,7 +208,7 @@ typedef struct	s_hud
 	t_img	*tx_hp;
 	int		hp;
 	int 	status;
-	int 	mana;
+	int 	jumping;
 	int		need_update_face;
 	int		need_update_weap;
 	int		need_update_hp;

@@ -47,6 +47,7 @@ void	cub_init_key(t_cub *cub)
 	cub->key->r_arrow = 0;
 	cub->key->esc = 0;
 	cub->key->action = 0;
+	cub->key->jump = 0;
 }
 
 void	cub_init_hud(t_cub *cub)
@@ -56,7 +57,7 @@ void	cub_init_hud(t_cub *cub)
 	cub->hud->need_update_hp = 0;
 	cub->hud->status = 0;
 	cub->hud->hp = 0;
-	cub->hud->mana = 0;
+	cub->hud->jumping = 0;
 	cub->hud->tx_face = NULL;
 	cub->hud->tx_wand = NULL;
 	cub->hud->tx_hp = NULL;
