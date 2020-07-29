@@ -215,6 +215,7 @@ typedef struct	s_hud
 	int		need_update_face;
 	int		need_update_weap;
 	int		need_update_hp;
+	int		teleported;
 }				t_hud;
 
 typedef struct	s_cub
@@ -404,12 +405,13 @@ char			*parse_line_err_msg(t_cub *cub, void *data);
 int				str_to_color(char *line, int *color);
 
 int				is_map_chars_correct(const char *crct, t_cub *cub);
-int				map_find_player(t_cub *cub);
+int				map_check_player_pos(t_cub *cub);
 void			map_set_player(int pl_x, int pl_y, t_cub *cub);
+int				is_map_portals_correct(t_cub *cub);
 
 int				is_map_surrounded(t_cub *cub);
-void			is_map_surrounded_set(int *x_start, int *y_start, t_cub *cub);
-int				is_map_surrounded_recursive(int x, int y, t_cub *cub);
+void			is_map_surrounded_set(const char *starts, t_cub *cub);
+int				is_map_surrounded_recursive(int x, int y, int strt, t_cub *cub);
 void			is_map_surrounded_recover(t_cub *cub);
 
 /*
@@ -489,6 +491,7 @@ int				is_cell_sprite(char c);
 int				is_cell_walkable(char c);
 int				is_cell_door_opened(char c);
 int				is_cell_door_closed(char c);
+int				is_cell_portal(char c);
 void			ray_set_dir(float len_x, float len_y, t_cub *cub);
 
 t_img 			*select_sprite(char type, t_cub *cub);

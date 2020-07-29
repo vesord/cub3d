@@ -33,7 +33,9 @@ size_t check_map(t_cub *cub)
 {
 	if (!is_map_chars_correct(" 0123456789NWES*$?wcelbgjpMDROPLBGHJKyYqQuU", cub))
 		return (0);
-	if (!map_find_player(cub))
+	if (!map_check_player_pos(cub))
+		return (0);
+	if (!is_map_portals_correct(cub))
 		return (0);
 	if (!is_map_surrounded(cub))
 		return (0);

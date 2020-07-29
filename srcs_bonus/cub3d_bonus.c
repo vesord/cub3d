@@ -33,8 +33,8 @@ void	cube_start(char *path_to_conf)
 	if (!(cub->win->mlx_ptr = mlx_init()))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	cub->config_path = path_to_conf;
-	player_init(cub);
 	config_parse(path_to_conf, cub);
+	player_init(cub);
 	window_setup(cub);
 	hook_initialize(cub);
 }

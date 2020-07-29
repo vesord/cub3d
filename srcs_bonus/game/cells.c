@@ -77,3 +77,10 @@ int		is_cell_walkable(char c)
 		return (1);
 	return (0);
 }
+
+int		is_cell_portal(char c)
+{
+	if (ft_strchr("ce", c))
+		return (1);
+	return (0);
+}

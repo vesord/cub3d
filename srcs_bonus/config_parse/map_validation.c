@@ -39,7 +39,7 @@ int		is_map_chars_correct(const char *crct, t_cub *cub)
 	return (1);
 }
 
-int		map_find_player(t_cub *cub)
+int		map_check_player_pos(t_cub *cub)
 {
 	int	pl_x;
 	int	pl_y;
@@ -65,21 +65,28 @@ int		map_find_player(t_cub *cub)
 	return (1);
 }
 
-void	map_set_player(int pl_x, int pl_y, t_cub *cub)
+int		is_map_portals_correct(t_cub *cub)
 {
-	char dir;
+	const char	*portals = "ce";
+	int			p;
+	int			i;
+	int 		j;
+	int 		count;
 
-	cub->cam->step = (float)cub->map->blk_x / STEP_SCALER;
-	cub->cam->dst_to_wall = (float)cub->map->blk_x / WALL_SCALER;
-	cub->cam->x = cub->map->blk_x * pl_x + cub->map->blk_x / 2;
-	cub->cam->y = cub->map->blk_y * pl_y + cub->map->blk_y / 2;
-	dir = cub->map->field[pl_y][pl_x];
-	if (dir == 'N')
-		cub->cam->cam_direction_yaw = -M_PI_2;
-	else if (dir == 'W')
-		cub->cam->cam_direction_yaw = M_PI;
-	else if (dir == 'S')
-		cub->cam->cam_direction_yaw = M_PI_2;
-	else
-		cub->cam->cam_direction_yaw = 0;
+	p = -1;
+	while (portals[++p])
+	{
+		i = -1;
+		count = 0;
+		while (cub->map->field[++i])
+		{
+			j = -1;
+			while (cub->map->field[i][++j])
+				if (cub->map->field[i][++j] == portals[p])
+					count++;
+		}
+		if (count != 2)
+			return (0);
+	}
+	return (1);
 }
