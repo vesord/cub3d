@@ -52,10 +52,6 @@ void	cub_init_tex_walls_1(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_img(cub->tex->tx_walls->rick_2);
-	if (!(cub->tex->tx_walls->wall_9 = (t_img*)malloc(sizeof(t_img))))
-		cub_destroy(cub, ERR_NO_MEMORY);
-	else
-		cub_init_img(cub->tex->tx_walls->wall_9);
 }
 
 void	cub_init_tex_wall_set_null(t_tx_walls *tx_walls)
@@ -68,6 +64,4 @@ void	cub_init_tex_wall_set_null(t_tx_walls *tx_walls)
 	tx_walls->mewni_3 = NULL;
 	tx_walls->rick_1 = NULL;
 	tx_walls->rick_2 = NULL;
-	tx_walls->wall_9 = NULL;
-	tx_walls->on_map = NULL;
 }

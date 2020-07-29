@@ -28,8 +28,8 @@ void	cub_textures_destroy(t_textures *tex, void *mlx_ptr)
 		cub_textures_destroy_skybox(tex->tx_sky_mew, mlx_ptr);
 	if (tex->tx_sky_rick)
 		cub_textures_destroy_skybox(tex->tx_sky_rick, mlx_ptr);
-	if (tex->tx_animation)
-		cub_textures_destroy_animation(tex->tx_animation, mlx_ptr);
+	if (tex->tx_anim)
+		cub_textures_destroy_animation(tex->tx_anim, mlx_ptr);
 	if (tex->tx_doors)
 		cub_textures_destroy_doors(tex->tx_doors, mlx_ptr);
 	free(tex);
@@ -60,10 +60,6 @@ void	cub_textures_destroy_walls(t_tx_walls *tx_walls, void *mlx_ptr)
 		cub_img_destroy(tx_walls->mewni_2, mlx_ptr);
 	if (tx_walls->mewni_3)
 		cub_img_destroy(tx_walls->mewni_3, mlx_ptr);
-	if (tx_walls->wall_9)
-		cub_img_destroy(tx_walls->wall_9, mlx_ptr);
-	if (tx_walls->on_map)
-		free(tx_walls->on_map);
 	free(tx_walls);
 }
 
@@ -80,8 +76,6 @@ void	cub_textures_destroy_floors(t_tx_floors *tx_floors, void *mlx_ptr)
 
 void	cub_textures_destroy_skybox(t_tx_skybox *tx_skybox, void *mlx_ptr)
 {
-	if (tx_skybox->to)
-		cub_img_destroy(tx_skybox->to, mlx_ptr);
 	if (tx_skybox->so)
 		cub_img_destroy(tx_skybox->so, mlx_ptr);
 	if (tx_skybox->no)

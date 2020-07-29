@@ -56,7 +56,7 @@ void	cub_init_textures(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_tex_doors(cub);
-	if (!(cub->tex->tx_animation = (t_tx_animation*)malloc(sizeof(t_tx_animation))))
+	if (!(cub->tex->tx_anim = (t_tx_anim*)malloc(sizeof(t_tx_anim))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_tex_animation(cub);
@@ -94,6 +94,6 @@ void	cub_init_textures_null(t_textures *tex)
 	tex->tx_sky_mew = NULL;
 	tex->tx_sky_rick = NULL;
 	tex->tx_spr_go = NULL;
-	tex->tx_animation = NULL;
+	tex->tx_anim = NULL;
 	tex->tx_doors = NULL;
 }

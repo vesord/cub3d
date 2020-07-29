@@ -27,10 +27,6 @@ void	cub_init_tex_spr_ngo(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_img(cub->tex->tx_spr_ngo->lud_s_ngo_1);
-	if (!(cub->tex->tx_spr_ngo->lud_s_ngo_2 = (t_img*)malloc(sizeof(t_img))))
-		cub_destroy(cub, ERR_NO_MEMORY);
-	else
-		cub_init_img(cub->tex->tx_spr_ngo->lud_s_ngo_2);
 	if (!(cub->tex->tx_spr_ngo->rick = (t_img*)malloc(sizeof(t_img))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
@@ -76,7 +72,6 @@ void	cub_init_tex_spr_ngo_set_null(t_tx_spr_ngo *tx_spr_ngo)
 	tx_spr_ngo->motry = NULL;
 	tx_spr_ngo->pony = NULL;
 	tx_spr_ngo->lud_s_ngo_1 = NULL;
-	tx_spr_ngo->lud_s_ngo_2 = NULL;
 	tx_spr_ngo->mew_s_ngo_1 = NULL;
 	tx_spr_ngo->mew_s_ngo_2 = NULL;
 }

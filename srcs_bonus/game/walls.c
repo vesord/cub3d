@@ -33,6 +33,5 @@ float			get_y_tex(float angle, float len_to_wall, t_cub *cub)
 
 unsigned int get_pixel_tex(float off_x, float off_y, t_img *tex)
 {
-
 	return (((int*)tex->data)[(int)((float)tex->height * off_y) * tex->width + (int)((float)tex->width * off_x)]);
 }

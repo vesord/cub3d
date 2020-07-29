@@ -20,10 +20,8 @@ void	process_key(t_cub *cub)
 		cub->cam->cam_direction_yaw -= M_PI / TURN_SCALER;
 	if (cub->key->r_arrow)
 		cub->cam->cam_direction_yaw += M_PI / TURN_SCALER;
-//	if (cub->key->u_arrow)
-//		cub->cam->cam_direction_pitch += M_PI / TURN_SCALER;
-//	if (cub->key->d_arrow)
-//		cub->cam->cam_direction_pitch -= M_PI / TURN_SCALER;
+	if (cub->key->shoot && !cub->hud->shooting)
+		cub->hud->shooting = 1;
 	if (cub->key->w)
 		process_step(cub, STEP_FORWARD);
 	if (cub->key->a)

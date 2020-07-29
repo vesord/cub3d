@@ -32,8 +32,7 @@ int		process_game(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	process_key(cub);
 	check_interactions(cub);
-	if (cub->hud->need_update_face || cub->hud->need_update_hp || cub->hud->need_update_weap || cub->hud->jumping)
-		update_hud(cub);
+	update_hud(cub);
 	if (!cub->hud->status)
 		make_frame(cub);
 	else

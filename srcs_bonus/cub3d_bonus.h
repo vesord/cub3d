@@ -50,7 +50,6 @@ typedef struct	s_img
 
 typedef	struct	s_tx_walls
 {
-	char	*on_map;
 	t_img	*mewni_1;
 	t_img	*mewni_2;
 	t_img	*mewni_3;
@@ -59,7 +58,6 @@ typedef	struct	s_tx_walls
 	t_img	*ludo_3;
 	t_img	*rick_1;
 	t_img	*rick_2;
-	t_img	*wall_9;
 }				t_tx_walls;
 
 typedef struct	s_tx_sprites_go
@@ -89,8 +87,6 @@ typedef struct	s_tx_sprites_ngo
 	t_img	*mew_s_ngo_1;
 	t_img	*mew_s_ngo_2;
 	t_img	*lud_s_ngo_1;
-	t_img	*lud_s_ngo_2;
-
 }				t_tx_spr_ngo;
 
 typedef struct	s_tx_skybox
@@ -99,7 +95,6 @@ typedef struct	s_tx_skybox
 	t_img	*we;
 	t_img	*ea;
 	t_img	*so;
-	t_img	*to;
 }				t_tx_skybox;
 
 typedef struct	s_tx_screens
@@ -126,11 +121,16 @@ typedef struct	s_tx_doors
 	t_img	*lud_close;
 }				t_tx_doors;
 
-typedef struct	s_tx_animation
+typedef struct	s_tx_anim
 {
 	t_img	*wand_1;
 	t_img	*wand_2;
-}				t_tx_animation;
+	t_img	*wand_3;
+	t_img	*wand_4;
+	t_img	*wand_5;
+	t_img	*wand_6;
+	t_img	*wand_7;
+}				t_tx_anim;
 
 typedef struct	s_textures
 {
@@ -142,7 +142,7 @@ typedef struct	s_textures
 	t_tx_screens		*tx_screens;
 	t_tx_floors			*tx_floors;
 	t_tx_doors			*tx_doors;
-	t_tx_animation		*tx_animation;
+	t_tx_anim			*tx_anim;
 	int		flor;
 	int		ceil;
 }				t_textures;
@@ -197,8 +197,7 @@ typedef struct	s_key
 	int d;
 	int l_arrow;
 	int r_arrow;
-	int	u_arrow;
-	int	d_arrow;
+	int	shoot;
 	int	esc;
 	int action;
 	int	jump;
@@ -216,6 +215,9 @@ typedef struct	s_hud
 	int		need_update_weap;
 	int		need_update_hp;
 	int		teleported;
+	int		shooting;
+	int		rick_world;
+	int		has_wand;
 }				t_hud;
 
 typedef struct	s_cub
@@ -262,7 +264,7 @@ void			cub_textures_destroy_spr_ngo(t_tx_spr_ngo *tx_spr_ngo, void *mlx_ptr);
 void			cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr);
 void			cub_textures_destroy_skybox(t_tx_skybox *tx_skybox, void *mlx_ptr);
 void			cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr);
-void			cub_textures_destroy_animation(t_tx_animation *tx_anim, void *mlx_ptr);
+void			cub_textures_destroy_animation(t_tx_anim *tx_anim, void *mlx_ptr);
 
 void			cub_init(t_cub *cub);
 void			cub_set_null(t_cub *cub);
@@ -310,7 +312,7 @@ void			player_init(t_cub *cub);
 **	---CONFIG_PARSE_FUNCTIONS---
 */
 
-# define PARSE_OK		0x7bffffffffffffff
+# define PARSE_OK		0x7fffffffffffffff
 # define PARSE_FAIL		0x8000000000000000
 
 # define PARSE_OK_W1	0x0000000000000001
@@ -321,64 +323,66 @@ void			player_init(t_cub *cub);
 # define PARSE_OK_W6	0x0000000000000020
 # define PARSE_OK_W7	0x0000000000000040
 # define PARSE_OK_W8	0x0000000000000080
-# define PARSE_OK_W9	0x0000000000000100
 
-# define PARSE_OK_WI	0x0000000000000200
-# define PARSE_OK_DI	0x0000000000000400
-# define PARSE_OK_R0	0x0000000000000800
+# define PARSE_OK_WI	0x0000000000000100
+# define PARSE_OK_DI	0x0000000000000200
+# define PARSE_OK_R0	0x0000000000000400
 
-# define PARSE_OK_TR	0x0000000000001000
-# define PARSE_OK_LI	0x0000000000002000
-# define PARSE_OK_DW	0x0000000000004000
-# define PARSE_OK_PL	0x0000000000008000
-# define PARSE_OK_PR	0x0000000000010000
-# define PARSE_OK_TU	0x0000000000020000
-# define PARSE_OK_LB	0x0000000000080000
-# define PARSE_OK_BB	0x0000000000100000
-# define PARSE_OK_M1	0x0000000000200000
-# define PARSE_OK_L1	0x0000000000400000
-# define PARSE_OK_E1	0x0000000000800000
+# define PARSE_OK_TR	0x0000000000000800
+# define PARSE_OK_LI	0x0000000000001000
+# define PARSE_OK_DW	0x0000000000002000
+# define PARSE_OK_PL	0x0000000000004000
+# define PARSE_OK_PR	0x0000000000008000
+# define PARSE_OK_TU	0x0000000000010000
+# define PARSE_OK_LB	0x0000000000020000
+# define PARSE_OK_BB	0x0000000000040000
+# define PARSE_OK_M1	0x0000000000080000
+# define PARSE_OK_L1	0x0000000000100000
+# define PARSE_OK_E1	0x0000000000200000
 
-# define PARSE_OK_MO	0x0000000001000000
-# define PARSE_OK_DA	0x0000000002000000
-# define PARSE_OK_RS	0x0000000004000000
-# define PARSE_OK_MS	0x0000000008000000
-# define PARSE_OK_PH	0x0000000010000000
-# define PARSE_OK_LU	0x0000000020000000
-# define PARSE_OK_BF	0x0000000040000000
-# define PARSE_OK_M2	0x0000000080000000
-# define PARSE_OK_M3	0x0000000100000000
-# define PARSE_OK_L2	0x0000000200000000
-# define PARSE_OK_L3	0x0000000400000000
+# define PARSE_OK_MO	0x0000000000400000
+# define PARSE_OK_DA	0x0000000000800000
+# define PARSE_OK_RS	0x0000000001000000
+# define PARSE_OK_MS	0x0000000002000000
+# define PARSE_OK_PH	0x0000000004000000
+# define PARSE_OK_LU	0x0000000008000000
+# define PARSE_OK_BF	0x0000000010000000
+# define PARSE_OK_M2	0x0000000020000000
+# define PARSE_OK_M3	0x0000000040000000
+# define PARSE_OK_L2	0x0000000080000000
 
-# define PARSE_OK_S0	0x0000000800000000
-# define PARSE_OK_S1	0x0000001000000000
-# define PARSE_OK_S2	0x0000002000000000
-# define PARSE_OK_S3	0x0000004000000000
-# define PARSE_OK_S4	0x0000008000000000
-# define PARSE_OK_S5	0x0000010000000000
-# define PARSE_OK_S6	0x0000020000000000
-# define PARSE_OK_S7	0x0000040000000000
-# define PARSE_OK_S8	0x0000080000000000
-# define PARSE_OK_S9	0x0000100000000000
+# define PARSE_OK_S0	0x0000000100000000
+# define PARSE_OK_S1	0x0000000200000000
+# define PARSE_OK_S2	0x0000000400000000
+# define PARSE_OK_S3	0x0000000800000000
 
-# define PARSE_OK_WA	0x0000200000000000
-# define PARSE_OK_HP	0x0000400000000000
-# define PARSE_OK_FL	0x0000800000000000
+# define PARSE_OK_S5	0x0000001000000000
+# define PARSE_OK_S6	0x0000002000000000
+# define PARSE_OK_S7	0x0000004000000000
+# define PARSE_OK_S8	0x0000008000000000
 
-# define PARSE_OK_FM	0x0001000000000000
-# define PARSE_OK_FE	0x0002000000000000
-# define PARSE_OK_FC	0x0004000000000000
+# define PARSE_OK_WA	0x0000010000000000
+# define PARSE_OK_HP	0x0000020000000000
+# define PARSE_OK_FL	0x0000040000000000
 
-# define PARSE_OK_D1	0x0000000000040000
-# define PARSE_OK_D2	0x0008000000000000
-# define PARSE_OK_D3	0x0010000000000000
-# define PARSE_OK_D4	0x0020000000000000
-# define PARSE_OK_D5	0x0040000000000000
-# define PARSE_OK_D6	0x0080000000000000
+# define PARSE_OK_FM	0x0000080000000000
+# define PARSE_OK_FE	0x0000100000000000
+# define PARSE_OK_FC	0x0000200000000000
 
-# define PARSE_OK_A1	0x0100000000000000
-# define PARSE_OK_A2	0x0200000000000000
+# define PARSE_OK_D1	0x0000400000000000
+# define PARSE_OK_D2	0x0000800000000000
+# define PARSE_OK_D3	0x0001000000000000
+# define PARSE_OK_D4	0x0002000000000000
+# define PARSE_OK_D5	0x0004000000000000
+# define PARSE_OK_D6	0x0008000000000000
+
+# define PARSE_OK_A1	0x0010000000000000
+# define PARSE_OK_A2	0x0020000000000000
+# define PARSE_OK_A3	0x0040000000000000
+# define PARSE_OK_A4	0x0080000000000000
+# define PARSE_OK_A5	0x0100000000000000
+# define PARSE_OK_A6	0x0200000000000000
+# define PARSE_OK_A7	0x0400000000000000
 
 # define PARSE_OK_C		0x0800000000000000
 # define PARSE_OK_F		0x1000000000000000

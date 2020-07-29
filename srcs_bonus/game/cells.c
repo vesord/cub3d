@@ -26,7 +26,7 @@ char	get_cell_map(int x, int y, t_cub *cub)
 
 char	get_cell_ray(int x, int y, t_cub *cub)
 {
-	if (x < 0 || y < 0)
+	if (x <= 0 || y <= 0)
 		return ('1');
 	if (cub->ray->dir == DIR_TOP)
 		if (y - 1 < cub->map->max_y && x < cub->map->max_x)
@@ -52,7 +52,7 @@ int		is_cell_sprite(char c)
 
 int		is_cell_wall(char c)
 {
-	if (ft_strchr("123456789", c))
+	if (ft_strchr("12345678", c))
 		return (1);
 	return (0);
 }

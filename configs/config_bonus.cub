@@ -7,7 +7,6 @@
 #   W6 | 6 - wall 6
 #   W7 | 7 - wall 7
 #   W8 | 8 - wall 8
-#   W9 | 9 - wall 9
 #
 #       ___FLOORS___
 #   FM - floor Mewni
@@ -42,7 +41,6 @@
 #   BF | B - Buffrog
 #   M2 | G - Mewni sprite 2
 #   M3 | H - Mewni sprite 3
-#   L2 | J - Ludo castle sprite 2
 #   L3 | K - Ludo castle sprite 3
 #
 #       ___SKYBOXES___	
@@ -50,12 +48,10 @@
 #   S1 - Mewni skybox south
 #   S2 - Mewni skybox west
 #   S3 - Mewni skybox east
-#   S4 - Mewni skybox top
 #   S5 - RIck skybox north
 #   S6 - RIck skybox south
 #   S7 - RIck skybox west
 #   S8 - RIck skybox east
-#   S9 - RIck skybox top
 #
 #
 #       ___HUD_TEXTURES___
@@ -67,6 +63,11 @@
 #       ___ANIMATION___
 #   A1 - anim 1
 #   A2 - anim 2
+#   A3 - anim 3
+#   A4 - anim 4
+#   A5 - anim 5
+#   A6 - anim 6
+#   A7 - anim 7
 #
 #       ___DOORS___
 #   D1 | Q - door Mewni close
@@ -81,57 +82,55 @@
 R 640 480
 
 W1 ./imgs/pinc_wall.xpm
-W2 ./imgs/pinc_wall.xpm
-W3 ./imgs/pinc_wall.xpm
-W4 ./imgs/pinc_wall.xpm
-W5 ./imgs/pinc_wall.xpm
-W6 ./imgs/pinc_wall.xpm
-W7 ./imgs/pinc_wall.xpm
-W8 ./imgs/pinc_wall.xpm
-W9 ./imgs/pinc_wall.xpm
+W2 ./imgs/empty.xpm
+W3 ./imgs/empty.xpm
+W4 ./imgs/empty.xpm
+W5 ./imgs/empty.xpm
+W6 ./imgs/empty.xpm
+W7 ./imgs/empty.xpm
+W8 ./imgs/empty.xpm
 
-FM ./imgs/rainbow1.xpm
-FE ./imgs/rainbow1.xpm
-FC ./imgs/rainbow1.xpm
+FM ./imgs/empty.xpm
+FE ./imgs/empty.xpm
+FC ./imgs/empty.xpm
 
-WI ./imgs/rainbow1.xpm
+WI ./imgs/empty.xpm
 DI ./imgs/die.xpm
-R0 ./imgs/rainbow1.xpm
+R0 ./imgs/empty.xpm
 
 TR ./imgs/trap.xpm
 LI ./imgs/life.xpm
-TU ./imgs/rainbow1.xpm
-DW ./imgs/rainbow1.xpm
-PL ./imgs/portal_ludo.xpm
-PR ./imgs/portal_rick.xpm
-LB ./imgs/rainbow1.xpm
-BB ./imgs/rainbow1.xpm
-M1 ./imgs/rainbow1.xpm
-L1 ./imgs/rainbow1.xpm
-E1 ./imgs/rainbow1.xpm
+TU ./imgs/empty.xpm
+DW ./imgs/wand_moon.xpm
+# PL ./imgs/portal_ludo.xpm
+PL ./imgs/empty.xpm
+# PR ./imgs/portal_rick.xpm
+PR ./imgs/empty.xpm
+LB ./imgs/empty.xpm
+BB ./imgs/empty.xpm
+M1 ./imgs/empty.xpm
+L1 ./imgs/empty.xpm
+E1 ./imgs/empty.xpm
 
-MO ./imgs/rainbow1.xpm
-DA ./imgs/rainbow1.xpm
-RS ./imgs/rainbow1.xpm
-MS ./imgs/rainbow1.xpm
+MO ./imgs/empty.xpm
+DA ./imgs/empty.xpm
+RS ./imgs/empty.xpm
+MS ./imgs/empty.xpm
 PH ./imgs/ponyhead.xpm
-LU ./imgs/rainbow1.xpm
-BF ./imgs/rainbow1.xpm
-M2 ./imgs/rainbow1.xpm
-M3 ./imgs/rainbow1.xpm
-L2 ./imgs/rainbow1.xpm
-L3 ./imgs/rainbow1.xpm
+LU ./imgs/empty.xpm
+BF ./imgs/empty.xpm
+M2 ./imgs/empty.xpm
+M3 ./imgs/empty.xpm
+L2 ./imgs/empty.xpm
 
 S0 ./imgs/mewni_sky_no.xpm
 S1 ./imgs/mewni_sky_so.xpm
 S2 ./imgs/mewni_sky_we.xpm
 S3 ./imgs/mewni_sky_ea.xpm
-S4 ./imgs/mewni_sky_to.xpm
-S5 ./imgs/rainbow1.xpm
-S6 ./imgs/rainbow1.xpm
-S7 ./imgs/rainbow1.xpm
-S8 ./imgs/rainbow1.xpm
-S9 ./imgs/rainbow1.xpm
+S5 ./imgs/empty.xpm
+S6 ./imgs/empty.xpm
+S7 ./imgs/empty.xpm
+S8 ./imgs/empty.xpm
 
 D1 ./imgs/rainbow1.xpm
 D2 ./imgs/SPRITE.xpm
@@ -140,8 +139,13 @@ D4 ./imgs/SPRITE.xpm
 D5 ./imgs/rainbow1.xpm
 D6 ./imgs/SPRITE.xpm
 
-A1 ./imgs/rainbow1.xpm
-A2 ./imgs/rainbow1.xpm
+A1 ./imgs/rainbow_blast1.xpm
+A2 ./imgs/rainbow_blast2.xpm
+A3 ./imgs/rainbow_blast3.xpm
+A4 ./imgs/rainbow_blast4.xpm
+A5 ./imgs/rainbow_blast5.xpm
+A6 ./imgs/rainbow_blast6.xpm
+A7 ./imgs/rainbow_blast7.xpm
 
 WA ./imgs/wand.xpm
 HP ./imgs/hp.xpm
@@ -157,8 +161,8 @@ F  244,164,96
 100000000000001
 100000000000001
 111Y111Q111U111111
-1000P000W$00$00001
-1000$0000000P00001
+1000P000S$00$00001
+1000$000w000P00001
 100000000c00000001
 10000*000*00000001
 100000*00$000$0001

@@ -16,6 +16,7 @@ void	get_player_pos(int *x, int *y, t_cub *cub);
 void	check_trap(int x, int y, t_cub *cub);
 void	check_life(int x, int y, t_cub *cub);
 void	check_portal(int x, int y, t_cub *cub);
+void	check_wand(int x, int y, t_cub *cub);
 
 void	check_interactions(t_cub *cub)
 {
@@ -31,10 +32,23 @@ void	check_interactions(t_cub *cub)
 		check_trap(cur_x, cur_y, cub);
 	check_portal(cur_x, cur_y, cub);
 	check_life(cur_x, cur_y, cub);
+	check_wand(cur_x, cur_y, cub);
 //	if (prev_x != cur_x)
 //		prev_x = cur_x;
 //	if (prev_y != cur_y)
 //		prev_y = cur_y;
+}
+
+void	check_wand(int x, int y, t_cub *cub)
+{
+	char cell;
+
+	cell = get_cell_map(x, y, cub);
+	if (cell != 'w')
+		return ;
+	cub->map->field[y][x] = '0';
+	cub->hud->has_wand = 1;
+	cub->hud->need_update_weap = 1;
 }
 
 void	map_find_portal(char cell, int *x_st, int *y_st, t_cub *cub);
@@ -61,6 +75,7 @@ void	check_portal(int x, int y, t_cub *cub)
 			map_find_portal(cell, &new_x, &new_y, cub);
 		cub->cam->x = cub->map->blk_x * new_x + (float)cub->map->blk_x / 2;
 		cub->cam->y = cub->map->blk_y * new_y + (float)cub->map->blk_y / 2;
+		cub->hud->rick_world = -cub->hud->rick_world;
 	}
 }
 

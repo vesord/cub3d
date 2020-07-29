@@ -30,7 +30,6 @@
 # define ERR_PARSE_W6	"Error occur while parsing W6 texture."
 # define ERR_PARSE_W7	"Error occur while parsing W7 texture."
 # define ERR_PARSE_W8	"Error occur while parsing W8 texture."
-# define ERR_PARSE_W9	"Error occur while parsing W9 texture."
 
 # define ERR_PARSE_WI	"Error occur while parsing WI texture."
 # define ERR_PARSE_DI	"Error occur while parsing DI texture."
@@ -58,18 +57,16 @@
 # define ERR_PARSE_M2	"Error occur while parsing M2 texture."
 # define ERR_PARSE_M3	"Error occur while parsing M3 texture."
 # define ERR_PARSE_L2	"Error occur while parsing L2 texture."
-# define ERR_PARSE_L3	"Error occur while parsing L3 texture."
 
 # define ERR_PARSE_S0	"Error occur while parsing S0 texture."
 # define ERR_PARSE_S1	"Error occur while parsing S1 texture."
 # define ERR_PARSE_S2	"Error occur while parsing S2 texture."
 # define ERR_PARSE_S3	"Error occur while parsing S3 texture."
-# define ERR_PARSE_S4	"Error occur while parsing S4 texture."
+
 # define ERR_PARSE_S5	"Error occur while parsing S5 texture."
 # define ERR_PARSE_S6	"Error occur while parsing S6 texture."
 # define ERR_PARSE_S7	"Error occur while parsing S7 texture."
 # define ERR_PARSE_S8	"Error occur while parsing S8 texture."
-# define ERR_PARSE_S9	"Error occur while parsing S9 texture."
 
 # define ERR_PARSE_D1	"Error occur while parsing D1 texture."
 # define ERR_PARSE_D2	"Error occur while parsing D2 texture."
@@ -80,6 +77,11 @@
 
 # define ERR_PARSE_A1	"Error occur while parsing A1 texture."
 # define ERR_PARSE_A2	"Error occur while parsing A2 texture."
+# define ERR_PARSE_A3	"Error occur while parsing A3 texture."
+# define ERR_PARSE_A4	"Error occur while parsing A4 texture."
+# define ERR_PARSE_A5	"Error occur while parsing A5 texture."
+# define ERR_PARSE_A6	"Error occur while parsing A6 texture."
+# define ERR_PARSE_A7	"Error occur while parsing A7 texture."
 
 # define ERR_PARSE_WA	"Error occur while parsing WA texture."
 # define ERR_PARSE_HP	"Error occur while parsing HP texture."

@@ -16,7 +16,6 @@ void	player_init(t_cub *cub)
 {
 	map_set_scales(cub);
 	cam_init(cub);
-
 	cub->hud->need_update_face = 1;
 	cub->hud->need_update_weap = 0;
 	cub->hud->need_update_hp = 1;
@@ -24,6 +23,9 @@ void	player_init(t_cub *cub)
 	cub->hud->status = 0;
 	cub->hud->jumping = 0;
 	cub->hud->teleported = 0;
+	cub->hud->rick_world = -1;
+	cub->hud->shooting = 0;
+	cub->hud->has_wand = 0;
 }
 
 void	map_set_scales(t_cub *cub)

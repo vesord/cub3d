@@ -57,8 +57,6 @@ t_img	*select_sprite(char type, t_cub *cub)
 	else if (type == 'J')
 		return (cub->tex->tx_spr_ngo->lud_s_ngo_1);
 	else if (type == 'K')
-		return (cub->tex->tx_spr_ngo->lud_s_ngo_2);
-	else if (type == 'y')
 		return (cub->tex->tx_doors->secret_open);
 	else if (type == 'q')
 		return (cub->tex->tx_doors->mew_open);
@@ -96,5 +94,5 @@ t_img	*select_wall(char type, t_cub *cub)
 		return (cub->tex->tx_walls->rick_1);
 	else if (type == '8')
 		return (cub->tex->tx_walls->rick_2);
-	return (cub->tex->tx_walls->wall_9);
+	return (cub->tex->tx_walls->mewni_1);
 }

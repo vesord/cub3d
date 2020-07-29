@@ -28,10 +28,8 @@ int		key_press(int keycode, t_cub *cub)
 		cub->key->l_arrow = 1;
 	if (keycode == XK_Right)
 		cub->key->r_arrow = 1;
-	if (keycode == XK_Up)
-		cub->key->u_arrow = 1;
-	if (keycode == XK_Down)
-		cub->key->d_arrow = 1;
+	if (keycode == XK_Shift_L)
+		cub->key->shoot = 1;
 	if (keycode == XK_Escape)
 		cub->key->esc = 1;
 	if (keycode == XK_Control_L)
@@ -57,10 +55,8 @@ int		key_release(int keycode, t_cub *cub)
 		cub->key->l_arrow = 0;
 	if (keycode == XK_Right)
 		cub->key->r_arrow = 0;
-	if (keycode == XK_Up)
-		cub->key->u_arrow = 0;
-	if (keycode == XK_Down)
-		cub->key->d_arrow = 0;
+	if (keycode == XK_Shift_L)
+		cub->key->shoot = 0;
 	if (keycode == XK_Escape)
 		cub->key->esc = 0;
 	if (keycode == XK_Control_L)

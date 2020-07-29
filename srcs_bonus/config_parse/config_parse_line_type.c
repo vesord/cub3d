@@ -30,8 +30,6 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_walls->rick_1));
 	else if (line[0] == 'W' && line[1] == '8' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_walls->rick_2));
-	else if (line[0] == 'W' && line[1] == '9' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_walls->wall_9));
 
 	else if (line[0] == 'W' && line[1] == 'I' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_screens->end));
@@ -83,8 +81,6 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_spr_ngo->mew_s_ngo_2));
 	else if (line[0] == 'L' && line[1] == '2' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_spr_ngo->lud_s_ngo_1));
-	else if (line[0] == 'L' && line[1] == '3' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_spr_ngo->lud_s_ngo_2));
 
 	else if (line[0] == 'S' && line[1] == '0' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_mew->no));
@@ -94,8 +90,6 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_mew->we));
 	else if (line[0] == 'S' && line[1] == '3' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_mew->ea));
-	else if (line[0] == 'S' && line[1] == '4' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_sky_mew->to));
 
 	else if (line[0] == 'S' && line[1] == '5' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_rick->no));
@@ -105,8 +99,6 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_rick->we));
 	else if (line[0] == 'S' && line[1] == '8' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_sky_rick->ea));
-	else if (line[0] == 'S' && line[1] == '9' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_sky_rick->to));
 
 	else if (line[0] == 'F' && line[1] == 'M' && line[2] == ' ')
 		return (parse_line_texture(line, cub, cub->tex->tx_floors->mewni));
@@ -136,9 +128,19 @@ size_t parse_line_type(char *line, t_cub *cub)
 		return (parse_line_texture(line, cub, cub->tex->tx_doors->secret_open));
 
 	else if (line[0] == 'A' && line[1] == '1' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_animation->wand_1));
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_1));
 	else if (line[0] == 'A' && line[1] == '2' && line[2] == ' ')
-		return (parse_line_texture(line, cub, cub->tex->tx_animation->wand_2));
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_2));
+	else if (line[0] == 'A' && line[1] == '3' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_3));
+	else if (line[0] == 'A' && line[1] == '4' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_4));
+	else if (line[0] == 'A' && line[1] == '5' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_5));
+	else if (line[0] == 'A' && line[1] == '6' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_6));
+	else if (line[0] == 'A' && line[1] == '7' && line[2] == ' ')
+		return (parse_line_texture(line, cub, cub->tex->tx_anim->wand_7));
 
 	else if (line[0] == 'F' && line[1] == ' ')
 		return (parse_line_color(line, cub, &(cub->tex->flor)));

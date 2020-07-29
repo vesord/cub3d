@@ -84,8 +84,6 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_W7);
 	else if ((cub->tex->tx_walls->rick_2) == data)
 		return (ERR_PARSE_W8);
-	else if ((cub->tex->tx_walls->wall_9) == data)
-		return (ERR_PARSE_W9);
 
 	else if ((cub->tex->tx_screens->end) == data)
 		return (ERR_PARSE_WI);
@@ -137,8 +135,6 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_M3);
 	else if ((cub->tex->tx_spr_ngo->lud_s_ngo_1) == data)
 		return (ERR_PARSE_L2);
-	else if ((cub->tex->tx_spr_ngo->lud_s_ngo_2) == data)
-		return (ERR_PARSE_L3);
 
 	else if ((cub->tex->tx_sky_mew->no) == data)
 		return (ERR_PARSE_S0);
@@ -148,8 +144,6 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_S2);
 	else if ((cub->tex->tx_sky_mew->ea) == data)
 		return (ERR_PARSE_S3);
-	else if ((cub->tex->tx_sky_mew->to) == data)
-		return (ERR_PARSE_S4);
 
 	else if ((cub->tex->tx_sky_rick->no) == data)
 		return (ERR_PARSE_S5);
@@ -159,8 +153,6 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 		return (ERR_PARSE_S7);
 	else if ((cub->tex->tx_sky_rick->ea) == data)
 		return (ERR_PARSE_S8);
-	else if ((cub->tex->tx_sky_rick->to) == data)
-		return (ERR_PARSE_S9);
 
 	else if ((cub->tex->tx_doors->mew_close) == data)
 		return (ERR_PARSE_D1);
@@ -175,10 +167,20 @@ char	*parse_line_err_msg(t_cub *cub, void *data)
 	else if ((cub->tex->tx_doors->secret_open) == data)
 		return (ERR_PARSE_D6);
 
-	else if ((cub->tex->tx_animation->wand_1) == data)
+	else if ((cub->tex->tx_anim->wand_1) == data)
 		return (ERR_PARSE_A1);
-	else if ((cub->tex->tx_animation->wand_2) == data)
+	else if ((cub->tex->tx_anim->wand_2) == data)
 		return (ERR_PARSE_A2);
+	else if ((cub->tex->tx_anim->wand_3) == data)
+		return (ERR_PARSE_A3);
+	else if ((cub->tex->tx_anim->wand_4) == data)
+		return (ERR_PARSE_A4);
+	else if ((cub->tex->tx_anim->wand_5) == data)
+		return (ERR_PARSE_A5);
+	else if ((cub->tex->tx_anim->wand_6) == data)
+		return (ERR_PARSE_A6);
+	else if ((cub->tex->tx_anim->wand_7) == data)
+		return (ERR_PARSE_A7);
 	
 	else if ((cub->hud->tx_face) == data)
 		return (ERR_PARSE_FL);
@@ -220,8 +222,6 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_W7);
 	else if ((cub->tex->tx_walls->rick_2) == data)
 		return (PARSE_OK_W8);
-	else if ((cub->tex->tx_walls->wall_9) == data)
-		return (PARSE_OK_W9);
 
 	else if ((cub->tex->tx_screens->end) == data)
 		return (PARSE_OK_WI);
@@ -273,8 +273,6 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_M3);
 	else if ((cub->tex->tx_spr_ngo->lud_s_ngo_1) == data)
 		return (PARSE_OK_L2);
-	else if ((cub->tex->tx_spr_ngo->lud_s_ngo_2) == data)
-		return (PARSE_OK_L3);
 
 	else if ((cub->tex->tx_sky_mew->no) == data)
 		return (PARSE_OK_S0);
@@ -284,8 +282,6 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_S2);
 	else if ((cub->tex->tx_sky_mew->ea) == data)
 		return (PARSE_OK_S3);
-	else if ((cub->tex->tx_sky_mew->to) == data)
-		return (PARSE_OK_S4);
 
 	else if ((cub->tex->tx_sky_rick->no) == data)
 		return (PARSE_OK_S5);
@@ -295,8 +291,6 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 		return (PARSE_OK_S7);
 	else if ((cub->tex->tx_sky_rick->ea) == data)
 		return (PARSE_OK_S8);
-	else if ((cub->tex->tx_sky_rick->to) == data)
-		return (PARSE_OK_S9);
 
 	else if ((cub->tex->tx_doors->mew_close) == data)
 		return (PARSE_OK_D1);
@@ -311,10 +305,20 @@ size_t		parse_line_texture_ret(t_cub *cub, void *data)
 	else if ((cub->tex->tx_doors->secret_open) == data)
 		return (PARSE_OK_D6);
 	
-	else if ((cub->tex->tx_animation->wand_1) == data)
+	else if ((cub->tex->tx_anim->wand_1) == data)
 		return (PARSE_OK_A1);
-	else if ((cub->tex->tx_animation->wand_2) == data)
+	else if ((cub->tex->tx_anim->wand_2) == data)
 		return (PARSE_OK_A2);
+	else if ((cub->tex->tx_anim->wand_3) == data)
+		return (PARSE_OK_A3);
+	else if ((cub->tex->tx_anim->wand_4) == data)
+		return (PARSE_OK_A4);
+	else if ((cub->tex->tx_anim->wand_5) == data)
+		return (PARSE_OK_A5);
+	else if ((cub->tex->tx_anim->wand_6) == data)
+		return (PARSE_OK_A6);
+	else if ((cub->tex->tx_anim->wand_7) == data)
+		return (PARSE_OK_A7);
 	
 	else if ((cub->hud->tx_face) == data)
 		return (PARSE_OK_FL);

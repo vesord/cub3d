@@ -16,6 +16,9 @@ void	put_hp_to_img(int off_x, int off_y, int size, t_cub *cub);
 void	add_hud_hp(t_cub *cub);
 void	process_jumping(t_cub *cub);
 
+void	add_hud_shooting(t_cub *cub);
+void	draw_rainbow_blast(t_cub *cub);
+
 void	update_hud(t_cub *cub)
 {
 	if (cub->hud->hp <= 0)
@@ -23,9 +26,110 @@ void	update_hud(t_cub *cub)
 	add_hud_face(cub);
 	add_hud_wand(cub);
 	add_hud_hp(cub);
+	add_hud_shooting(cub);
 	if (cub->hud->jumping)
 		process_jumping(cub);
 }
+
+typedef struct	s_win_blk
+{
+	int	x_start;
+	int	y_start;
+	int	x_end;
+	int	y_end;
+
+}				t_win_blk;
+
+void	add_hud_shooting(t_cub *cub)
+{
+	if (!cub->hud->shooting || !cub->hud->has_wand)
+		return ;
+	draw_rainbow_blast(cub);
+}
+
+void	win_blk_rb_init(t_win_blk *blk, t_cub *cub);
+void	put_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub);
+void	erase_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub);
+
+void	draw_rainbow_blast(t_cub *cub)
+{
+	static int			shout_status;
+	static t_win_blk	rb_blk;
+
+	if (!rb_blk.x_end && !rb_blk.y_end)
+		win_blk_rb_init(&rb_blk, cub);
+	if (cub->hud->shooting == 1)
+		put_img_in_win_blk(&rb_blk, *(&(cub->tex->tx_anim->wand_1) + shout_status), cub);
+	else
+		erase_img_in_win_blk(&rb_blk, *(&(cub->tex->tx_anim->wand_1) + shout_status), cub);
+	shout_status++;
+	if (shout_status == 7)
+	{
+		cub->hud->shooting++;
+		shout_status = 0;
+	}
+	if (cub->hud->shooting == 3)
+		cub->hud->shooting = 0;
+}
+
+void	erase_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub)
+{
+	int				x;
+	int				y;
+	unsigned int	pixel;
+
+	y = -1;
+	while (++y < blk->y_end - blk->y_start)
+	{
+		x = -1;
+		while (++x < blk->x_end - blk->x_start)
+		{
+			pixel = get_pixel_tex((float)(x) / (float)(blk->x_end - blk->x_start), (float)(y) / (float)(blk->y_end - blk->y_start), tex);
+			if (pixel)
+			{
+				((unsigned int *) (cub->frm_0->data))[cub->win->x * (y + blk->y_start) + x + blk->x_start] = pixel;
+				((unsigned int *) (cub->frm_1->data))[cub->win->x * (y + blk->y_start) + x + blk->x_start] = pixel;
+			}
+		}
+	}
+	cub->hud->need_update_weap = 1;
+}
+
+void	put_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub)
+{
+	int				x;
+	int				y;
+	unsigned int	pixel;
+
+	y = -1;
+	while (++y < blk->y_end - blk->y_start)
+	{
+		x = -1;
+		while (++x < blk->x_end - blk->x_start)
+		{
+			pixel = get_pixel_tex((float)(x) / (float)(blk->x_end - blk->x_start), (float)(y) / (float)(blk->y_end - blk->y_start), tex);
+			if (pixel)
+			{
+				((unsigned int *) (cub->frm_0->data))[cub->win->x * (y + blk->y_start) + x + blk->x_start] = pixel | HUD_TRANSP_MASK;
+				((unsigned int *) (cub->frm_1->data))[cub->win->x * (y + blk->y_start) + x + blk->x_start] = pixel | HUD_TRANSP_MASK;
+			}
+		}
+	}
+}
+
+void	win_blk_rb_init(t_win_blk *blk, t_cub *cub)
+{
+	static float off_x = 0.5f;
+	static float off_y = 0.45f;
+	static float size_x = 0.205f;
+	static float size_y = 0.4f;
+
+	blk->x_start = (int)((float)cub->win->x * off_x);
+	blk->y_start = (int)((float)cub->win->y * off_y);
+	blk->x_end = (int)((float)cub->win->x * (off_x + size_x));
+	blk->y_end = (int)((float)cub->win->y * (off_y + size_y));
+}
+
 
 void	add_hud_hp(t_cub *cub)
 {
@@ -74,8 +178,6 @@ void	process_jumping(t_cub *cub)
 		cub->hud->jumping = 0;
 	}
 }
-
-
 
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp)
 {

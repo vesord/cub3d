@@ -57,8 +57,6 @@ void	cub_textures_destroy_spr_ngo(t_tx_spr_ngo *tx_spr_ngo, void *mlx_ptr)
 		cub_img_destroy(tx_spr_ngo->pony, mlx_ptr);
 	if (tx_spr_ngo->lud_s_ngo_1)
 		cub_img_destroy(tx_spr_ngo->lud_s_ngo_1, mlx_ptr);
-	if (tx_spr_ngo->lud_s_ngo_2)
-		cub_img_destroy(tx_spr_ngo->lud_s_ngo_2, mlx_ptr);
 	if (tx_spr_ngo->mew_s_ngo_1)
 		cub_img_destroy(tx_spr_ngo->mew_s_ngo_1, mlx_ptr);
 	if (tx_spr_ngo->mew_s_ngo_2)
@@ -77,7 +75,7 @@ void	cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr)
 	free(tx_screens);
 }
 
-void	cub_textures_destroy_animation(t_tx_animation *tx_anim, void *mlx_ptr)
+void	cub_textures_destroy_animation(t_tx_anim *tx_anim, void *mlx_ptr)
 {
 	if (tx_anim->wand_2)
 		cub_img_destroy(tx_anim->wand_2, mlx_ptr);
