@@ -539,4 +539,9 @@ void	set_status_screen(t_cub *cub);
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp);
 unsigned int		get_skybox_pixel(float p_angle, t_cub *cub);
 
+
+int		mouse_button_pess(int button, int x, int y, t_cub *cub);
+int		mouse_button_release(int button, int x, int y, t_cub *cub);
+int		mouse_move(int x, int y, t_cub *cub);
+
 #endif

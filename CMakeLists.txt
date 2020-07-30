@@ -101,6 +101,7 @@ set(SRC_FILES_BONUS
         srcs_bonus/game/image_form.c
         srcs_bonus/game/key_process_loop.c
         srcs_bonus/game/key_process_game.c
+        srcs_bonus/game/mouse_process_loop.c
         srcs_bonus/game/select_textures.c
         srcs_bonus/game/walls.c
         srcs_bonus/game/textures_sprites.c
