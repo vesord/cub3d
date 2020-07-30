@@ -82,10 +82,10 @@ int		is_map_portals_correct(t_cub *cub)
 		{
 			j = -1;
 			while (cub->map->field[i][++j])
-				if (cub->map->field[i][++j] == portals[p])
+				if (cub->map->field[i][j] == portals[p])
 					count++;
 		}
-		if (count != 2)
+		if (!(count == 2 || count == 0))
 			return (0);
 	}
 	return (1);

@@ -54,9 +54,9 @@ t_img	*select_sprite(char type, t_cub *cub)
 		return (cub->tex->tx_spr_ngo->mew_s_ngo_1);
 	else if (type == 'H')
 		return (cub->tex->tx_spr_ngo->mew_s_ngo_2);
-	else if (type == 'J')
-		return (cub->tex->tx_spr_ngo->lud_s_ngo_1);
 	else if (type == 'K')
+		return (cub->tex->tx_spr_ngo->lud_s_ngo_1);
+	else if (type == 'y')
 		return (cub->tex->tx_doors->secret_open);
 	else if (type == 'q')
 		return (cub->tex->tx_doors->mew_open);

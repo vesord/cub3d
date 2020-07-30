@@ -168,7 +168,7 @@ void	process_jumping(t_cub *cub)
 	static int jump_status = -36;
 	static int jump_max = 36;
 
-	cub->cam->z = ((float)cub->map->blk_z * 2 / 3) + ((float)jump_max - (float)abs(jump_status)) / 2.f;
+	cub->cam->z = ((float)cub->map->blk_z / 2) + ((float)jump_max - (float)abs(jump_status)) / 2.f;
 	jump_status += (int)sqrtf((float)abs(jump_status));
 	if (jump_status == 0)
 		jump_status = 1;

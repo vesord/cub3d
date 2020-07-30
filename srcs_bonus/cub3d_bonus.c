@@ -58,8 +58,8 @@ void	save_frame(char *path_to_conf)
 	cub_init(cub);
 	if (!(cub->win->mlx_ptr = mlx_init()))
 		cub_destroy(cub, ERR_NO_MEMORY);
-	player_init(cub);
 	config_parse(path_to_conf, cub);
+	player_init(cub);
 	window_setup_save(cub);
 	if (!cub->frm_0 && !(cub->frm_0 = frame_init(cub->win->mlx_ptr,
 		cub->win->x, cub->win->y)))

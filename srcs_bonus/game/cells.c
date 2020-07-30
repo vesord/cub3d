@@ -45,7 +45,7 @@ char	get_cell_ray(int x, int y, t_cub *cub)
 
 int		is_cell_sprite(char c)
 {
-	if (ft_strchr("*$?wcelbgjlMDROPLBGHJKyuq", c))
+	if (ft_strchr("*$?wcelbgjpMDROPLBGHJKyuq", c))
 			return (1);
 	return (0);
 }

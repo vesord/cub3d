@@ -84,7 +84,7 @@ void	restart_game(t_cub *cub)
 	if (!(cub->map = (t_map*)malloc(sizeof(t_map))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	cub_init_map(cub);
-	player_init(cub);
 	cub->parse_is_map = 0;
 	config_parse(cub->config_path, cub);
+	player_init(cub);
 }

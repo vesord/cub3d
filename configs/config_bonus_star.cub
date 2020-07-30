@@ -1,0 +1,214 @@
+#       ___WALLS___
+##   W1 | 1 - wall 1
+#   W2 | 2 - wall 2
+#   W3 | 3 - wall 3
+##   W4 | 4 - wall 4
+#   W5 | 5 - wall 5
+#   W6 | 6 - wall 6
+#   W7 | 7 - wall 7
+#   W8 | 8 - wall 8
+#
+#       ___FLOORS___
+#   FM - floor Mewni
+#   FE - floor Rick
+#   FC - floor Ludo Castle
+#
+#       ___SCREENS___
+#   WI - victory
+#   DI - you died
+#   R0 - reserved
+#
+#       ___SPRITES_GO_THROUGH___
+#   TR | * - trap
+#   LI | $ - life
+#   TU | ? - tutorial
+#   DW | w - dropped wand
+#   PL | c - portal to Ludo castle
+#   PR | e - portal to Rick (earth)
+#   LB | l - Ludo beaten
+#   BB | b - Buffrog beaten
+#   M1 | g - Mewni sprite 1
+#   L1 | j - Ludo castle sprite 1
+#   E1 | p - Earth Rick sprite 1
+#
+#       ___SPRITES_NO_GO_THROUGH___
+#   MO | M - Butterfly's mom
+#   DA | D - Butterfly's dad
+#   RS | R - Rick Sanches
+#   MS | O - mOrty Smith
+#   PH | P - Pony Head
+#   LU | L - Ludo
+#   BF | B - Buffrog
+#   M2 | G - Mewni sprite 2
+#   M3 | H - Mewni sprite 3
+#   L2 | K - Ludo castle sprite 3
+#
+#       ___SKYBOXES___	
+#   S0 - Mewni skybox north
+#   S1 - Mewni skybox south
+#   S2 - Mewni skybox west
+#   S3 - Mewni skybox east
+#   S5 - RIck skybox north
+#   S6 - RIck skybox south
+#   S7 - RIck skybox west
+#   S8 - RIck skybox east
+#
+#       ___HUD_TEXTURES___
+#   WA - wand
+#   HP - HP heart
+#   FL - forelock
+#   AX - axe (probably will added)
+#
+#       ___ANIMATION___
+#   A1 - anim 1
+#   A2 - anim 2
+#   A3 - anim 3
+#   A4 - anim 4
+#   A5 - anim 5
+#   A6 - anim 6
+#   A7 - anim 7
+#
+#       ___DOORS___
+#   D1 | Q - door Mewni close
+#   D2 | q - door Mewni open
+#   D3 | U - door Ludo close
+#   D4 | u - door Ludo open
+#   D5 | Y - door Secret close
+#   D6 | y - door Secret open
+#
+
+
+R 640 480
+
+W1 ./imgs/wall_mewni.xpm
+W2 ./imgs/window_2.xpm
+W3 ./imgs/wall_mewni_3.xpm
+W4 ./imgs/wall_ludo.xpm
+W5 ./imgs/wall_ludo_2.xpm
+W6 ./imgs/wall_ludo_3.xpm
+W7 ./imgs/border.xpm
+W8 ./imgs/speaker.xpm
+
+FM ./imgs/empty.xpm
+FE ./imgs/empty.xpm
+FC ./imgs/empty.xpm
+
+WI ./imgs/empty.xpm
+DI ./imgs/die.xpm
+R0 ./imgs/empty.xpm
+
+TR ./imgs/trap.xpm
+LI ./imgs/life.xpm
+TU ./imgs/empty.xpm
+DW ./imgs/wand_moon.xpm
+PL ./imgs/portal_ludo.xpm
+PR ./imgs/portal_rick.xpm
+LU ./imgs/ludo.xpm
+LB ./imgs/empty.xpm
+BB ./imgs/empty.xpm
+M1 ./imgs/chandelier.xpm
+L1 ./imgs/chandelier_skull.xpm
+E1 ./imgs/micro.xpm
+
+MO ./imgs/queen_moon.xpm
+DA ./imgs/king_river.xpm
+RS ./imgs/rick_sanchez.xpm
+MS ./imgs/morty_smith.xpm
+PH ./imgs/ponyhead.xpm
+BF ./imgs/empty.xpm
+M2 ./imgs/armor.xpm
+M3 ./imgs/fountain.xpm
+L2 ./imgs/bones.xpm
+
+S0 ./imgs/mewni_sky_no.xpm
+S1 ./imgs/mewni_sky_so.xpm
+S2 ./imgs/mewni_sky_we.xpm
+S3 ./imgs/mewni_sky_ea.xpm
+S5 ./imgs/empty.xpm
+S6 ./imgs/empty.xpm
+S7 ./imgs/empty.xpm
+S8 ./imgs/empty.xpm
+
+D1 ./imgs/door_mewni.xpm
+D2 ./imgs/empty.xpm
+D3 ./imgs/door_ludo.xpm
+D4 ./imgs/empty.xpm
+D5 ./imgs/painting.xpm
+D6 ./imgs/empty.xpm
+
+A1 ./imgs/rainbow_blast1.xpm
+A2 ./imgs/rainbow_blast2.xpm
+A3 ./imgs/rainbow_blast3.xpm
+A4 ./imgs/rainbow_blast4.xpm
+A5 ./imgs/rainbow_blast5.xpm
+A6 ./imgs/rainbow_blast6.xpm
+A7 ./imgs/rainbow_blast7.xpm
+
+WA ./imgs/wand.xpm
+HP ./imgs/hp.xpm
+FL ./imgs/forelock.xpm
+
+
+C  135,206,235
+F  244,164,96
+
+                                         2
+                                        2H2
+                                       20002
+                                      2H000H2
+                                       20002
+                                        1Y1
+                                       20002
+                                      1000001
+                                      3000003
+                                      1000001
+                                       20002
+                                        1Q1
+                                        101
+                                        1*1
+                                        101
+                                        1*1
+                                        101
+                                        1*1
+                                        1*1
+                                        101
+                                        1*1
+                                        101
+                                        1*1
+                                        101
+                                        1Q1
+                                       20002
+                                      2G000G2
+                                     2H00g00H2
+11111111111111111                   2G0000000G2
+10000*00000000001111111111111111111100000000D002
+10g0*0000*000$g0Q00*000**0000***$00Q00g0000wM002
+10000000*000000011111111111111111111000000000002
+111Q1111111111111                   2G0000000G2
+10j0j01                              2H00g00H2
+1K000K1                               2G000G2
+1K000K1                                20002
+100N0e2                                 1Q1
+100j003                                10001
+1000002                               1000001
+1111511                               1000001
+                                      1000001
+                                       10c01
+                                        111
+                                                                    
+777777777
+700000007
+708000007
+7e8Rp0007
+708O00007
+708000007
+700000007
+777777777
+
+555555555
+5000c0005    4464644
+50000000444444000004
+50000000U0000U000L04
+50000000444444000004
+500000005    4464644
+555555555

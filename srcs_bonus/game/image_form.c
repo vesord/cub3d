@@ -63,7 +63,7 @@ void	make_frame(t_cub *cub)
 		frame_x++;
 	}
 }
-
+// TODO: fix portals same column
 void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 {
 	int		f_y;
@@ -78,18 +78,22 @@ void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
 	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
 	f_y = -1;
+
 	while (++f_y < cub->win->y)
 	{
 		if ((((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] & 0xff000000) == HUD_TRANSP_MASK)
 			;
 		else if (angle > c_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub); //cub->tex->ceil; // add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub);
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub);
 		else if (angle > f_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] =  //get_pixel_wall(1.f - get_x_wall(cub),1.f - get_y_wall(angle, len_to_wall, cub), cub, 0);
-				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub),cub->ray->wall),
-					len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub);
+		{
+			if (!(((int *) cub->frm_0->data)[f_y * cub->win->x + f_x] =
+				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub), cub->ray->wall),
+						   len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub)))
+				((int *) cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub);
+		}
 		else
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub); // cub->tex->flor;
+			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
 		angle -= d_angle;
 	}
 	if (cub->ray->spr)
