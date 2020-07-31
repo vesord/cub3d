@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "bmp.h"
 
 int		main(int argc, char **argv)
 {

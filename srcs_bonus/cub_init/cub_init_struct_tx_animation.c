@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_init.h"
 
 void	cub_init_tex_animation_set_null(t_tx_anim *tx_animation);
 

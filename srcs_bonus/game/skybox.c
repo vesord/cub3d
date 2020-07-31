@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 float	skybox_get_off_angle_yaw(float angle, int *dir);
 unsigned int	get_skybox_pixel_tex(float off_x, float off_y, t_img *tex);
@@ -64,11 +65,3 @@ float	skybox_get_off_angle_yaw(float angle, int *dir)
 	*dir = DIR_RIGHT;
 	return (frac > 0.875f ? (frac - 0.875f) / 0.25f : (frac + 0.125f) / 0.25f);
 }
-
-//if (frac < -0.125f && frac >= -0.375f)
-//return (1.f - (frac + 0.125f) / -0.25f);
-//if (frac < -0.375f && frac >= -0.625f)
-//return (1.f - (frac + 0.375f) / -0.25f);
-//if (frac < -0.625f && frac >= -0.875f)
-//return (1.f - (frac + 0.625f) / -0.25f);
-//return (frac < 0.875f ? (1.f + frac + 0.125f) / 0.25f : (0.125f + frac) / 0.25f);

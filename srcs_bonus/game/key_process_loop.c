@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_init.h"
+#include "cub_game.h"
 
 void	restart_game(t_cub *cub);
 

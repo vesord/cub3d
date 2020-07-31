@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 void	get_player_pos(int *x, int *y, t_cub *cub);
 void	check_trap(int x, int y, t_cub *cub);

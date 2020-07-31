@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_init.h"
 
 void	cub_textures_destroy(t_textures *tex, void *mlx_ptr)
 {

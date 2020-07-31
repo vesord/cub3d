@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_init.h"
 
 void	cub_init_tex_doors_set_null(t_tx_doors *tx_doors);
 

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
+#include "bmp.h"
 
 int		create_bmp_img(t_img *img)
 {

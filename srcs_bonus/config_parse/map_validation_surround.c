@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "config_parse.h"
+#include "cub_game.h"
 
 /*
 **	Checks if there are walls all around locations with portals

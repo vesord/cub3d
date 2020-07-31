@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 /*
 **	get_cell() checks x < 0 and y < 0 cos in some cases x and y came here

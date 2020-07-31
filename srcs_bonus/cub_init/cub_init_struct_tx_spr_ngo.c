@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_init.h"
 
 void	cub_init_tex_spr_ngo(t_cub *cub)
 {

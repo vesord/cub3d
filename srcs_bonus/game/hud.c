@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 void	put_hp_to_img(int off_x, int off_y, int size, t_cub *cub);
 void	add_hud_hp(t_cub *cub);

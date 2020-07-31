@@ -11,19 +11,20 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 float			get_x_tex(t_cub *cub)
 {
-	float not_used;
+	float no_use;
 
 	if (cub->ray->dir == DIR_RIGHT)
-		return (1.f - modff(cub->ray->y / (float)cub->map->blk_y, &not_used));
+		return (1.f - modff(cub->ray->y / (float)cub->map->blk_y, &no_use));
 	else if (cub->ray->dir == DIR_BOT)
-		return (modff(cub->ray->x / (float)cub->map->blk_x, &not_used));
+		return (modff(cub->ray->x / (float)cub->map->blk_x, &no_use));
 	else if (cub->ray->dir == DIR_LEFT)
-		return (modff(cub->ray->y / (float)cub->map->blk_y, &not_used));
+		return (modff(cub->ray->y / (float)cub->map->blk_y, &no_use));
 	else
-		return (1.f - modff(cub->ray->x / (float)cub->map->blk_x, &not_used));
+		return (1.f - modff(cub->ray->x / (float)cub->map->blk_x, &no_use));
 }
 
 float			get_y_tex(float angle, float len_to_wall, t_cub *cub)
@@ -33,5 +34,6 @@ float			get_y_tex(float angle, float len_to_wall, t_cub *cub)
 
 unsigned int get_pixel_tex(float off_x, float off_y, t_img *tex)
 {
-	return (((int*)tex->data)[(int)((float)tex->height * off_y) * tex->width + (int)((float)tex->width * off_x)]);
+	return (((int*)tex->data)[(int)((float)tex->height * off_y) * tex->width
+	+ (int)((float)tex->width * off_x)]);
 }

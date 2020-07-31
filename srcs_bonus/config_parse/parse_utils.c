@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "config_parse.h"
 
 int		check_path(char *path)
 {

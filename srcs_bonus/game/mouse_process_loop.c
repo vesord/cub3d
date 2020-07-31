@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 int		mouse_button_pess(int button, int x, int y, t_cub *cub)
 {

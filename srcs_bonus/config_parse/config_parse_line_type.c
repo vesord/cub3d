@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "config_parse.h"
 
 size_t parse_line_type(char *line, t_cub *cub)
 {

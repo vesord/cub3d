@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
 void		frame_add_sprite(int frame_x, t_cub *cub)
 {
