@@ -49,7 +49,7 @@ $(NAME): $(OBJ_ALL)
 	$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_DIR)) $(OBJ_ALL) $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@ 
 
 $(OBJ_ALL): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLLUDES)
-	$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_DIR)) $< $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@ 
+	$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_DIR)) $< $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@
 
 $(OBJ_DIR):
 		mkdir $@ $@/$(DIR_PARSE) $@/$(DIR_INIT) $@/$(DIR_GAME) $@/$(DIR_WINDOW)

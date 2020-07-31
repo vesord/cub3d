@@ -216,7 +216,7 @@ typedef struct	s_hud
 	int		need_update_hp;
 	int		teleported;
 	int		shooting;
-	int		rick_world;
+	int		world;
 	int		has_wand;
 }				t_hud;
 
@@ -478,7 +478,7 @@ void			frame_col_set(int f_x, float len_to_wall, t_cub *cub);
 t_img			*frame_init(void *mlx_ptr, int x, int y);
 
 # define TURN_SCALER 72
-# define STEP_SCALER 10
+# define STEP_SCALER 16
 # define WALL_SCALER 6
 
 void			process_key(t_cub *cub);
@@ -537,8 +537,11 @@ void	add_hud_wand(t_cub *cub);
 void	set_status_screen(t_cub *cub);
 
 void put_tex_to_img(t_img *tex, t_img *img, unsigned int transp);
-unsigned int		get_skybox_pixel(float p_angle, t_cub *cub);
+unsigned int		get_skybox_pixel(float p_angle, t_tx_skybox *sky, t_cub *cub);
 
+#define WORLD_LUDO 0b001
+#define WORLD_RICK 0b010
+#define WORLD_MEWN 0b100
 
 int		mouse_button_pess(int button, int x, int y, t_cub *cub);
 int		mouse_button_release(int button, int x, int y, t_cub *cub);

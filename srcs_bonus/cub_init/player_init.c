@@ -23,7 +23,7 @@ void	player_init(t_cub *cub)
 	cub->hud->status = 0;
 	cub->hud->jumping = 0;
 	cub->hud->teleported = 0;
-	cub->hud->rick_world = -1;
+	cub->hud->world = WORLD_MEWN;
 	cub->hud->shooting = 0;
 	cub->hud->has_wand = 0;
 }
@@ -46,7 +46,7 @@ void	cam_init(t_cub *cub)
 	pl_x = 0;
 	pl_y = 0;
 	map_find_player(&pl_x, &pl_y, cub);
-	cub->cam->step = (float)cub->map->blk_x / STEP_SCALER;
+	cub->cam->step = sqrtf(2 * (float)cub->map->blk_x / STEP_SCALER);
 	cub->cam->dst_to_wall = (float)cub->map->blk_x / WALL_SCALER;
 	cub->cam->x = cub->map->blk_x * pl_x + cub->map->blk_x / 2;
 	cub->cam->y = cub->map->blk_y * pl_y + cub->map->blk_y / 2;

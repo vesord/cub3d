@@ -14,7 +14,7 @@
 
 float	get_len_ceil(float angle, t_cub *cub)
 {
-	return ((cub->map->blk_z - cub->cam->z) / tanf(angle));
+	return ((cub->map->blk_z - cub->cam->z) / fabsf(tanf(angle)));
 }
 
 float	get_len_flor(float angle, t_cub *cub)

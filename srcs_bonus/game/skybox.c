@@ -15,7 +15,7 @@
 float	skybox_get_off_angle_yaw(float angle, int *dir);
 unsigned int	get_skybox_pixel_tex(float off_x, float off_y, t_img *tex);
 
-unsigned int	get_skybox_pixel(float p_angle, t_cub *cub)
+unsigned int	get_skybox_pixel(float p_angle, t_tx_skybox *sky, t_cub *cub)
 {
 	float			off_angle_yaw;
 	int				dir;
@@ -23,13 +23,13 @@ unsigned int	get_skybox_pixel(float p_angle, t_cub *cub)
 	dir = 0;
 	off_angle_yaw = skybox_get_off_angle_yaw(cub->ray->angle, &dir);
 	if (dir == DIR_TOP)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), cub->tex->tx_sky_mew->no));
+		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->no));
 	if (dir == DIR_BOT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), cub->tex->tx_sky_mew->so));
+		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->so));
 	if (dir == DIR_LEFT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), cub->tex->tx_sky_mew->we));
+		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->we));
 	if (dir == DIR_RIGHT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), cub->tex->tx_sky_mew->ea));
+		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->ea));
 	return (0);
 }
 

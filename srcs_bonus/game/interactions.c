@@ -53,6 +53,9 @@ void	check_wand(int x, int y, t_cub *cub)
 
 void	map_find_portal(char cell, int *x_st, int *y_st, t_cub *cub);
 
+
+void	select_world(char cell, t_cub *cub);
+
 void	check_portal(int x, int y, t_cub *cub)
 {
 	char	cell;
@@ -75,8 +78,16 @@ void	check_portal(int x, int y, t_cub *cub)
 			map_find_portal(cell, &new_x, &new_y, cub);
 		cub->cam->x = cub->map->blk_x * new_x + (float)cub->map->blk_x / 2;
 		cub->cam->y = cub->map->blk_y * new_y + (float)cub->map->blk_y / 2;
-		cub->hud->rick_world = -cub->hud->rick_world;
+		select_world(cell, cub);
 	}
+}
+
+void	select_world(char cell, t_cub *cub)
+{
+	if (cell == 'e')
+		cub->hud->world ^= WORLD_RICK;
+	if (cell == 'c')
+		cub->hud->world ^= WORLD_LUDO;
 }
 
 
@@ -96,7 +107,7 @@ void	map_find_portal(char cell, int *x_st, int *y_st, t_cub *cub)
 		x = -1;
 		while (cub->map->field[y][++x])
 		{
-			if (cell == cub->map->field[y][x] && x != *x_st && y != *y_st)
+			if (cell == cub->map->field[y][x] && !(x == *x_st && y == *y_st))
 			{
 				*x_st = x;
 				*y_st = y;

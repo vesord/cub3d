@@ -63,7 +63,11 @@ void	make_frame(t_cub *cub)
 		frame_x++;
 	}
 }
-// TODO: fix portals same column
+
+unsigned int	get_ceil_pixel(float angle, t_cub *cub);
+unsigned int	get_wall_pixel(float len_to_wall, float angle, t_cub *cub);
+unsigned int	get_flor_pixel(float angle, t_cub *cub);
+
 void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 {
 	int		f_y;
@@ -81,24 +85,47 @@ void	frame_col_set(int f_x, float len_to_wall, t_cub *cub)
 
 	while (++f_y < cub->win->y)
 	{
-		if ((((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] & 0xff000000) == HUD_TRANSP_MASK)
+		if ((((unsigned int*)cub->frm_0->data)[f_y * cub->win->x + f_x] & 0xff000000) == HUD_TRANSP_MASK)
 			;
 		else if (angle > c_angl)
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub);
+			((unsigned int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_ceil_pixel(angle, cub);
 		else if (angle > f_angl)
-		{
-			if (!(((int *) cub->frm_0->data)[f_y * cub->win->x + f_x] =
-				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub), cub->ray->wall),
-						   len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub)))
-				((int *) cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub);
-		}
+			((unsigned int *) cub->frm_0->data)[f_y * cub->win->x + f_x] = get_wall_pixel(len_to_wall, angle, cub);
+//				add_shadow(get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub), cub->ray->wall),
+//						   len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub)))
+//				((int *) cub->frm_0->data)[f_y * cub->win->x + f_x] = get_skybox_pixel(angle, cub);
 		else
-			((int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub);
+			((unsigned int*)cub->frm_0->data)[f_y * cub->win->x + f_x] = get_flor_pixel(angle, cub);
 		angle -= d_angle;
 	}
 	if (cub->ray->spr)
 		frame_add_sprite(f_x, cub);
 }
+
+unsigned int	get_ceil_pixel(float angle, t_cub *cub)
+{
+	if (cub->hud->world & WORLD_LUDO)
+		return (add_shadow(cub->tex->ceil, get_len_ceil(angle, cub), cub));
+	else if (cub->hud->world & WORLD_RICK)
+		return (get_skybox_pixel(angle, cub->tex->tx_sky_rick, cub));
+	return (get_skybox_pixel(angle, cub->tex->tx_sky_mew, cub));
+}
+
+unsigned int	get_wall_pixel(float len_to_wall, float angle, t_cub *cub)
+{
+	unsigned int	pixel;
+
+	pixel = get_pixel_tex(1.f - get_x_tex(cub), 1.f - get_y_tex(angle, len_to_wall, cub), cub->ray->wall);
+	if (pixel)
+		return (add_shadow(pixel,  len_to_wall / fabsf(cosf(fabsf(cub->ray->mid_rel_angle))), cub));
+	return (get_ceil_pixel(angle, cub));
+}
+
+unsigned int	get_flor_pixel(float angle, t_cub *cub)
+{
+	return (add_shadow(cub->tex->flor, get_len_flor(angle, cub), cub));
+}
+
 
 t_img	*frame_init(void *mlx_ptr, int x, int y)
 {
