@@ -43,7 +43,7 @@
 #   M3 | H - Mewni sprite 3
 #   L2 | K - Ludo castle sprite 3
 #
-#       ___SKYBOXES___	
+#       ___SKYBOXES___
 #   S0 - Mewni skybox north
 #   S1 - Mewni skybox south
 #   S2 - Mewni skybox west
@@ -93,19 +93,19 @@ FM ./imgs/empty.xpm
 FE ./imgs/empty.xpm
 FC ./imgs/empty.xpm
 
-WI ./imgs/empty.xpm
+WI ./imgs/win.xpm
 DI ./imgs/die.xpm
 R0 ./imgs/empty.xpm
 
 TR ./imgs/trap.xpm
 LI ./imgs/life.xpm
-TU ./imgs/empty.xpm
+TU ./imgs/tutorial.xpm
 DW ./imgs/wand_moon.xpm
 PL ./imgs/portal_ludo.xpm
 PR ./imgs/portal_rick.xpm
 LU ./imgs/ludo.xpm
-LB ./imgs/empty.xpm
-BB ./imgs/empty.xpm
+LB ./imgs/ludo_beaten.xpm
+BB ./imgs/buffrog_beaten.xpm
 M1 ./imgs/chandelier.xpm
 L1 ./imgs/chandelier_skull.xpm
 E1 ./imgs/micro.xpm
@@ -115,7 +115,7 @@ DA ./imgs/king_river.xpm
 RS ./imgs/rick_sanchez.xpm
 MS ./imgs/morty_smith.xpm
 PH ./imgs/ponyhead.xpm
-BF ./imgs/empty.xpm
+BF ./imgs/buffrog.xpm
 M2 ./imgs/armor.xpm
 M3 ./imgs/fountain.xpm
 L2 ./imgs/bones.xpm
@@ -186,16 +186,16 @@ F  244,164,96
 10000000*000000011111111111111111111000000000002
 111Q1111111111111                   2G0000000G2
 1000001                              2H00g00H2
-1010101                               2G000G2
+1000001                               2G000G2
 1000001                                20002
-101N101                                 1Q1
-1000001                                10001
+100?001                                 1Q1
+100N001                                10001
 1000001                               1000001
 1111111                               1000001
                                       1H0c0H1
                                        10H01
                                         111
-                                                                    
+
 777777777
 700000007
 708000007
@@ -207,8 +207,8 @@ F  244,164,96
 
 555555555
 5000c0K05    446464444646446464444
-500000004444440000Kj000j000j000j04
-5000j000U0000U00g000g000g000g00L04
-500000004444440000000j0K0j000j0004
+500000004444440000Kj0*00000j*0Bj04
+5000j000U0000U0Bg0000*00000*g00L04
+5000000044444400000*00j0K000B*j004
 50K000005    446464444646446464444
 555555555

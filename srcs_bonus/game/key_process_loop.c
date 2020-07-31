@@ -31,12 +31,12 @@ int		key_press(int keycode, t_cub *cub)
 	if (keycode == XK_Shift_L)
 		cub->key->shoot = 1;
 	if (keycode == XK_Escape)
-		cub->key->esc = 1;
+		esc_press(cub);
 	if (keycode == XK_Control_L)
 		cub->key->action = 1;
 	if (keycode == XK_space)
 		cub->key->jump = 1;
-	if (cub->hud->status == -1 && keycode == 65293)
+	if (cub->hud->status && keycode == 65293)
 		restart_game(cub);
 	return (0);
 }

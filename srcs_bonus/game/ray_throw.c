@@ -12,6 +12,8 @@
 
 #include "cub3d_bonus.h"
 
+void	enemy_init(t_ray_enemy *enemy);
+
 float	throw_ray(t_cub *cub, float angle, float mid_angle)
 {
 	int		iterations;
@@ -26,6 +28,7 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 	cub->ray->sin = sinf(angle);
 	cub->ray->cos = cosf(angle);
 	cub->ray->spr = NULL;
+	enemy_init(&(cub->ray->enemy));
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
 	cub->ray->len_to_wall_real = sqrtf(powf(cub->ray->x - cub->cam->x, 2) +
@@ -34,6 +37,16 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 		cub->ray->walk_dst = cub->ray->len_to_wall_real;
 	return (cub->ray->len_to_wall_real * fabsf(cosf(fabsf(cub->ray->mid_rel_angle))));
 }
+
+void	enemy_init(t_ray_enemy *enemy)
+{
+	enemy->x = 0;
+	enemy->y = 0;
+	enemy->dst = 0.f;
+	enemy->type = 0;
+}
+
+int		ray_analyse_cell(int cell_x, int cell_y, char cell, t_cub *cub);
 
 int		is_next_cell_free(t_cub *cub)
 {
@@ -48,17 +61,46 @@ int		is_next_cell_free(t_cub *cub)
 	off_x = modff(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
 	off_y = modff(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
-	cell = get_cell_ray((int) cell_x, (int) cell_y, cub);
+	cell = get_cell_ray((int)cell_x, (int)cell_y, cub);
+	if (cub->ray->dir == DIR_TOP)
+		cell_y -= 1.f;
+	if (cub->ray->dir == DIR_BOT)
+		cell_y += 1.f;
+	if (cub->ray->dir == DIR_LEFT)
+		cell_x -= 1.f;
+	if (cub->ray->dir == DIR_RIGHT)
+		cell_x += 1.f;
+	return (ray_analyse_cell((int)cell_x, (int)cell_y, cell, cub));
+}
+
+/*
+ *	Set necessary ray params depends on cell type.
+ *	Returns 1 if cell walkable, 0 if not.
+ */
+
+int		ray_analyse_cell(int cell_x, int cell_y, char cell, t_cub *cub)
+{
 	if (is_cell_sprite(cell))
 		count_sprite(cell, cub);
 	if (cub->ray->walk_dst == 0.f && !is_cell_walkable(cell))
-		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2) + powf(cub->ray->y - cub->cam->y, 2));
-	if (is_cell_wall(cell) || is_cell_door_closed(cell))
+		cub->ray->walk_dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2)
+			+ powf(cub->ray->y - cub->cam->y, 2));
+	if ((cub->ray->enemy.dst == 0.f) && is_cell_enemy(cell))
 	{
-		if (is_cell_door_closed(cell))
-			cub->ray->wall = select_door(cell, cub);
-		else
-			cub->ray->wall = select_wall(cell, cub);
+		cub->ray->enemy.dst = sqrtf(powf(cub->ray->x - cub->cam->x, 2)
+									+ powf(cub->ray->y - cub->cam->y, 2));
+		cub->ray->enemy.x = cell_x;
+		cub->ray->enemy.y = cell_y;
+		cub->ray->enemy.type = cell;
+	}
+	if (is_cell_wall(cell))
+	{
+		cub->ray->wall = select_wall(cell, cub);
+		return (0);
+	}
+	if (is_cell_door_closed(cell))
+	{
+		cub->ray->wall = select_door(cell, cub);
 		return (0);
 	}
 	return (1);

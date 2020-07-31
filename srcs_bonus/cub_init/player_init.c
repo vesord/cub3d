@@ -20,7 +20,7 @@ void	player_init(t_cub *cub)
 	cub->hud->need_update_weap = 0;
 	cub->hud->need_update_hp = 1;
 	cub->hud->hp = 3;
-	cub->hud->status = 0;
+	cub->hud->status = GAME_STATUS_PLAY;
 	cub->hud->jumping = 0;
 	cub->hud->teleported = 0;
 	cub->hud->world = WORLD_MEWN;

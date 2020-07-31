@@ -43,6 +43,13 @@ char	get_cell_ray(int x, int y, t_cub *cub)
 	return ('1');
 }
 
+int		is_cell_enemy(char c)
+{
+	if (ft_strchr("LB", c))
+		return (1);
+	return (0);
+}
+
 int		is_cell_sprite(char c)
 {
 	if (ft_strchr("*$?wcelbgjpMDROPLBGHJKyuq", c))

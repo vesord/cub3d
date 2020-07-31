@@ -22,7 +22,7 @@ void	draw_rainbow_blast(t_cub *cub);
 void	update_hud(t_cub *cub)
 {
 	if (cub->hud->hp <= 0)
-		cub->hud->status = -1;
+		cub->hud->status = GAME_STATUS_DIE;
 	add_hud_face(cub);
 	add_hud_wand(cub);
 	add_hud_hp(cub);
@@ -51,6 +51,8 @@ void	win_blk_rb_init(t_win_blk *blk, t_cub *cub);
 void	put_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub);
 void	erase_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub);
 
+void	check_enemies(t_cub *cub);
+
 void	draw_rainbow_blast(t_cub *cub)
 {
 	static int			shout_status;
@@ -69,8 +71,30 @@ void	draw_rainbow_blast(t_cub *cub)
 		shout_status = 0;
 	}
 	if (cub->hud->shooting == 3)
+	{
+		check_enemies(cub);
 		cub->hud->shooting = 0;
+	}
 }
+
+#define ENEMY_KILL_DST 4.f
+
+void	check_enemies(t_cub *cub)
+{
+	int x;
+	int y;
+
+	throw_ray(cub, cub->cam->cam_direction_yaw, cub->cam->cam_direction_yaw);
+	x = cub->ray->enemy.x;
+	y = cub->ray->enemy.y;
+	if (cub->ray->enemy.type && cub->ray->enemy.dst < cub->map->blk_x * ENEMY_KILL_DST)
+	{
+		if (cub->ray->enemy.type == 'L')
+			cub->hud->status = GAME_STATUS_WIN;
+		(cub->map->field)[y][x] = ft_tolower((cub->map->field)[y][x]);
+	}
+}
+
 
 void	erase_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub)
 {

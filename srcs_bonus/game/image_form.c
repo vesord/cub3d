@@ -30,13 +30,15 @@ int		process_game(t_cub *cub)
 		&& (!(cub->frm_0 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))
 		|| !(cub->frm_1 = frame_init(cub->win->mlx_ptr, cub->win->x, cub->win->y))))
 		cub_destroy(cub, ERR_NO_MEMORY);
-	process_key(cub);
-	check_interactions(cub);
-	update_hud(cub);
-	if (!cub->hud->status)
-		make_frame(cub);
-	else
+	if (cub->hud->status)
 		set_status_screen(cub);
+	else
+	{
+		process_key(cub);
+		check_interactions(cub);
+		update_hud(cub);
+		make_frame(cub);
+	}
 	mlx_put_image_to_window(cub->win->mlx_ptr, cub->win->win_ptr, cub->frm_0->ptr, 0, 0);
 	tmp_frm = cub->frm_0;
 	cub->frm_0 = cub->frm_1;

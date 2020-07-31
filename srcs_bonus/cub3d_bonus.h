@@ -174,19 +174,28 @@ typedef struct	s_ray_sprites
 	float					sp_x;
 }				t_ray_sprites;
 
+typedef struct	s_ray_enemy
+{
+	int		x;
+	int		y;
+	char	type;
+	float	dst;
+}				t_ray_enemy;
+
 typedef struct	s_ray
 {
-	float		x;
-	float		y;
-	float		mid_rel_angle;
-	float		len_to_wall_real;
-	float		walk_dst;
-	float		sin;
-	float		cos;
-	float		angle;
-	int			dir;
-	t_img		*wall;
+	float			x;
+	float			y;
+	float			mid_rel_angle;
+	float			len_to_wall_real;
+	float			walk_dst;
+	float			sin;
+	float			cos;
+	float			angle;
+	int				dir;
+	t_img			*wall;
 	t_ray_sprites	*spr;
+	t_ray_enemy		enemy;
 }				t_ray;
 
 typedef struct	s_key
@@ -496,6 +505,7 @@ int				is_cell_walkable(char c);
 int				is_cell_door_opened(char c);
 int				is_cell_door_closed(char c);
 int				is_cell_portal(char c);
+int				is_cell_enemy(char c);
 void			ray_set_dir(float len_x, float len_y, t_cub *cub);
 
 t_img 			*select_sprite(char type, t_cub *cub);
@@ -542,6 +552,10 @@ unsigned int		get_skybox_pixel(float p_angle, t_tx_skybox *sky, t_cub *cub);
 #define WORLD_LUDO 0b001
 #define WORLD_RICK 0b010
 #define WORLD_MEWN 0b100
+
+#define GAME_STATUS_PLAY 0
+#define GAME_STATUS_WIN 1
+#define GAME_STATUS_DIE 2
 
 int		mouse_button_pess(int button, int x, int y, t_cub *cub);
 int		mouse_button_release(int button, int x, int y, t_cub *cub);

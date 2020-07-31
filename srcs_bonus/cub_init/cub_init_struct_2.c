@@ -56,7 +56,7 @@ void	cub_init_hud(t_cub *cub)
 	cub->hud->need_update_face = 0;
 	cub->hud->need_update_weap = 0;
 	cub->hud->need_update_hp = 0;
-	cub->hud->status = 0;
+	cub->hud->status = GAME_STATUS_PLAY;
 	cub->hud->hp = 0;
 	cub->hud->jumping = 0;
 	cub->hud->tx_face = NULL;
