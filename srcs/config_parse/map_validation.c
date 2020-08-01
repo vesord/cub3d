@@ -69,7 +69,7 @@ void	map_set_player(int pl_x, int pl_y, t_cub *cub)
 {
 	char dir;
 
-	cub->cam->step = (double)cub->map->blk_x / STEP_SCALER;
+	cub->cam->step = sqrt(2 * (double)cub->map->blk_x / STEP_SCALER);
 	cub->cam->dst_to_wall = (double)cub->map->blk_x / WALL_SCALER;
 	cub->cam->x = cub->map->blk_x * pl_x + cub->map->blk_x / 2;
 	cub->cam->y = cub->map->blk_y * pl_y + cub->map->blk_y / 2;

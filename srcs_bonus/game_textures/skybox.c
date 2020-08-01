@@ -12,34 +12,39 @@
 
 #include "cub3d_bonus.h"
 #include "cub_game.h"
-
-float	skybox_get_off_angle_yaw(float angle, int *dir);
-unsigned int	get_skybox_pixel_tex(float off_x, float off_y, t_img *tex);
+#include "cub_textures.h"
 
 unsigned int	get_skybox_pixel(float p_angle, t_tx_skybox *sky, t_cub *cub)
 {
 	float			off_angle_yaw;
 	int				dir;
+	unsigned int	pixel;
 
 	dir = 0;
+	pixel = 0;
 	off_angle_yaw = skybox_get_off_angle_yaw(cub->ray->angle, &dir);
 	if (dir == DIR_TOP)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->no));
+		pixel = get_skybox_pixel_tex(off_angle_yaw,
+		(M_PI / 6 - p_angle) / (M_PI / 3), sky->no);
 	if (dir == DIR_BOT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->so));
+		pixel = get_skybox_pixel_tex(off_angle_yaw,
+		(M_PI / 6 - p_angle) / (M_PI / 3), sky->so);
 	if (dir == DIR_LEFT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->we));
+		pixel = get_skybox_pixel_tex(off_angle_yaw,
+		(M_PI / 6 - p_angle) / (M_PI / 3), sky->we);
 	if (dir == DIR_RIGHT)
-		return (get_skybox_pixel_tex(off_angle_yaw, (M_PI / 6 - p_angle) / (M_PI / 3), sky->ea));
-	return (0);
+		pixel = get_skybox_pixel_tex(off_angle_yaw,
+		(M_PI / 6 - p_angle) / (M_PI / 3), sky->ea);
+	return (pixel);
 }
 
 unsigned int	get_skybox_pixel_tex(float off_x, float off_y, t_img *tex)
 {
-	return (((unsigned int*)(tex->data))[tex->width * (int)(off_y * tex->height) + (int)(off_x * tex->width)]);
+	return (((unsigned int*)(tex->data))[tex->width * (int)(off_y * tex->height)
+	+ (int)(off_x * tex->width)]);
 }
 
-float	skybox_get_off_angle_yaw(float angle, int *dir)
+float			skybox_get_off_angle_yaw(float angle, int *dir)
 {
 	float	frac;
 	float	not_used;

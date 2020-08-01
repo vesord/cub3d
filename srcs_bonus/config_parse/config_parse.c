@@ -49,7 +49,7 @@ void	gnl_func_parse(char *line, size_t *is_parse_ok, t_cub *cub)
 	free(line);
 }
 
-size_t parse_line(char *line, t_cub *cub)
+size_t	parse_line(char *line, t_cub *cub)
 {
 	size_t		ret;
 

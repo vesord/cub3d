@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_ERRORS_BONUS_H
-# define CUB3D_ERRORS_H
+#ifndef ERRORS_H
+# define ERRORS_H
 
 # define ERR_NO_ERR	"NO_ERROR"
 # define ERR_PARSE_DUPLICATE "Some of config params are duplicated."

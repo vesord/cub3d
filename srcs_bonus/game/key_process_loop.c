@@ -14,8 +14,6 @@
 #include "cub_init.h"
 #include "cub_game.h"
 
-void	restart_game(t_cub *cub);
-
 int		key_press(int keycode, t_cub *cub)
 {
 	if (keycode == XK_w)

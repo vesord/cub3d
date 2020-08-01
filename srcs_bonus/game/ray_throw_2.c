@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_length_ceil_floor.c                            :+:      :+:    :+:   */
+/*   ray_thorw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/25 20:24:14 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/25 20:24:15 by matrus           ###   ########.fr       */
+/*   Created: 2020/07/20 14:48:23 by matrus            #+#    #+#             */
+/*   Updated: 2020/07/24 11:12:29 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_game.h"
 
-float	get_len_ceil(float angle, t_cub *cub)
+void	enemy_init(t_ray_enemy *enemy)
 {
-	return ((cub->map->blk_z - cub->cam->z) / fabsf(tanf(angle)));
-}
-
-float	get_len_flor(float angle, t_cub *cub)
-{
-	return ((cub->cam->z) / -tanf(angle));
+	enemy->x = 0;
+	enemy->y = 0;
+	enemy->dst = 0.f;
+	enemy->type = 0;
 }

@@ -36,8 +36,6 @@ void	map_set_scales(t_cub *cub)
 	cub->map->blk_y = 16;
 }
 
-void	map_find_player(int *pl_x, int *pl_y, t_cub *cub);
-
 void	cam_init(t_cub *cub)
 {
 	char	dir;

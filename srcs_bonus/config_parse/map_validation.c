@@ -70,8 +70,8 @@ int		is_map_portals_correct(t_cub *cub)
 	const char	*portals = "ce";
 	int			p;
 	int			i;
-	int 		j;
-	int 		count;
+	int			j;
+	int			count;
 
 	p = -1;
 	while (portals[++p])

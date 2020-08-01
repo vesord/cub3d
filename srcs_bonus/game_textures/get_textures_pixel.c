@@ -13,6 +13,33 @@
 #include "cub3d_bonus.h"
 #include "cub_game.h"
 
+unsigned int	get_pixel_tex(float off_x, float off_y, t_img *tex)
+{
+	return (((int*)tex->data)[(int)((float)tex->height * off_y) * tex->width
+	+ (int)((float)tex->width * off_x)]);
+}
+
+void			put_tex_to_img(t_img *tex, t_img *img, unsigned int transp)
+{
+	int				x;
+	int				y;
+	unsigned int	pixel;
+
+	y = -1;
+	while (++y < img->height)
+	{
+		x = -1;
+		while (++x < img->width)
+		{
+			pixel = get_pixel_tex((float)(x) / img->width,
+						(float)(y) / img->height, tex);
+			if (pixel)
+				((unsigned int*)(img->data))[img->width * y + x] =
+					pixel | transp;
+		}
+	}
+}
+
 float			get_x_tex(t_cub *cub)
 {
 	float no_use;
@@ -30,10 +57,4 @@ float			get_x_tex(t_cub *cub)
 float			get_y_tex(float angle, float len_to_wall, t_cub *cub)
 {
 	return ((cub->cam->z + len_to_wall * tanf(angle)) / cub->map->blk_z);
-}
-
-unsigned int get_pixel_tex(float off_x, float off_y, t_img *tex)
-{
-	return (((int*)tex->data)[(int)((float)tex->height * off_y) * tex->width
-	+ (int)((float)tex->width * off_x)]);
 }

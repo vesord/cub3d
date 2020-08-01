@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_hud.h"
 #include "cub_game.h"
-
-void	process_action(t_cub *cub);
 
 void	process_key(t_cub *cub)
 {
@@ -50,8 +49,6 @@ void	process_step(t_cub *cub, int dir)
 	if (dir == STEP_RIGHT)
 		process_step_direction(cub->cam->cam_direction_yaw + M_PI_2, cub);
 }
-
-float	get_walk_len_dir(float angle, t_cub *cub);
 
 void	process_step_direction(float angle, t_cub *cub)
 {

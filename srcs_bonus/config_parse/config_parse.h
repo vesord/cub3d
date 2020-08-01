@@ -13,7 +13,7 @@
 #ifndef CONFIG_PARSE_H
 # define CONFIG_PARSE_H
 
-#include "cub3d_bonus.h"
+# include "cub3d_bonus.h"
 
 # define PARSE_OK		0x7fffffffffffffff
 # define PARSE_FAIL		0x8000000000000000
@@ -93,8 +93,13 @@
 # define PARSE_OK_MAP	0x4000000000000000
 
 void			gnl_func_parse(char *line, size_t *is_parse_ok, t_cub *cub);
-size_t 			parse_line(char *line, t_cub *cub);
+size_t			parse_line(char *line, t_cub *cub);
 size_t			parse_line_type(char *line, t_cub *cub);
+size_t			parse_line_type_2(char *line, t_cub *cub);
+size_t			parse_line_type_3(char *line, t_cub *cub);
+size_t			parse_line_type_4(char *line, t_cub *cub);
+size_t			parse_line_type_5(char *line, t_cub *cub);
+size_t			parse_line_type_6(char *line, t_cub *cub);
 
 size_t			parse_line_texture(char *line, t_cub *cub, t_img *img);
 size_t			parse_line_color(char *line, t_cub *cub, int *color);
@@ -106,7 +111,17 @@ size_t			check_map(t_cub *cub);
 int				check_path(char *path);
 void			is_line_ok_check(char *line, int is_line_ok, t_cub *cub);
 size_t			parse_line_texture_ret(t_cub *cub, void *data);
+size_t			parse_line_texture_ret_2(t_cub *cub, void *data);
+size_t			parse_line_texture_ret_3(t_cub *cub, void *data);
+size_t			parse_line_texture_ret_4(t_cub *cub, void *data);
+size_t			parse_line_texture_ret_5(t_cub *cub, void *data);
+size_t			parse_line_texture_ret_6(t_cub *cub, void *data);
 char			*parse_line_err_msg(t_cub *cub, void *data);
+char			*parse_line_err_msg_2(t_cub *cub, void *data);
+char			*parse_line_err_msg_3(t_cub *cub, void *data);
+char			*parse_line_err_msg_4(t_cub *cub, void *data);
+char			*parse_line_err_msg_5(t_cub *cub, void *data);
+char			*parse_line_err_msg_6(t_cub *cub, void *data);
 int				str_to_color(char *line, int *color);
 
 int				is_map_chars_correct(const char *crct, t_cub *cub);

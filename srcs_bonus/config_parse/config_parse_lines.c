@@ -24,7 +24,7 @@ size_t	parse_line_texture(char *line, t_cub *cub, t_img *img)
 		|| !(ft_strnstr(&(line[ft_strlen(line) - 4]), ".xpm", 4))
 		|| !(img->ptr = mlx_xpm_file_to_image(cub->win->mlx_ptr,
 			&(line[i]), &(img->width), &(img->height)))
-		|| !(img->data = mlx_get_data_addr(img->ptr, &(img->btp),
+		|| !(img->data = (unsigned int*)mlx_get_data_addr(img->ptr, &(img->btp),
 			&(img->sz_ln), &(img->endian))))
 	{
 		free(line);

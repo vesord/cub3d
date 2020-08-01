@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 #include "cub_init.h"
-
-void	cub_init_textures_2(t_cub *cub);
 
 void	cub_init_win(t_cub *cub)
 {
@@ -53,7 +50,6 @@ void	cub_init_textures(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_tex_screens(cub);
-
 	if (!(cub->tex->tx_doors = (t_tx_doors*)malloc(sizeof(t_tx_doors))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else

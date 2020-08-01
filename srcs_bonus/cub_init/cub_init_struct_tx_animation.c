@@ -13,8 +13,6 @@
 #include "cub3d_bonus.h"
 #include "cub_init.h"
 
-void	cub_init_tex_animation_set_null(t_tx_anim *tx_animation);
-
 void	cub_init_tex_animation(t_cub *cub)
 {
 	cub_init_tex_animation_set_null(cub->tex->tx_anim);
@@ -38,6 +36,11 @@ void	cub_init_tex_animation(t_cub *cub)
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else
 		cub_init_img(cub->tex->tx_anim->wand_5);
+	cub_init_tex_animation_2(cub);
+}
+
+void	cub_init_tex_animation_2(t_cub *cub)
+{
 	if (!(cub->tex->tx_anim->wand_6 = (t_img*)malloc(sizeof(t_img))))
 		cub_destroy(cub, ERR_NO_MEMORY);
 	else

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_textures.h"
 #include "cub_game.h"
 
 unsigned int	add_shadow(unsigned int color, float len, t_cub *cub)
@@ -22,13 +23,13 @@ unsigned int	add_shadow(unsigned int color, float len, t_cub *cub)
 	if (!len_no_shadow)
 		len_no_shadow = (float)cub->map->blk_x * NO_SHADOW_DST;
 	if (!len_full_shadow)
-		len_full_shadow = (float)cub->map->blk_x * (FULL_SHADOW_DST - NO_SHADOW_DST);
+		len_full_shadow = (float)cub->map->blk_x *
+			(FULL_SHADOW_DST - NO_SHADOW_DST);
 	if ((off_shadow = len - len_no_shadow) < 0)
 		return (color);
 	if (off_shadow > len_full_shadow)
 		return (0);
 	return (decrease_color(color, 1.f - off_shadow / len_full_shadow));
-
 }
 
 unsigned int	decrease_color(unsigned int color, float scaler)

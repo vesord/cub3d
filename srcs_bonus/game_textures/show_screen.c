@@ -12,10 +12,9 @@
 
 #include "cub3d_bonus.h"
 #include "cub_game.h"
+#include "cub_textures.h"
 
-void	cub_reset_game_status(t_cub *cub);
-
-void set_status_screen(t_cub *cub)
+void	set_status_screen(t_cub *cub)
 {
 	cub_reset_game_status(cub);
 	if (cub->hud->status == GAME_STATUS_DIE)

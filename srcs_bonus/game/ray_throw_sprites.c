@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_textures.h"
 #include "cub_game.h"
 
-void		count_sprite(char type, t_cub *cub)
+void			count_sprite(char type, t_cub *cub)
 {
 	t_ray_sprites	*spr;
 
@@ -32,8 +33,8 @@ void		count_sprite(char type, t_cub *cub)
 t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub)
 {
 	t_ray_sprites	*new_spr;
-	float		sp_y_mid;
-	float		sp_x_mid;
+	float			sp_y_mid;
+	float			sp_x_mid;
 
 	if (!(new_spr = (t_ray_sprites*)malloc(sizeof(t_ray_sprites))))
 		cub_destroy(cub, ERR_NO_MEMORY);
@@ -50,7 +51,7 @@ t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub)
 	return (new_spr);
 }
 
-float		count_sprite_x(float sp_x_mid, float sp_y_mid, t_cub *cub)
+float			count_sprite_x(float sp_x_mid, float sp_y_mid, t_cub *cub)
 {
 	float dist_to_mid;
 	float sp_x;

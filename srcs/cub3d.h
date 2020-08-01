@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_CUB3D_BONUS_H
-# define CUB3D_CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -77,23 +77,24 @@ typedef struct	s_win
 	int		y;
 }				t_win;
 
-typedef struct	s_sprites
+typedef struct	s_ray_sprites
 {
-	struct s_sprites	*next;
-	struct s_sprites	*prev;
-	t_img				*tex_data;
-	double				len_to_sp;
-	double				sp_x;
-}				t_sprites;
+	struct s_ray_sprites	*next;
+	struct s_ray_sprites	*prev;
+	t_img					*tex;
+	double					len_to_sp;
+	double					sp_x;
+}				t_ray_sprites;
 
 typedef struct	s_ray
 {
-	double		x;
-	double		y;
-	double		sin;
-	double		cos;
-	int			dir;
-	t_sprites	*spr;
+	double			x;
+	double			y;
+	double			sin;
+	double			cos;
+	int				dir;
+	double			walk_dst;
+	t_ray_sprites	*spr;
 }				t_ray;
 
 typedef struct	s_key
@@ -261,26 +262,27 @@ t_img			*frame_init(void *mlx_ptr, int x, int y);
 void			process_key(t_cub *cub);
 void			process_step(t_cub *cub, int dir);
 void			process_step_direction(double angle, t_cub *cub);
+float			get_walk_len_dir(float angle, t_cub *cub);
 
 double			throw_ray(t_cub *cub, double angle, double mid_angle);
 void			find_next_cross(double off_x, double off_y, t_cub *cub);
 int				is_next_cell_free(t_cub *cub);
-char			get_cell(int x, int y, t_cub *cub);
+char			get_cell_ray(int x, int y, t_cub *cub);
 int				is_cell_free(char c);
 void			ray_set_dir(double len_x, double len_y, t_cub *cub);
 
 double			get_x_wall(t_cub *cub);
 double			get_y_wall(double angle, double len_to_wall, t_cub *cub);
 unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
-							   int is_sp);
+								int is_sp);
 
 void			count_sprite(char type, t_cub *cub);
-t_sprites		*new_sprite(t_sprites *prev, char type, t_cub *cub);
+t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub);
 double			count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
 
 void			frame_add_sprite(int frame_x, t_cub *cub);
 void			frame_add_sprite_one(int frame_x, double d_angle,
-	t_sprites *spr, t_cub *cub);
-t_sprites		*sprites_last(t_sprites *spr);
+								t_ray_sprites *spr, t_cub *cub);
+t_ray_sprites	*sprites_last(t_ray_sprites *spr);
 
 #endif

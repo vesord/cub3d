@@ -12,10 +12,11 @@
 
 #include "cub3d_bonus.h"
 #include "cub_game.h"
+#include "cub_textures.h"
 
-void		frame_add_sprite(int frame_x, t_cub *cub)
+void			frame_add_sprite(int frame_x, t_cub *cub)
 {
-	float		d_angle;
+	float			d_angle;
 	t_ray_sprites	*spr;
 
 	d_angle = cub->cam->cam_angle_pitch / cub->win->y;
@@ -38,33 +39,29 @@ void		frame_add_sprite(int frame_x, t_cub *cub)
 	}
 }
 
-void		frame_add_sprite_one(int frame_x, float d_angle,
-								 t_ray_sprites *spr, t_cub *cub)
+void			frame_add_sprite_one(int frame_x, float d_angle,
+								t_ray_sprites *spr, t_cub *cub)
 {
-	float			f_angl;
-	float			c_angl;
-	float			angle;
 	int				frame_y;
+	t_frm_col		col;
 	unsigned int	pixel;
 
-	f_angl = atanf((-cub->cam->z) / spr->len_to_sp);
-	c_angl = atanf((cub->map->blk_z - cub->cam->z) / spr->len_to_sp);
-	angle = cub->cam->cam_direction_pitch + cub->cam->cam_angle_pitch / 2;
+	col = frame_s_col_init(spr->len_to_sp, cub);
 	frame_y = -1;
 	while (spr->sp_x >= 0 && ++frame_y < cub->win->y)
 	{
-		if ((((int*)cub->frm_0->data)[frame_y * cub->win->x + frame_x] & 0xff000000) == HUD_TRANSP_MASK)
+		if ((((int*)cub->frm_0->data)[frame_y * cub->win->x + frame_x]
+		& 0xff000000) == HUD_TRANSP_MASK)
 			;
-		else if (angle < c_angl && angle > f_angl)
+		else if (col.angle < col.c_angle && col.angle > col.f_angle)
 		{
-			pixel = get_pixel_tex(spr->sp_x,
-								  1.f - get_y_tex(angle, spr->len_to_sp, cub),
-								  spr->tex);
+			pixel = get_pixel_tex(spr->sp_x, 1.f - get_y_tex(col.angle,
+										spr->len_to_sp, cub), spr->tex);
 			if (pixel != 0)
 				((unsigned int*)cub->frm_0->data)[frame_y * cub->win->x +
 				frame_x] = add_shadow(pixel, spr->len_to_sp, cub);
 		}
-		angle -= d_angle;
+		col.angle -= d_angle;
 	}
 }
 

@@ -32,7 +32,7 @@ double			get_y_wall(double angle, double len_to_wall, t_cub *cub)
 }
 
 unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
-							   int is_sp)
+																	int is_sp)
 {
 	t_img *no;
 	t_img *so;

@@ -61,4 +61,3 @@ void	hook_initialize(t_cub *cub)
 	mlx_hook(cub->win->win_ptr, 17, 1L << 17, esc_press, cub);
 	mlx_loop(cub->win->mlx_ptr);
 }
-

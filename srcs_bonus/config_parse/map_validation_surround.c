@@ -32,7 +32,7 @@ int		is_map_surrounded(t_cub *cub)
 		while (cub->map->field[y][++x])
 		{
 			if (cub->map->field[y][x] < 0)
-				if (!is_map_surrounded_recursive(x, y, 1, cub)) // TODO: check x and y correction on base lvl
+				if (!is_map_surrounded_recursive(x, y, 1, cub))
 					return (0);
 		}
 	}
@@ -46,7 +46,7 @@ int		is_map_surrounded(t_cub *cub)
 **	Neg cell on map is the marker of recursive search.
 */
 
-void	is_map_surrounded_set(const char *starts,  t_cub *cub)
+void	is_map_surrounded_set(const char *starts, t_cub *cub)
 {
 	int y;
 	int x;
@@ -72,7 +72,8 @@ int		is_map_surrounded_recursive(int x, int y, int strt, t_cub *cub)
 	int f;
 
 	f = 0;
-	if ((is_cell_wall(cub->map->field[y][x]) || cub->map->field[y][x] < 0) && !strt)
+	if ((is_cell_wall(cub->map->field[y][x]) || cub->map->field[y][x] < 0)
+	&& !strt)
 		return (1);
 	if (cub->map->field[y][x] == ' ' || !cub->map->field[y][x])
 		return (0);

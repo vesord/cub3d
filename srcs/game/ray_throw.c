@@ -27,6 +27,7 @@ double	throw_ray(t_cub *cub, double angle, double mid_angle)
 		iterations++;
 	len_to_wall = sqrt(pow(cub->ray->x - cub->cam->x, 2) +
 			pow(cub->ray->y - cub->cam->y, 2));
+	cub->ray->walk_dst = len_to_wall;
 	return (len_to_wall * fabs(cos(fabs(mid_angle - angle))));
 }
 
@@ -43,7 +44,7 @@ int		is_next_cell_free(t_cub *cub)
 	off_x = modf(cub->ray->x / cub->map->blk_x, &cell_x) * cub->map->blk_x;
 	off_y = modf(cub->ray->y / cub->map->blk_y, &cell_y) * cub->map->blk_y;
 	find_next_cross(off_x, off_y, cub);
-	cell = get_cell((int)cell_x, (int)cell_y, cub);
+	cell = get_cell_ray((int)cell_x, (int)cell_y, cub);
 	if (cell == '2')
 		count_sprite(cell, cub);
 	return (is_cell_free(cell));

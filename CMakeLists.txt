@@ -62,6 +62,12 @@ target_link_libraries(cub3D ${MY_LIB_FILES} m X11 Xext)
 #   ---BONUS_PART---
 
 include_directories(srcs_bonus)
+include_directories(srcs_bonus/cub_init)
+include_directories(srcs_bonus/config_parse)
+include_directories(srcs_bonus/game)
+include_directories(srcs_bonus/window_work)
+include_directories(srcs_bonus/game_interactions)
+include_directories(srcs_bonus/game_textures)
 
 set(HEADER_FILES_BONUS
         libs/libft/libft.h
@@ -74,6 +80,7 @@ set(HEADER_FILES_BONUS
 
 set(SRC_FILES_BONUS
         srcs_bonus/cub3d_bonus.c
+
         srcs_bonus/cub_init/cub_init.c
         srcs_bonus/cub_init/cub_init_struct.c
         srcs_bonus/cub_init/cub_init_struct_2.c
@@ -91,30 +98,45 @@ set(SRC_FILES_BONUS
 
         srcs_bonus/config_parse/config_parse.c
         srcs_bonus/config_parse/config_parse_line_type.c
+        srcs_bonus/config_parse/config_parse_line_type_2.c
         srcs_bonus/config_parse/config_parse_lines.c
         srcs_bonus/config_parse/parse_utils.c
+        srcs_bonus/config_parse/parse_line_err_msg.c
+        srcs_bonus/config_parse/parse_line_err_msg_2.c
+        srcs_bonus/config_parse/parse_line_texture_ret.c
+        srcs_bonus/config_parse/parse_line_texture_ret_2.c
         srcs_bonus/config_parse/parse_map.c
         srcs_bonus/config_parse/map_validation.c
         srcs_bonus/config_parse/map_validation_surround.c
+
         srcs_bonus/window_work/window_setup.c
         srcs_bonus/window_work/bmp.c
+
         srcs_bonus/game/image_form.c
         srcs_bonus/game/key_process_loop.c
         srcs_bonus/game/key_process_game.c
         srcs_bonus/game/mouse_process_loop.c
-        srcs_bonus/game/select_textures.c
-        srcs_bonus/game/walls.c
-        srcs_bonus/game/textures_sprites.c
         srcs_bonus/game/cells.c
+        srcs_bonus/game/cells_2.c
         srcs_bonus/game/ray_throw.c
+        srcs_bonus/game/ray_throw_2.c
         srcs_bonus/game/ray_throw_sprites.c
-
-        srcs_bonus/game/skybox.c
-        srcs_bonus/game/hud.c
-        srcs_bonus/game/shadows.c
-        srcs_bonus/game/interactions.c
-        srcs_bonus/game/show_screen.c
         srcs_bonus/game/get_length_ceil_floor.c
+
+        srcs_bonus/game_textures/select_textures.c
+        srcs_bonus/game_textures/textures_sprites.c
+        srcs_bonus/game_textures/get_frame_col_pixel.c
+        srcs_bonus/game_textures/skybox.c
+        srcs_bonus/game_textures/shadows.c
+        srcs_bonus/game_textures/show_screen.c
+        srcs_bonus/game_textures/get_textures_pixel.c
+        srcs_bonus/game_textures/window_blocks.c
+
+        srcs_bonus/game_interactions/hud.c
+        srcs_bonus/game_interactions/interactions.c
+        srcs_bonus/game_interactions/interactions_portals.c
+        srcs_bonus/game_interactions/hud_hp.c
+        srcs_bonus/game_interactions/hud_shooting.c
         )
 
 
@@ -128,7 +150,8 @@ target_link_libraries(bonus ${MY_LIB_FILES} m X11 Xext)
 
 add_executable(test
         test/ft_cos.c
-        test/double_vs_float.c)
+        test/double_vs_float.c
+        test/arrays.c)
 
 target_link_libraries(test m)
 

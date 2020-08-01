@@ -34,7 +34,7 @@ int		create_bmp_img(t_img *img)
 	bmi.ppm_y = 1000;
 	bmi.color_table = 0;
 	bmi.color_table_size = 0;
-	return (create_bmp_img_write(&bfh, &bmi, img->data));
+	return (create_bmp_img_write(&bfh, &bmi, (char*)img->data));
 }
 
 int		create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi,

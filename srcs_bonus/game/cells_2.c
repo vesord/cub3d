@@ -10,35 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
+#include "cub_game.h"
 
-/*
-**	get_cell() checks x < 0 and y < 0 cos in some cases x and y came here
-**	as MIN_INT value :/
-*/
-
-char	get_cell_ray(int x, int y, t_cub *cub)
+int		is_cell_enemy(char c)
 {
-	if (x < 0 || y < 0)
-		return ('1');
-	if (cub->ray->dir == DIR_TOP)
-		if (y - 1 < cub->map->max_y && x < cub->map->max_x)
-			return (cub->map->field[y - 1][x]);
-	if (cub->ray->dir == DIR_BOT)
-		if (y + 1 < cub->map->max_y && x < cub->map->max_x)
-			return (cub->map->field[y + 1][x]);
-	if (cub->ray->dir == DIR_LEFT)
-		if (y < cub->map->max_y && x - 1 < cub->map->max_x)
-			return (cub->map->field[y][x - 1]);
-	if (cub->ray->dir == DIR_RIGHT)
-		if (y < cub->map->max_y && x + 1 < cub->map->max_x)
-			return (cub->map->field[y][x + 1]);
-	return ('1');
+	if (ft_strchr("LB", c))
+		return (1);
+	return (0);
 }
 
-int		is_cell_free(char c)
+int		is_cell_door_opened(char c)
 {
-	if (ft_strchr("02NWES", c))
+	if (ft_strchr("yuq", c))
+		return (1);
+	return (0);
+}
+
+int		is_cell_door_closed(char c)
+{
+	if (ft_strchr("YUQ", c))
+		return (1);
+	return (0);
+}
+
+int		is_cell_walkable(char c)
+{
+	if (ft_strchr("NWES0*$?wcelbgjluyq", c))
+		return (1);
+	return (0);
+}
+
+int		is_cell_portal(char c)
+{
+	if (ft_strchr("ce", c))
 		return (1);
 	return (0);
 }

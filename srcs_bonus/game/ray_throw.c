@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_textures.h"
 #include "cub_game.h"
-
-void	enemy_init(t_ray_enemy *enemy);
 
 float	throw_ray(t_cub *cub, float angle, float mid_angle)
 {
@@ -36,18 +35,9 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 			powf(cub->ray->y - cub->cam->y, 2));
 	if (cub->ray->walk_dst == 0.f)
 		cub->ray->walk_dst = cub->ray->len_to_wall_real;
-	return (cub->ray->len_to_wall_real * fabsf(cosf(fabsf(cub->ray->mid_rel_angle))));
+	return (cub->ray->len_to_wall_real *
+	fabsf(cosf(fabsf(cub->ray->mid_rel_angle))));
 }
-
-void	enemy_init(t_ray_enemy *enemy)
-{
-	enemy->x = 0;
-	enemy->y = 0;
-	enemy->dst = 0.f;
-	enemy->type = 0;
-}
-
-int		ray_analyse_cell(int cell_x, int cell_y, char cell, t_cub *cub);
 
 int		is_next_cell_free(t_cub *cub)
 {
@@ -75,9 +65,9 @@ int		is_next_cell_free(t_cub *cub)
 }
 
 /*
- *	Set necessary ray params depends on cell type.
- *	Returns 1 if cell walkable, 0 if not.
- */
+**	Set necessary ray params depends on cell type.
+**	Returns 1 if cell walkable, 0 if not.
+*/
 
 int		ray_analyse_cell(int cell_x, int cell_y, char cell, t_cub *cub)
 {

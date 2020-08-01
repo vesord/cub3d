@@ -30,9 +30,10 @@ void	add_line_to_map(char *line, t_cub *cub)
 	(cub->map->field)[i + 1] = NULL;
 }
 
-size_t check_map(t_cub *cub)
+size_t	check_map(t_cub *cub)
 {
-	if (!is_map_chars_correct(" 0123456789NWES*$?wcelbgjpMDROPLBGHJKyYqQuU", cub))
+	if (!is_map_chars_correct(" 0123456789NWES*$?wcelbgjpMDROPLBGHJKyYqQuU",
+					cub))
 		return (0);
 	if (!map_check_player_pos(cub))
 		return (0);

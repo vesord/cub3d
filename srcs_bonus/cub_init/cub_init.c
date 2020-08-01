@@ -13,8 +13,6 @@
 #include "cub3d_bonus.h"
 #include "cub_init.h"
 
-void	cub_init_2(t_cub *cub);
-
 void	cub_init(t_cub *cub)
 {
 	cub_set_null(cub);

@@ -94,8 +94,8 @@ void	cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr)
 		cub_img_destroy(tx_doors->lud_open, mlx_ptr);
 	if (tx_doors->lud_close)
 		cub_img_destroy(tx_doors->lud_close, mlx_ptr);
-	if (tx_doors->secret_close)
-		cub_img_destroy(tx_doors->secret_close, mlx_ptr);
+	if (tx_doors->secret_clos)
+		cub_img_destroy(tx_doors->secret_clos, mlx_ptr);
 	if (tx_doors->secret_open)
 		cub_img_destroy(tx_doors->secret_open, mlx_ptr);
 }

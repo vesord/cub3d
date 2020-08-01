@@ -13,7 +13,7 @@
 #ifndef BMP_H
 # define BMP_H
 
-#include "cub3d_bonus.h"
+# include "cub3d_bonus.h"
 
 typedef struct	s_bmp_file_header
 {
@@ -39,7 +39,8 @@ typedef struct	s_bmp_info
 	int		color_table_size;
 }				t_bmp_info;
 
-int	create_bmp_img(t_img *img);
-int	create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi, char *data);
+int				create_bmp_img(t_img *img);
+int				create_bmp_img_write(t_bmp_file_header *bfh, t_bmp_info *bmi,
+					char *data);
 
 #endif

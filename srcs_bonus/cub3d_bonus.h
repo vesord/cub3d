@@ -39,13 +39,13 @@ typedef struct	s_cam
 
 typedef struct	s_img
 {
-	void	*ptr;
-	void	*data;
-	int		width;
-	int		height;
-	int		btp;
-	int		sz_ln;
-	int		endian;
+	void			*ptr;
+	unsigned int	*data;
+	int				width;
+	int				height;
+	int				btp;
+	int				sz_ln;
+	int				endian;
 }				t_img;
 
 typedef	struct	s_tx_walls
@@ -116,7 +116,7 @@ typedef struct	s_tx_doors
 	t_img	*mew_open;
 	t_img	*mew_close;
 	t_img	*secret_open;
-	t_img	*secret_close;
+	t_img	*secret_clos;
 	t_img	*lud_open;
 	t_img	*lud_close;
 }				t_tx_doors;
@@ -143,8 +143,8 @@ typedef struct	s_textures
 	t_tx_floors			*tx_floors;
 	t_tx_doors			*tx_doors;
 	t_tx_anim			*tx_anim;
-	int		flor;
-	int		ceil;
+	int					flor;
+	int					ceil;
 }				t_textures;
 
 typedef struct	s_map
@@ -218,8 +218,8 @@ typedef struct	s_hud
 	t_img	*tx_wand;
 	t_img	*tx_hp;
 	int		hp;
-	int 	status;
-	int 	jumping;
+	int		status;
+	int		jumping;
 	int		need_update_face;
 	int		need_update_weap;
 	int		need_update_hp;
@@ -240,7 +240,7 @@ typedef struct	s_cub
 	t_hud		*hud;
 	t_img		*frm_0;
 	t_img		*frm_1;
-	char 		*config_path;
+	char		*config_path;
 	int			parse_is_map;
 	int			confing_fd;
 }				t_cub;
@@ -255,6 +255,7 @@ void			cub_destroy(t_cub *cub, char *err_msg);
 void			cam_init(t_cub *cub);
 void			map_set_scales(t_cub *cub);
 void			player_init(t_cub *cub);
+void			map_find_player(int *pl_x, int *pl_y, t_cub *cub);
 
 void			make_frame(t_cub *cub);
 t_img			*frame_init(void *mlx_ptr, int x, int y);

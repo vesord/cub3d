@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef CUB_INIT_H
 # define CUB_INIT_H
 
-#include "cub3d_bonus.h"
+# include "cub3d_bonus.h"
 
+void			cub_init_2(t_cub *cub);
 void			cub_map_destroy(t_map *map);
 void			cub_textures_destroy(t_textures *tex, void *mlx_ptr);
 void			cub_img_destroy(t_img *img, void *mlx_ptr);
@@ -23,15 +23,23 @@ void			cub_win_destroy(t_win *win);
 void			cub_ray_destroy(t_ray *ray);
 void			cub_hud_destroy(t_hud *hud, void *mlx_ptr);
 
-void			cub_textures_destroy_walls(t_tx_walls *tx_walls, void *mlx_ptr);
-void			cub_textures_destroy_floors(t_tx_floors *tx_floors, void *mlx_ptr);
-void			cub_textures_destroy_spr_go(t_tx_spr_go *tx_spr_go, void *mlx_ptr);
-void			cub_textures_destroy_spr_ngo(t_tx_spr_ngo *tx_spr_ngo, void *mlx_ptr);
-void			cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr);
-void			cub_textures_destroy_skybox(t_tx_skybox *tx_skybox, void *mlx_ptr);
-void			cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr);
-void			cub_textures_destroy_animation(t_tx_anim *tx_anim, void *mlx_ptr);
-
+void			cub_init_tex_doors_set_null(t_tx_doors *tx_doors);
+void			cub_textures_destroy_walls(t_tx_walls *tx_walls,
+							void *mlx_ptr);
+void			cub_textures_destroy_floors(t_tx_floors *tx_floors,
+							void *mlx_ptr);
+void			cub_textures_destroy_spr_go(t_tx_spr_go *tx_spr_go,
+							void *mlx_ptr);
+void			cub_textures_destroy_spr_ngo(t_tx_spr_ngo *tx_spr_ngo,
+							void *mlx_ptr);
+void			cub_textures_destroy_screens(t_tx_screens *tx_screens,
+							void *mlx_ptr);
+void			cub_textures_destroy_skybox(t_tx_skybox *tx_skybox,
+							void *mlx_ptr);
+void			cub_textures_destroy_doors(t_tx_doors *tx_doors,
+							void *mlx_ptr);
+void			cub_textures_destroy_animation(t_tx_anim *tx_anim,
+							void *mlx_ptr);
 
 void			cub_set_null(t_cub *cub);
 void			cub_init_cam(t_cub *cub);
@@ -43,12 +51,15 @@ void			cub_init_hud(t_cub *cub);
 void			cub_init_textures_null(t_textures *tex);
 void			cub_init_img(t_img *img);
 void			cub_init_textures(t_cub *cub);
+void			cub_init_textures_2(t_cub *cub);
 
 void			cub_init_tex_walls(t_cub *cub);
 void			cub_init_tex_walls_1(t_cub *cub);
 void			cub_init_tex_wall_set_null(t_tx_walls *tx_walls);
 
 void			cub_init_tex_animation(t_cub *cub);
+void			cub_init_tex_animation_2(t_cub *cub);
+void			cub_init_tex_animation_set_null(t_tx_anim *tx_animation);
 void			cub_init_tex_doors(t_cub *cub);
 
 void			cub_init_tex_spr_go(t_cub *cub);

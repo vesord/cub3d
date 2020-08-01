@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "cub_textures.h"
 
 t_img	*select_sprite(char type, t_cub *cub)
 {
@@ -38,7 +39,12 @@ t_img	*select_sprite(char type, t_cub *cub)
 		return (cub->tex->tx_spr_go->ric_s_go);
 	else if (type == 'M')
 		return (cub->tex->tx_spr_ngo->but_mom);
-	else if (type == 'D')
+	return (select_sprite_2(type, cub));
+}
+
+t_img	*select_sprite_2(char type, t_cub *cub)
+{
+	if (type == 'D')
 		return (cub->tex->tx_spr_ngo->but_dad);
 	else if (type == 'R')
 		return (cub->tex->tx_spr_ngo->rick);
@@ -68,12 +74,12 @@ t_img	*select_sprite(char type, t_cub *cub)
 t_img	*select_door(char type, t_cub *cub)
 {
 	if (type == 'Y')
-		return (cub->tex->tx_doors->secret_close);
+		return (cub->tex->tx_doors->secret_clos);
 	else if (type == 'Q')
 		return (cub->tex->tx_doors->mew_close);
 	else if (type == 'U')
 		return (cub->tex->tx_doors->lud_close);
-	return (cub->tex->tx_doors->secret_close);
+	return (cub->tex->tx_doors->secret_clos);
 }
 
 t_img	*select_wall(char type, t_cub *cub)

@@ -62,4 +62,3 @@ void	cub_init_tex_skybox_set_null(t_tx_skybox *tx_skybox)
 	tx_skybox->we = NULL;
 	tx_skybox->so = NULL;
 }
-

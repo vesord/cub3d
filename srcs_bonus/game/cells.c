@@ -14,8 +14,9 @@
 #include "cub_game.h"
 
 /*
-**	get_cell() checks x < 0 and y < 0 cos in some cases x and y came here
+**	get_cell() checks x < 0 and y < 0 because in some cases x and y came here
 **	as MIN_INT value :/
+**	returns map->field[y][x]
 */
 
 char	get_cell_map(int x, int y, t_cub *cub)
@@ -24,6 +25,12 @@ char	get_cell_map(int x, int y, t_cub *cub)
 		return ('1');
 	return (cub->map->field[y][x]);
 }
+
+/*
+**	get_cell_ray() checks x < 0 and y < 0 cos in some cases x and y came here
+**	as MIN_INT value :/
+**	returns the cell next to the path of ray DIR (last call of throw_ray())
+*/
 
 char	get_cell_ray(int x, int y, t_cub *cub)
 {
@@ -44,51 +51,16 @@ char	get_cell_ray(int x, int y, t_cub *cub)
 	return ('1');
 }
 
-int		is_cell_enemy(char c)
-{
-	if (ft_strchr("LB", c))
-		return (1);
-	return (0);
-}
-
 int		is_cell_sprite(char c)
 {
 	if (ft_strchr("*$?wcelbgjpMDROPLBGHJKyuq", c))
-			return (1);
+		return (1);
 	return (0);
 }
 
 int		is_cell_wall(char c)
 {
 	if (ft_strchr("12345678", c))
-		return (1);
-	return (0);
-}
-
-int		is_cell_door_opened(char c)
-{
-	if (ft_strchr("yuq", c))
-		return (1);
-	return (0);
-}
-
-int		is_cell_door_closed(char c)
-{
-	if (ft_strchr("YUQ", c))
-		return (1);
-	return (0);
-}
-
-int		is_cell_walkable(char c)
-{
-	if (ft_strchr("NWES0*$?wcelbgjluyq", c))
-		return (1);
-	return (0);
-}
-
-int		is_cell_portal(char c)
-{
-	if (ft_strchr("ce", c))
 		return (1);
 	return (0);
 }

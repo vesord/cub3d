@@ -14,7 +14,7 @@
 
 void	cub_ray_destroy(t_ray *ray)
 {
-	t_sprites *cur_spr;
+	t_ray_sprites *cur_spr;
 
 	cur_spr = ray->spr;
 	while (ray->spr)
