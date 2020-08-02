@@ -62,7 +62,7 @@ int		map_find_player(t_cub *cub)
 		}
 		pl_y++;
 	}
-	return (1);
+	return (f);
 }
 
 void	map_set_player(int pl_x, int pl_y, t_cub *cub)

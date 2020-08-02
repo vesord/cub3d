@@ -62,7 +62,7 @@ int		map_check_player_pos(t_cub *cub)
 		}
 		pl_y++;
 	}
-	return (1);
+	return (f);
 }
 
 int		is_map_portals_correct(t_cub *cub)
