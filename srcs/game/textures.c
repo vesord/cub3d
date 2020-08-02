@@ -54,9 +54,9 @@ unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
 		return ((int*)so->data)[(int)((double)so->height * off_y) * so->width
 		+ (int)((double)so->width * off_x)];
 	else if (cub->ray->dir == DIR_LEFT)
-		return ((int*)ea->data)[(int)((double)ea->height * off_y) * ea->width
-		+ (int)((double)ea->width * off_x)];
-	else
 		return ((int*)we->data)[(int)((double)we->height * off_y) * we->width
-			+ (int)((double)we->width * off_x)];
+		+ (int)((double)we->width * off_x)];
+	else
+		return ((int*)ea->data)[(int)((double)ea->height * off_y) * ea->width
+			+ (int)((double)ea->width * off_x)];
 }
