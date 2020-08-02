@@ -78,10 +78,21 @@ void	cub_textures_destroy_screens(t_tx_screens *tx_screens, void *mlx_ptr)
 
 void	cub_textures_destroy_animation(t_tx_anim *tx_anim, void *mlx_ptr)
 {
-	if (tx_anim->wand_2)
-		cub_img_destroy(tx_anim->wand_2, mlx_ptr);
 	if (tx_anim->wand_1)
 		cub_img_destroy(tx_anim->wand_1, mlx_ptr);
+	if (tx_anim->wand_2)
+		cub_img_destroy(tx_anim->wand_2, mlx_ptr);
+	if (tx_anim->wand_3)
+		cub_img_destroy(tx_anim->wand_3, mlx_ptr);
+	if (tx_anim->wand_4)
+		cub_img_destroy(tx_anim->wand_4, mlx_ptr);
+	if (tx_anim->wand_5)
+		cub_img_destroy(tx_anim->wand_5, mlx_ptr);
+	if (tx_anim->wand_6)
+		cub_img_destroy(tx_anim->wand_6, mlx_ptr);
+	if (tx_anim->wand_7)
+		cub_img_destroy(tx_anim->wand_7, mlx_ptr);
+	free(tx_anim);
 }
 
 void	cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr)
@@ -98,4 +109,5 @@ void	cub_textures_destroy_doors(t_tx_doors *tx_doors, void *mlx_ptr)
 		cub_img_destroy(tx_doors->secret_clos, mlx_ptr);
 	if (tx_doors->secret_open)
 		cub_img_destroy(tx_doors->secret_open, mlx_ptr);
+	free(tx_doors);
 }
