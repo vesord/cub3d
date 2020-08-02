@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_init_bonus.h"
+#include "includes/cub_init_bonus.h"
 
 void	cub_textures_destroy_spr_go(t_tx_spr_go *tx_spr_go, void *mlx_ptr)
 {

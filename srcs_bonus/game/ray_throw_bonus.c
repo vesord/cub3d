@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_textures_bonus.h"
-#include "cub_game_bonus.h"
+#include "includes/cub_textures_bonus.h"
+#include "includes/cub_game_bonus.h"
 
 float	throw_ray(t_cub *cub, float angle, float mid_angle)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_init_bonus.h"
+#include "includes/cub_init_bonus.h"
 
 void	cub_init_tex_walls(t_cub *cub)
 {

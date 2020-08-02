@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_game_bonus.h"
-#include "cub_textures_bonus.h"
+#include "includes/cub_game_bonus.h"
+#include "includes/cub_textures_bonus.h"
 
 unsigned int	get_skybox_pixel(float p_angle, t_tx_skybox *sky, t_cub *cub)
 {

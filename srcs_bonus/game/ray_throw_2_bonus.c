@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_game_bonus.h"
+#include "includes/cub_game_bonus.h"
 
 void	enemy_init(t_ray_enemy *enemy)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "bmp_bonus.h"
+#include "includes/bmp_bonus.h"
 
 int		create_bmp_img(t_img *img)
 {

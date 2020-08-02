@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_game_bonus.h"
-#include "cub_hud_bonus.h"
+#include "includes/cub_game_bonus.h"
+#include "includes/cub_hud_bonus.h"
 
 void	check_interactions(t_cub *cub)
 {

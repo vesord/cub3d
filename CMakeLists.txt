@@ -62,12 +62,7 @@ target_link_libraries(cub3D ${MY_LIB_FILES} m X11 Xext)
 #   ---BONUS_PART---
 
 include_directories(srcs_bonus)
-include_directories(srcs_bonus/cub_init)
-include_directories(srcs_bonus/config_parse)
-include_directories(srcs_bonus/game)
-include_directories(srcs_bonus/window_work)
-include_directories(srcs_bonus/game_interactions)
-include_directories(srcs_bonus/game_textures)
+include_directories(srcs_bonus/includes)
 
 set(HEADER_FILES_BONUS
         libs/libft/libft.h

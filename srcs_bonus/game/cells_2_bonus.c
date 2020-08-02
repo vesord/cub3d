@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_game_bonus.h"
+#include "includes/cub_game_bonus.h"
 
 int		is_cell_enemy(char c)
 {

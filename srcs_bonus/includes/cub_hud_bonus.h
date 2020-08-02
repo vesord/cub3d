@@ -14,7 +14,7 @@
 # define CUB_HUD_BONUS_H
 
 # include "cub3d_bonus.h"
-# include "cub_textures_bonus.h"
+# include "includes/cub_textures_bonus.h"
 
 void	add_hud_face(t_cub *cub);
 void	add_hud_wand(t_cub *cub);

@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_init_bonus.h"
-#include "cub_game_bonus.h"
+#include "includes/cub_init_bonus.h"
+#include "includes/cub_game_bonus.h"
 
 void	cub_init_map(t_cub *cub)
 {

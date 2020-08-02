@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_textures_bonus.h"
+#include "includes/cub_textures_bonus.h"
 
 t_img	*select_sprite(char type, t_cub *cub)
 {

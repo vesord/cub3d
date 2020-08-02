@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_textures_bonus.h"
+#include "includes/cub_textures_bonus.h"
 
 void	erase_img_in_win_blk(t_win_blk *blk, t_img *tex, t_cub *cub)
 {

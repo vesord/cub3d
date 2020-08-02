@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "cub_hud_bonus.h"
-#include "cub_textures_bonus.h"
+#include "includes/cub_hud_bonus.h"
+#include "includes/cub_textures_bonus.h"
 
 void	add_hud_hp(t_cub *cub)
 {

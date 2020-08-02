@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "config_parse_bonus.h"
+#include "includes/config_parse_bonus.h"
 
 void	add_line_to_map(char *line, t_cub *cub)
 {

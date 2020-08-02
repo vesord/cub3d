@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-#include "config_parse_bonus.h"
+#include "includes/config_parse_bonus.h"
 
 size_t	parse_line_texture(char *line, t_cub *cub, t_img *img)
 {
