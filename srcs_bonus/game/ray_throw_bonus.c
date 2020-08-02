@@ -27,7 +27,8 @@ float	throw_ray(t_cub *cub, float angle, float mid_angle)
 	cub->ray->walk_dst = 0.f;
 	cub->ray->sin = sinf(angle);
 	cub->ray->cos = cosf(angle);
-	cub->ray->spr = NULL;
+	if (cub->ray->spr)
+		ray_sprites_free((&cub->ray->spr));
 	enemy_init(&(cub->ray->enemy));
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;

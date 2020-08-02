@@ -22,7 +22,8 @@ double	throw_ray(t_cub *cub, double angle, double mid_angle)
 	cub->ray->y = cub->cam->y;
 	cub->ray->sin = sin(angle);
 	cub->ray->cos = cos(angle);
-	cub->ray->spr = NULL;
+	if (cub->ray->spr)
+		ray_sprites_free(&(cub->ray->spr));
 	while (is_next_cell_free(cub) && iterations < 50)
 		iterations++;
 	len_to_wall = sqrt(pow(cub->ray->x - cub->cam->x, 2) +

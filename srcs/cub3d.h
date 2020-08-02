@@ -279,6 +279,7 @@ unsigned int	get_pixel_wall(double off_x, double off_y, t_cub *cub,
 void			count_sprite(char type, t_cub *cub);
 t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub);
 double			count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub);
+void			ray_sprites_free(t_ray_sprites **spr);
 
 void			frame_add_sprite(int frame_x, t_cub *cub);
 void			frame_add_sprite_one(int frame_x, double d_angle,

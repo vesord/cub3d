@@ -82,6 +82,7 @@ int				is_cell_enemy(char c);
 void			count_sprite(char type, t_cub *cub);
 t_ray_sprites	*new_sprite(t_ray_sprites *prev, char type, t_cub *cub);
 float			count_sprite_x(float sp_x_mid, float sp_y_mid, t_cub *cub);
+void			ray_sprites_free(t_ray_sprites **spr);
 
 void			frame_add_sprite(int frame_x, t_cub *cub);
 void			frame_add_sprite_one(int frame_x, float d_angle,

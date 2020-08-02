@@ -63,3 +63,22 @@ double			count_sprite_x(double sp_x_mid, double sp_y_mid, t_cub *cub)
 		sp_x = -1.;
 	return (sp_x / cub->map->blk_x);
 }
+
+void			ray_sprites_free(t_ray_sprites **spr)
+{
+	t_ray_sprites *cur;
+	t_ray_sprites *next;
+
+	if (!(*spr) || !(spr))
+		return ;
+	cur = *spr;
+	next = NULL;
+	while (cur->next)
+	{
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	free(cur);
+	*spr = NULL;
+}
