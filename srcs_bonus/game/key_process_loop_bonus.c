@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:54:47 by matrus            #+#    #+#             */
-/*   Updated: 2020/08/02 10:28:34 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/02 00:29:52 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		key_press(int keycode, t_cub *cub)
 		cub->key->action = 1;
 	if (keycode == XK_space)
 		cub->key->jump = 1;
-	if (cub->hud->status && keycode == 65293)
+	if (cub->hud->status && keycode == 36)
 		restart_game(cub);
 	return (0);
 }

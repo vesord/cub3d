@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:46:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/11/02 00:11:40 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/02 00:25:20 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define XK_Escape 53
 # define XK_space 49
 # define XK_c 8
-# define XK_Shift_L 57 
+# define XK_Shift_L 12  
 # define XK_Control_L 14
 
 # define XK_MISCELLANY

@@ -78,7 +78,7 @@
 #
 
 
-R 1200 1000
+R 640 480
 
 W1 ./imgs/wall_mewni.xpm
 W2 ./imgs/window_2.xpm
