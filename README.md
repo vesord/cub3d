@@ -7,6 +7,8 @@ It was made due to my studying in 21-school, Russia.
 The main goal of project - learn what is ray-casting is and make a program, which represents a walking into maze.
 
 ## Requirements
+
+#### Ubuntu, Linux
 To run this you need to make sure you have these programms installed.
 I write `apt` commands to easier install it on Ubuntu.
 
@@ -29,6 +31,21 @@ To play run
 * `./cub3D ./configs/config.cub`
 
 (In general second argument is a path to config file .cub)
+
+#### MacOS
+
+As for Ubuntu we need submodules [`libft`](https://github.com/vesord/libft "my own utility lib") and [`minilibx`](https://github.com/42Paris/minilibx-linux "lib for easy work with Xlib, made for 42 students").
+
+Clone project:
+
+* `https://github.com/vesord/cub3d/tree/macos`
+
+To play:
+
+* `make` or `make bonus`
+* `./cub3D ./configs/config.cub` or * `./cub3D ./configs/config_bonus_star.cub`
+
+Some features dosen't work since project was moved from Ubuntu. (Cam move by mouse for example).
 
 ## Config file
 
