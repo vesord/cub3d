@@ -86,3 +86,9 @@ In addition you can save a "screenshot" (in .bmp format) of first player view in
 Screenshot wiil appear in project root directory.
 
 
+# SOME SCREENSHOTS FOR BETTER UNDERSTANDING
+
+![gameplay1](./screenshots/gameplay1.png)
+![gameplay2](./screenshots/gameplay2.png)
+![gameplay3](./screenshots/gameplay3.png)
+![gameplay4](./screenshots/gameplay4.png)
