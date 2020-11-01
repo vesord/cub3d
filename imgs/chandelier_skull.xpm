@@ -1,7 +1,7 @@
 /* XPM */
 static char * chandelier_skull_xpm[] = {
 "443 540 154 2",
-"  	c None",
+"  	c black",
 ". 	c #404040",
 "+ 	c #303030",
 "@ 	c #203020",

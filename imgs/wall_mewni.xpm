@@ -1,7 +1,7 @@
 /* XPM */
 static char * pinc_wall_xpm[] = {
 "640 610 1605 2",
-"  	c None",
+"  	c black",
 ". 	c #FFA6B2",
 "+ 	c #FFA8B3",
 "@ 	c #FFA7B2",

@@ -1,7 +1,7 @@
 /* XPM */
 static char * mewni_sky_no_xpm[] = {
 "480 660 383 2",
-"  	c None",
+"  	c black",
 ". 	c #FFCFDF",
 "+ 	c #EFBFDF",
 "@ 	c #EFCFDF",

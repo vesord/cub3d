@@ -1,7 +1,7 @@
 /* XPM */
 static char * sky_head_no_xpm[] = {
 "480 702 463 2",
-"  	c None",
+"  	c black",
 ". 	c #000000",
 "+ 	c #000010",
 "@ 	c #100000",

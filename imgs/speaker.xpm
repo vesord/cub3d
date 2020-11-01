@@ -1,7 +1,7 @@
 /* XPM */
 static char * speaker_xpm[] = {
 "932 1464 241 2",
-"  	c None",
+"  	c black",
 ". 	c #E0E0E0",
 "+ 	c #252525",
 "@ 	c #161616",

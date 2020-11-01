@@ -1,7 +1,7 @@
 /* XPM */
 static char * tutorial_xpm[] = {
 "900 1180 6063 2",
-"  	c None",
+"  	c black",
 ". 	c #EF9F60",
 "+ 	c #DF8F30",
 "@ 	c #602010",

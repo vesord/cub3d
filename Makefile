@@ -92,29 +92,29 @@ all: $(OBJ_DIR) libft minilibx $(NAME)
 	@echo "\033[1;32m\t- cub3D build successfully\033[0m"
 
 $(NAME): $(OBJ_ALL)
-	@$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_DIR)) $(OBJ_ALL) $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@ 
+	$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_DIR)) $(OBJ_ALL) $(LINKED_LIBS_DIR) -lft  -lmlx -framework OPENGL -framework Appkit -o $@ 
 
 $(OBJ_ALL): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLLUDES)
-	@$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_DIR)) $< $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@
+	$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_DIR)) $< -o $@
 
 $(OBJ_DIR):
-	@mkdir $@ $@/$(DIR_PARSE) $@/$(DIR_INIT) $@/$(DIR_GAME) $@/$(DIR_WINDOW)
+	mkdir $@ $@/$(DIR_PARSE) $@/$(DIR_INIT) $@/$(DIR_GAME) $@/$(DIR_WINDOW)
 
 
 #	-----BONUS PART BUILD-----
 
 .PHONY: bonus
 bonus: $(OBJ_B_DIR) libft minilibx $(NAME_B)
-	@echo "\033[1;32m\t- cub3D bonus build successfully\033[0m"
+	echo "\033[1;32m\t- cub3D bonus build successfully\033[0m"
 
 $(NAME_B): $(OBJ_B_ALL)
-	@$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_B_DIR)) $(OBJ_B_ALL) $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $(NAME)
+	$(CC) $(FLAGS) $(addprefix -I, $(INCLUDES_B_DIR)) $(OBJ_B_ALL) $(LINKED_LIBS_DIR) -lft -lmlx -framework OPENGL -framework Appkit -o $(NAME)
 
 $(OBJ_B_ALL): $(OBJ_B_DIR)/%.o: $(SRC_B_DIR)/%.c $(INCLUDES_B)
-	@$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_B_DIR)) $< $(LINKED_LIBS_DIR) $(LINKED_LIBS) -o $@
+	$(CC) $(FLAGS) -c $(addprefix -I, $(INCLUDES_B_DIR)) $< -o $@
 
 $(OBJ_B_DIR):
-	@mkdir $@ $@/$(DIR_B_PARSE) $@/$(DIR_B_INIT) $@/$(DIR_B_GAME) $@/$(DIR_B_WINDOW)\
+	mkdir $@ $@/$(DIR_B_PARSE) $@/$(DIR_B_INIT) $@/$(DIR_B_GAME) $@/$(DIR_B_WINDOW)\
 			$@/$(DIR_B_TEXTURES) $@/$(DIR_B_INTERACTIONS)
 
 
@@ -122,33 +122,33 @@ $(OBJ_B_DIR):
 
 .PHONY: minilibx
 minilibx: $(LIB_DIR)/minilibx
-	@$(MAKE) -C $< --no-print-directory --silent
-	@echo "\033[1;32m\t- minilibx build successfully\033[0m\n"
+	$(MAKE) -C $< --no-print-directory --silent
+	echo "\033[1;32m\t- minilibx build successfully\033[0m\n"
 
 .PHONY: libft
 libft: $(LIB_DIR)/libft
-	@$(MAKE) -C $< --no-print-directory --silent
-	@echo "\033[1;32m\t- libft build successfully\033[0m\n"
+	$(MAKE) -C $< --no-print-directory --silent
+	echo "\033[1;32m\t- libft build successfully\033[0m\n"
 
 .PHONY: clean
 clean:
-	@rm -rf $(OBJ_DIR) $(OBJ_B_DIR)
-	@$(MAKE) -C $(LIB_DIR)/libft --no-print-directory --silent clean
-	@echo "\033[1;32m\t- libft cleaned\033[0m\n"
-	@$(MAKE) -C $(LIB_DIR)/minilibx --no-print-directory --silent clean
-	@echo "\033[1;32m\t- minilibx cleaned\033[0m\n"
+	rm -rf $(OBJ_DIR) $(OBJ_B_DIR)
+	$(MAKE) -C $(LIB_DIR)/libft --no-print-directory --silent clean
+	echo "\033[1;32m\t- libft cleaned\033[0m\n"
+	$(MAKE) -C $(LIB_DIR)/minilibx --no-print-directory --silent clean
+	echo "\033[1;32m\t- minilibx cleaned\033[0m\n"
 
 .PHONY: fclean
 fclean: clean
-	@rm -rf $(NAME) $(NAME_B)
-	@rm -rf *.bmp
-	@$(MAKE) -C $(LIB_DIR)/libft --no-print-directory --silent fclean
-	@echo "\033[1;32m\t- libft fcleaned\033[0m\n"
+	rm -rf $(NAME) $(NAME_B)
+	rm -rf *.bmp
+	$(MAKE) -C $(LIB_DIR)/libft --no-print-directory --silent fclean
+	echo "\033[1;32m\t- libft fcleaned\033[0m\n"
 
 .PHONY: re
 re: fclean all
 
 .PHONY: test
 test:
-	@echo "$(SRC_B_ALL)"
+	echo "$(SRC_B_ALL)"
 

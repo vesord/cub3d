@@ -1,7 +1,7 @@
 /* XPM */
 static char * wand_moon_xpm[] = {
 "1024 1655 355 2",
-"  	c None",
+"  	c black",
 ". 	c #8F7040",
 "+ 	c #7F7040",
 "@ 	c #8F6040",

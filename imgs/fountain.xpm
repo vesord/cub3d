@@ -1,7 +1,7 @@
 /* XPM */
 static char * fountain_xpm[] = {
 "637 800 1077 2",
-"  	c None",
+"  	c black",
 ". 	c #7FEFEF",
 "+ 	c #7FEFFF",
 "@ 	c #70EFEF",

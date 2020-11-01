@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:06:33 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/24 10:42:53 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/01 23:57:36 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	window_setup(t_cub *cub)
 
 	scrn_sz_x = 0;
 	scrn_sz_y = 0;
-	mlx_get_screen_size(cub->win->mlx_ptr, &scrn_sz_x, &scrn_sz_y);
+//	mlx_get_screen_size(cub->win->mlx_ptr, &scrn_sz_x, &scrn_sz_y);
 	if (scrn_sz_x && scrn_sz_y)
 	{
 		if (scrn_sz_x < cub->win->x)
@@ -39,7 +39,7 @@ void	window_setup_save(t_cub *cub)
 
 	scrn_sz_x = 0;
 	scrn_sz_y = 0;
-	mlx_get_screen_size(cub->win->mlx_ptr, &scrn_sz_x, &scrn_sz_y);
+//	mlx_get_screen_size(cub->win->mlx_ptr, &scrn_sz_x, &scrn_sz_y);
 	if (scrn_sz_x && scrn_sz_y)
 	{
 		if (scrn_sz_x < cub->win->x)

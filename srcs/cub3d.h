@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:46:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/24 11:22:48 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/01 23:51:12 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define XK_MISCELLANY
 # define XK_LATIN1
-# include <X11/keysymdef.h>
+//# include <X11/keysymdef.h>
 
 typedef struct	s_cam
 {

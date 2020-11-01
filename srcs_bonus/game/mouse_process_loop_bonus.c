@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 11:55:16 by matrus            #+#    #+#             */
-/*   Updated: 2020/08/02 10:28:34 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/02 00:09:46 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		mouse_button_release(int button, int x, int y, t_cub *cub)
 	return (0);
 }
 
+/*
 int		mouse_move(int x, int y, t_cub *cub)
 {
 	static int	prev_x;
@@ -54,4 +55,4 @@ int		mouse_move(int x, int y, t_cub *cub)
 			cub->win->x / 2, cub->win->y / 2);
 	}
 	return (0);
-}
+}*/

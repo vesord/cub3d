@@ -6,11 +6,24 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/17 12:54:47 by matrus            #+#    #+#             */
-/*   Updated: 2020/07/24 11:07:18 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/02 00:01:41 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+# define XK_q 12
+# define XK_w 13
+# define XK_e 14
+# define XK_a 0
+# define XK_s 1
+# define XK_d 2
+# define XK_e 14
+# define XK_Left 123
+# define XK_Right 124
+# define XK_Escape 53
+# define XK_SPACE 49
+# define XK_C 8	
 
 int		key_press(int keycode, t_cub *cub)
 {

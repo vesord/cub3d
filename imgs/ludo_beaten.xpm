@@ -1,7 +1,7 @@
 /* XPM */
 static char * ludo_beaten_xpm[] = {
 "1262 1380 370 2",
-"  	c None",
+"  	c black",
 ". 	c #201010",
 "+ 	c #201020",
 "@ 	c #201000",

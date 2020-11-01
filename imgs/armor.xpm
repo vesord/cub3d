@@ -1,7 +1,7 @@
 /* XPM */
 static char * armor_xpm[] = {
 "800 886 356 2",
-"  	c None",
+"  	c black",
 ". 	c #9F8F8F",
 "+ 	c #9F8F7F",
 "@ 	c #8F7070",

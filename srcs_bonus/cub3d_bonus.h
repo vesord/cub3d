@@ -6,7 +6,7 @@
 /*   By: matrus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 14:46:23 by matrus            #+#    #+#             */
-/*   Updated: 2020/08/02 10:28:29 by matrus           ###   ########.fr       */
+/*   Updated: 2020/11/02 00:11:40 by matrus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,24 @@
 # include <math.h>
 # include <fcntl.h>
 
+# define XK_q 12
+# define XK_w 13
+# define XK_e 14
+# define XK_a 0
+# define XK_s 1
+# define XK_d 2
+# define XK_e 14
+# define XK_Left 123
+# define XK_Right 124
+# define XK_Escape 53
+# define XK_space 49
+# define XK_c 8
+# define XK_Shift_L 57 
+# define XK_Control_L 14
+
 # define XK_MISCELLANY
 # define XK_LATIN1
-# include <X11/keysymdef.h>
+//# include <X11/keysymdef.h>
 
 typedef struct	s_cam
 {

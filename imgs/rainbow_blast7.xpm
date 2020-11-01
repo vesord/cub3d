@@ -1,7 +1,7 @@
 /* XPM */
 static char * rainbow_blast7_xpm[] = {
 "295 444 164 2",
-"  	c None",
+"  	c black",
 ". 	c #FF5000",
 "+ 	c #FF1000",
 "@ 	c #FF7000",

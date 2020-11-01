@@ -1,7 +1,7 @@
 /* XPM */
 static char * chandalier_xpm[] = {
 "910 1176 36 1",
-" 	c None",
+" 	c black",
 ".	c #7B6125",
 "+	c #6F5626",
 "@	c #FEE31A",

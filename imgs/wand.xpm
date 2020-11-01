@@ -1,7 +1,7 @@
 /* XPM */
 static char * wand_xpm[] = {
 "1280 960 623 2",
-"  	c None",
+"  	c black",
 ". 	c #006070",
 "+ 	c #005060",
 "@ 	c #005070",

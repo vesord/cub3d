@@ -1,7 +1,7 @@
 /* XPM */
 static char * rick_sanchez_xpm[] = {
 "728 649 1424 2",
-"  	c None",
+"  	c black",
 ". 	c #0D0D0D",
 "+ 	c #302818",
 "@ 	c #282818",

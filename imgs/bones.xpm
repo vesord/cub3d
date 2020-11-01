@@ -1,7 +1,7 @@
 /* XPM */
 static char * bones_xpm[] = {
 "900 680 351 2",
-"  	c None",
+"  	c black",
 ". 	c #646445",
 "+ 	c #645435",
 "@ 	c #736435",

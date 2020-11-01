@@ -1,7 +1,7 @@
 /* XPM */
 static char * door_mewni_xpm[] = {
 "640 610 1211 2",
-"  	c None",
+"  	c black",
 ". 	c #FFA6B2",
 "+ 	c #FFA8B3",
 "@ 	c #FFA7B2",

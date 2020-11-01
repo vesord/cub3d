@@ -1,7 +1,7 @@
 /* XPM */
 static char * ludo_xpm[] = {
 "1262 1380 273 2",
-"  	c None",
+"  	c black",
 ". 	c #503020",
 "+ 	c #302010",
 "@ 	c #605040",

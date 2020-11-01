@@ -1,7 +1,7 @@
 /* XPM */
 static char * portal_rick_xpm[] = {
 "900 900 850 2",
-"  	c None",
+"  	c black",
 ". 	c #001020",
 "+ 	c #001010",
 "@ 	c #100010",
