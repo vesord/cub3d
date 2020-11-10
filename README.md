@@ -38,7 +38,9 @@ As for Ubuntu we need submodules [`libft`](https://github.com/vesord/libft "my o
 
 Clone project:
 
-* `https://github.com/vesord/cub3d/tree/macos`
+* `https://github.com/vesord/cub3d`
+
+* `git checkout macos`
 
 To play:
 
