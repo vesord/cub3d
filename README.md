@@ -13,6 +13,7 @@ The main goal of project - learn what is ray-casting is and make a program, whic
 #### Ubuntu, Linux
 
 **ONE COMMAND LINUX**:
+
 `git clone --recursive https://github.com/vesord/cub3d ; cd cub3d ; make bonus ; ./cub3D ./configs/config_bonus_star.cub`
 
 To run this you need to make sure you have these programms installed.
@@ -43,6 +44,7 @@ To play run
 As for Ubuntu we need submodules [`libft`](https://github.com/vesord/libft "my own utility lib") and [`minilibx`](https://github.com/42Paris/minilibx-linux "lib for easy work with Xlib, made for 42 students").
 
 **ONE COMMAND MACOS**:
+
 `git clone --recursive https://github.com/vesord/cub3d ; cd cub3d ; git checkout macos ; make bonus ; ./cub3D ./configs/config_bonus_star.cub`
 
 Controls are different in MacOS version.
