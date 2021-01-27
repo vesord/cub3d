@@ -1,6 +1,6 @@
 # Raycaster on plain C
 
-![gameplay1](./screenshots/gameplay1.png)
+![gameplay3](./screenshots/gameplay3.png)
 
 ## Description
 It's a “realistic” 3D graphical representation of the inside of a maze from a first person perspective. This made by using the Ray-casting principles.
@@ -90,6 +90,8 @@ Screenshot wiil appear in project root directory.
 
 # SOME SCREENSHOTS FOR BETTER UNDERSTANDING
 
+![gameplay1](./screenshots/gameplay1.png)
+
 ![gameplay2](./screenshots/gameplay2.png)
-![gameplay3](./screenshots/gameplay3.png)
+
 ![gameplay4](./screenshots/gameplay4.png)
