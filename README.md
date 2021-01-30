@@ -2,6 +2,8 @@
 
 ![gameplay3](./screenshots/gameplay3.png)
 
+[MORE SCREENSHOTS!](#screenshots)
+
 ## Description
 It's a “realistic” 3D graphical representation of the inside of a maze from a first person perspective. This made by using the Ray-casting principles.
 
@@ -89,6 +91,7 @@ In addition you can save a "screenshot" (in .bmp format) of first player view in
 
 Screenshot wiil appear in project root directory.
 
+<a name="screenshots"></a>
 
 # SOME SCREENSHOTS FOR BETTER UNDERSTANDING
 
