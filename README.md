@@ -16,9 +16,7 @@ The main goal of project - learn what is ray-casting is and make a program, whic
 
 #### Prerequesties
 
-...
-sudo apt install make libx11-dev libxtst-dev libbsd-dev
-...
+`sudo apt install make libx11-dev libxtst-dev libbsd-dev`
 
 
 **ONE COMMAND LINUX**:
