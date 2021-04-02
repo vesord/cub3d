@@ -14,6 +14,13 @@ The main goal of project - learn what is ray-casting is and make a program, whic
 
 #### Ubuntu, Linux
 
+#### Prerequesties
+
+...
+sudo apt install make libx11-dev libxtst-dev libbsd-dev
+...
+
+
 **ONE COMMAND LINUX**:
 
 `git clone --recursive https://github.com/vesord/cub3d ; cd cub3d ; make bonus ; ./cub3D ./configs/config_bonus_star.cub`
